@@ -37,6 +37,7 @@
 #cmakedefine ROUND_ASM	@ROUND_ASM@
 #cmakedefine GNU_X86_64	@GNU_X86_64@
 #cmakedefine CXSC_x86_64	@CXSC_x86_64@
+#cmakedefine CXSC_arm64	@CXSC_arm64@
 #cmakedefine CXSC_PPC64	@CXSC_PPC64@
 #cmakedefine WINDOWS_X86_32	@WINDOWS_X86_32@
 #cmakedefine WINDOWS_MINGW	@WINDOWS_MINGW@

@@ -146,11 +146,7 @@ typedef struct d_otpz { d_otpi RE , IM; } d_otpz ;
 /*----------------------------------------*/
 extern int e_line ;
 #ifdef LINT_ARGS
-#ifdef IBMva
-extern void e_trap () ;
-#else
 extern void e_trap (a_btyp code, int e_argc, ...) ;
-#endif
 #else
 extern void e_trap () ;
 #endif
@@ -196,11 +192,7 @@ _PROTOTYPE(extern a_bool  s_etin, (a_intg, s_etof)) ;     /* operator "in" */
 _PROTOTYPE(extern a_VOID /* s_etof */  s_zero, (s_etof)) ;
 
 #ifdef LINT_ARGS
-#ifdef IBMva
-extern a_VOID /* s_etof */  s_cons () ;         /* set constructor */
-#else
 extern a_VOID   s_cons (s_etof res, a_char * ctrl,...);  /* set constructor */
-#endif
 #else
 extern a_VOID  s_cons () ;              /* set constructor */
 #endif
@@ -535,15 +527,6 @@ _PROTOTYPE(extern y_dscp y_alck, (y_dscp d )) ;
 
 #ifdef LINT_ARGS
 
-#ifdef IBMva
-extern a_VOID y_inxn( ) ;
-extern a_VOID y_ixcn( ) ;
-extern a_VOID y_suba( ) ;
-extern a_VOID y_stat( ) ;
-extern a_VOID y_ynxn( ) ;
-extern a_VOID y_yxcn( ) ;
-extern void   y_new ( ) ;
-#else
 				       /*--------------*/
 				       /* Array access */
 extern a_VOID y_inxn (y_dscp ,...) ; /*  without Index check */
@@ -560,7 +543,6 @@ extern a_VOID y_stat (y_dscp d, a_VOID statarray, size_t elsize,
 extern a_VOID y_ynxn (y_dscp d,...) ; /*  without Index check */
 extern a_VOID y_yxcn (y_dscp d,...) ; /*  with Index check */
 extern void   y_new  (y_dscp d,...) ; /*  with Index check */
-#endif
 
 #else
 extern a_VOID y_inxn () ;

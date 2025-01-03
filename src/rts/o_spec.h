@@ -130,20 +130,7 @@
 /*    Compiler supports variable argument lists.                */
 /* 0 -IBM parameter passing conventions                         */
 /* 1 -Standard parameter passing conventions                    */
-#define DUMMY_IBMVA CONVEX1_UNIX_C+IBM_PS2_C+IBM_RT_C+IBM_RS6000_C+HP_9000_C
-#if DUMMY_IBMVA+SUN4_OS4_C+VAX_UNIX_C+DEC_ULTRIX_C
-#ifdef IBMva
-#define C_P_7                   0
-#else
->>>>>> IBMva must be defined in p88rts.h <<<<<<
-#endif
-#else
-#ifdef IBMva
->>>>>> IBMva must not be defined in p88rts.h <<<<<<
-#else
 #define C_P_7                   1
-#endif
-#endif
 
 /*    Number of bits forming a value of type a_intg.            */
 #define C_P_8                   32

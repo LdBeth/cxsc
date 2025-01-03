@@ -29,7 +29,7 @@
 namespace cxsc {
 
 
-#if defined(CXSC_x86_64) || defined(CXSC_x86_i)
+#if defined(CXSC_x86_64)
 
 static u_int32_t cxscup = 0x5F80;
 static u_int32_t cxscdown = 0x3F80;
