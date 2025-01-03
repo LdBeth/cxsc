@@ -24,7 +24,7 @@
 /* CVS $Id: j_exp2.cpp,v 1.15 2014/01/30 17:23:54 cxsc Exp $ */
 
 #ifndef J_EXP2_CPP
-#define F_EXP2_CPP
+#define J_EXP2_CPP
 
 #include "fi_lib.hpp" 
 

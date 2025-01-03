@@ -24,7 +24,7 @@
 /* CVS $Id: q_lg10.cpp,v 1.15 2014/01/30 17:23:55 cxsc Exp $ */
 
 #ifndef Q_LG10_CPP
-#define Q_LG1__CPP
+#define Q_LG10_CPP
 
 #include "fi_lib.hpp" 
 
