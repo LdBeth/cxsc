@@ -46,11 +46,6 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/src/asm
 )
 
-# Check for intel compiler
-if (${CMAKE_C_COMPILER} MATCHES "icc") 
-  set(USING_INTEL_COMPILER TRUE)
-endif ()
-
 # Rounding mode options
 if(NOT WIN32)
   if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "ppc64")
@@ -72,7 +67,7 @@ endif(NOT WIN32)
 # Option for shared or static library (either/or)
 if(NOT WIN32)
   if(APPLE)
-    option(BUILD_SHARED "Build the shared version of the library" OFF)
+    option(BUILD_SHARED "Build the shared version of the library" ON)
   else(APPLE)
     option(BUILD_SHARED "Build the shared version of the library" ON)
   endif(APPLE)
@@ -218,10 +213,6 @@ elseif(CMAKE_COMPILER_IS_GNUCXX)
     set(CMAKE_CXX_FLAGS "-O1 -finline-functions")
     set(CMAKE_CC_FLAGS "-O1 -finline-functions")
   endif(ROUNDING_ASM)
-elseif(USING_INTEL_COMPILER)
-  #Intel Compiler: Full optimizations, reduced FP optimzations for correct rounding and error free transformations
-  set(CMAKE_CXX_FLAGS "-O3 -fp-model source")
-  set(CMAKE_CC_FLAGS "-O3 -fp-model source")
 else(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" AND CMAKE_COMPILER_IS_GNUCXX)
   #Default compiler options
   if(ROUNDING_ASM)

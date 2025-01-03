@@ -36,14 +36,6 @@
 #define SUN4_GNU_C 1  
 #endif
 
-/* new style prototyping compilers must have 1, old one 0 */
-/* #define USING_LINT_ARGS 1 */
-#if SUN4_CPP_C+SUN4_GNU_C+SUN4_GNU_C+SUN_OS5_GNU_C+IBM_LINUX_C+DEC_ALPHA_C+CXSC_PPC64
-#define USING_LINT_ARGS 1
-#else
-#define USING_LINT_ARGS 0
-#endif
-
 /* use 1 for ATARI, VAX VMS , 0 for others */
 #define USING_AREALSTRU 0
 
@@ -59,19 +51,8 @@
 /***********************************************************/
 #define t_ep10 t_ex10
                         /* provisorisch */
-#if USING_LINT_ARGS
 /* new-style prototyping */
-#define LINT_ARGS 
-#endif
-#undef USING_LINT_ARGS
-
-#ifndef LINT_ARGS
-#define IBMva
-                 /* old style variable argument lists */
-#endif
-                 /* must be defined for AIX PS2 */
-/* #define IBMva */
-                 /* IBM style variable argument lists */
+#define LINT_ARGS
 
 
 /*--------------------------------------------------------------*/
