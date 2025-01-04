@@ -306,57 +306,97 @@ inline double ra_divd(double a,double b) {
 
 inline double ra_addu(double a,double b) {
    double r;
+   #ifdef CXSC_RND_STORE
    asm volatile ("mrs x0,fpcr\n" "mov x1, %3\n" "msr fpcr,x1\n"
                  "fadd %d0, %d1, %d2\n" "msr fpcr,x0\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscup) : "x0", "x1" );
+   #else
+   asm volatile ("mov x1, %3\n" "msr fpcr,x1\n"
+                 "fadd %d0, %d1, %d2\n" "msr fpcr,xzr\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscup) : "x1" );
+   #endif
    return r;
 }
 
 inline double ra_addd(double a,double b) {
    double r;
+   #ifdef CXSC_RND_STORE
    asm volatile ("mrs x0,fpcr\n" "mov x1, %3\n" "msr fpcr,x1\n"
                  "fadd %d0, %d1, %d2\n" "msr fpcr,x0\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscdown) : "x0", "x1" );
+   #else
+   asm volatile ("mov x1, %3\n" "msr fpcr,x1\n"
+                 "fadd %d0, %d1, %d2\n" "msr fpcr,xzr\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscdown) : "x1" );
+   #endif
    return r;
 }
 
 inline double ra_subu(double a,double b) {
    double r;
+   #ifdef CXSC_RND_STORE
    asm volatile ("mrs x0,fpcr\n" "mov x1, %3\n" "msr fpcr,x1\n"
                  "fsub %d0, %d1, %d2\n" "msr fpcr,x0\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscup) : "x0", "x1" );
+   #else
+   asm volatile ("mov x1, %3\n" "msr fpcr,x1\n"
+                 "fsub %d0, %d1, %d2\n" "msr fpcr,xzr\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscup) : "x1" );
+   #endif
    return r;
 }
 
 inline double ra_subd(double a,double b) {
    double r;
+   #ifdef CXSC_RND_STORE
    asm volatile ("mrs x0,fpcr\n" "mov x1, %3\n" "msr fpcr,x1\n"
                  "fsub %d0, %d1, %d2\n" "msr fpcr,x0\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscdown) : "x0", "x1" );
+   #else
+   asm volatile ("mov x1, %3\n" "msr fpcr,x1\n"
+                 "fsub %d0, %d1, %d2\n" "msr fpcr,xzr\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscdown) : "x1" );
+   #endif
    return r;
 }
 
 inline double ra_mulu(double a,double b) {
    double r;
+   #ifdef CXSC_RND_STORE
    asm volatile ("mrs x0,fpcr\n" "mov x1, %3\n" "msr fpcr,x1\n"
                  "fmul %d0, %d1, %d2\n" "msr fpcr,x0\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscup) : "x0", "x1" );
+   #else
+   asm volatile ("mov x1, %3\n" "msr fpcr,x1\n"
+                 "fmul %d0, %d1, %d2\n" "msr fpcr,xzr\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscup) : "x1" );
+   #endif
    return r;
 }
 
 inline double ra_muld(double a,double b) {
    double r;
+   #ifdef CXSC_RND_STORE
    asm volatile ("mrs x0,fpcr\n" "mov x1, %3\n" "msr fpcr,x1\n"
                  "fmul %d0, %d1, %d2\n" "msr fpcr,x0\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscdown) : "x0", "x1" );
+   #else
+   asm volatile ("mov x1, %3\n" "msr fpcr,x1\n"
+                 "fmul %d0, %d1, %d2\n" "msr fpcr,xzr\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscdown) : "x1" );
+   #endif
    return r;
 }
 
 inline double ra_divu(double a,double b) {
    double r;
+   #ifdef CXSC_RND_STORE
    asm volatile ("mrs x0,fpcr\n" "mov x1, %3\n" "msr fpcr,x1\n"
                  "fdiv %d0, %d1, %d2\n" "msr fpcr,x0\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscup) : "x0", "x1" );
+   #else
+   asm volatile ("mov x1, %3\n" "msr fpcr,x1\n"
+                 "fdiv %d0, %d1, %d2\n" "msr fpcr,xzr\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscup) : "x1" );
+   #endif
    return r;
 }
 
 inline double ra_divd(double a,double b) {
    double r;
+   #ifdef CXSC_RND_STORE
    asm volatile ("mrs x0,fpcr\n" "mov x1, %3\n" "msr fpcr,x1\n"
                  "fdiv %d0, %d1, %d2\n" "msr fpcr,x0\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscdown) : "x0", "x1" );
+   #else
+   asm volatile ("mov x1, %3\n" "msr fpcr,x1\n"
+                 "fdiv %d0, %d1, %d2\n" "msr fpcr,xzr\n" : "=w" (r) : "w"(a), "w" (b), "i" (cxscdown) : "x1" );
+   #endif
    return r;
 }
 
