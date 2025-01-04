@@ -274,6 +274,7 @@ endif(BUILD_SHARED)
 
 # build the examples
 add_subdirectory(examples)
+add_subdirectory(benchmark)
 add_subdirectory(CToolbox/Programs)
 add_subdirectory(CToolbox/test)
 add_subdirectory(CToolbox/test/test_programms)
