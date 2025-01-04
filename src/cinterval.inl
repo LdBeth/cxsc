@@ -34,7 +34,7 @@ inline cinterval::cinterval(const interval & a,const interval & b) throw()
 {
 }
 
-inline cinterval::cinterval(const complex & a,const complex & b)  throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+inline cinterval::cinterval(const complex & a,const complex & b)  noexcept(false)
    : re(Re(a),Re(b)),
      im(Im(a),Im(b))
 {
@@ -276,7 +276,7 @@ inline cinterval operator -(const cinterval & a,const cinterval & b) throw()
    return cinterval(a.re-b.re,a.im-b.im);
 }
 
-inline cinterval operator &(const cinterval & a,const cinterval & b) throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+inline cinterval operator &(const cinterval & a,const cinterval & b) noexcept(false)
 {
    cinterval tmp = a;
    SetInf(tmp.re, max(Inf(a.re), Inf(b.re)));
@@ -303,7 +303,7 @@ inline cinterval & operator -=(cinterval & a, const cinterval & b) throw() { ret
 inline cinterval & operator *=(cinterval & a, const cinterval & b) throw() { return a=a*b; }
 inline cinterval & operator /=(cinterval & a, const cinterval & b) throw() { return a=a/b; }
 inline cinterval & operator |=(cinterval & a, const cinterval & b) throw() { return a=a|b; }
-inline cinterval & operator &=(cinterval & a, const cinterval & b) throw(ERROR_CINTERVAL_EMPTY_INTERVAL) { return a=a&b; }
+inline cinterval & operator &=(cinterval & a, const cinterval & b) noexcept(false) { return a=a&b; }
 
 // CI-R
 
@@ -527,7 +527,7 @@ inline bool operator >=(const cinterval & a,const interval & b) throw() { return
 inline complex    Inf(const cinterval & a) throw() { return _complex(Inf(a.re),Inf(a.im)); }
 inline complex    Sup(const cinterval & a) throw() { return _complex(Sup(a.re),Sup(a.im)); }
 
-inline cinterval & SetInf(cinterval & a,const complex & b) throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+inline cinterval & SetInf(cinterval & a,const complex & b) noexcept(false)
 {
    Inf(a.re)=Re(b);
    Inf(a.im)=Im(b);
@@ -538,7 +538,7 @@ inline cinterval & SetInf(cinterval & a,const complex & b) throw(ERROR_CINTERVAL
    return a;
 }
 
-inline cinterval & SetSup(cinterval & a,const complex & b) throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+inline cinterval & SetSup(cinterval & a,const complex & b) noexcept(false)
 {
    Sup(a.re)=Re(b);
    Sup(a.im)=Im(b);
@@ -549,7 +549,7 @@ inline cinterval & SetSup(cinterval & a,const complex & b) throw(ERROR_CINTERVAL
    return a;
 }
 
-inline cinterval & SetInf(cinterval & a,const real & b) throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+inline cinterval & SetInf(cinterval & a,const real & b) noexcept(false)
 {
    Inf(a.re)=b;
    Inf(a.im)=0.0;
@@ -560,7 +560,7 @@ inline cinterval & SetInf(cinterval & a,const real & b) throw(ERROR_CINTERVAL_EM
    return a;
 }
 
-inline cinterval & SetSup(cinterval & a,const real & b) throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+inline cinterval & SetSup(cinterval & a,const real & b) noexcept(false)
 {
    Sup(a.re)=b;
    Sup(a.im)=0.0;
@@ -634,7 +634,7 @@ inline complex mid(const cinterval &a) throw() { return complex(mid(a.re),mid(a.
 inline complex diam(const cinterval &a) throw(){ return complex(diam(a.re),diam(a.im)); }
 
 cinterval mult_operator(const cinterval & a,const cinterval & b) throw();
-cinterval div_operator(const cinterval & a,const cinterval & b) throw(DIV_BY_ZERO);
+cinterval div_operator(const cinterval & a,const cinterval & b) noexcept(false);
 
 inline cinterval operator *(const cinterval & a,const cinterval & b) throw()
 {
@@ -645,7 +645,7 @@ inline cinterval operator *(const cinterval & a,const cinterval & b) throw()
 #endif
 } 
 
-inline cinterval operator / (const cinterval & a, const cinterval & b) throw(DIV_BY_ZERO)
+inline cinterval operator / (const cinterval & a, const cinterval & b) noexcept(false)
 {
     if (0.0 <= Re(b) && 0.0 <= Im(b) ) {
       cxscthrow(DIV_BY_ZERO("cinterval operator / (const cinterval&, const cinterval&)"));

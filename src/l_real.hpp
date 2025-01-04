@@ -129,41 +129,41 @@ class l_real
       // The following are defined in the specific vector, matrix-files
 #if(CXSC_INDEX_CHECK) 
       //! Constructor of class l_real
-      explicit INLINE l_real(const l_rvector &)       throw (ERROR_LRVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_LRVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE l_real(const l_rvector &)       noexcept(false);
       //! Constructor of class l_real
-      explicit INLINE l_real(const l_rvector_slice &) throw (ERROR_LRVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_LRVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE l_real(const l_rvector_slice &) noexcept(false);
       //! Constructor of class l_real
-      explicit INLINE l_real(const l_rmatrix &)       throw (ERROR_LRMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_LRMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE l_real(const l_rmatrix &)       noexcept(false);
       //! Constructor of class l_real
-      explicit INLINE l_real(const l_rmatrix_slice &) throw (ERROR_LRMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_LRMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE l_real(const l_rmatrix_slice &) noexcept(false);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa l_real(const l_rvector &)
       */
-      friend INLINE real _l_real(const l_rvector &)       throw (ERROR_LRVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_LRVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE real _l_real(const l_rvector &)       noexcept(false);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa l_real(const l_rvector_slice &)
       */
-      friend INLINE real _l_real(const l_rvector_slice &) throw (ERROR_LRVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_LRVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE real _l_real(const l_rvector_slice &) noexcept(false);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa l_real(const l_rmatrix &)
       */
-      friend INLINE real _l_real(const l_rmatrix &)       throw (ERROR_LRMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_LRMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE real _l_real(const l_rmatrix &)       noexcept(false);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       /*!
       \deprecated use standard contructors for typecasting
 
       \sa l_real(const l_rmatrix_slice &)
       */
-      friend INLINE real _l_real(const l_rmatrix_slice &) throw (ERROR_LRMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_LRMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE real _l_real(const l_rmatrix_slice &) noexcept(false);
 #else
       //! Constructor of class l_real
       explicit INLINE l_real(const l_rvector &)       throw ();
@@ -234,7 +234,7 @@ class l_real
       //! Implementation of standard algebraic multiplication operation
       friend     l_real operator *(const l_real &,const l_real &) throw();
       //! Implementation of standard algebraic division operation
-      friend     l_real operator /(const l_real &,const l_real &) throw(DIV_BY_ZERO);
+      friend     l_real operator /(const l_real &,const l_real &) noexcept(false);
       //! Returns the convex hull of the arguments
       friend inline l_interval operator |(const l_real &,const l_real &) throw();
 

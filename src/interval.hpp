@@ -63,7 +63,7 @@ class interval
       //! Constructor of class interval
       interval() {}
       //! Constructor of class interval
-      inline interval(const real&, const real&) throw(ERROR_INTERVAL_EMPTY_INTERVAL);
+      inline interval(const real&, const real&) noexcept(false);
       //! Implementation of standard assigning operator
       inline interval& operator= (const real& a);
 
@@ -77,21 +77,21 @@ class interval
 
 #if(CXSC_INDEX_CHECK)
       //! Constructor of class interval
-      explicit INLINE interval(const ivector &) throw(ERROR_IVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_IVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE interval(const ivector &) noexcept(false);
       //! Constructor of class interval
-      explicit INLINE interval(const ivector_slice &) throw(ERROR_IVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_IVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE interval(const ivector_slice &) noexcept(false);
       //! Constructor of class interval
-      explicit INLINE interval(const imatrix &m) throw(ERROR_IMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_IMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE interval(const imatrix &m) noexcept(false);
       //! Constructor of class interval
-      explicit INLINE interval(const imatrix_slice &m) throw(ERROR_IMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_IMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE interval(const imatrix_slice &m) noexcept(false);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-      friend INLINE interval _interval(const ivector &) throw(ERROR_IVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_IVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE interval _interval(const ivector &) noexcept(false);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-      friend INLINE interval _interval(const ivector_slice &) throw(ERROR_IVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_IVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE interval _interval(const ivector_slice &) noexcept(false);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-      friend INLINE interval _interval(const imatrix &m) throw(ERROR_IMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_IMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE interval _interval(const imatrix &m) noexcept(false);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-      friend INLINE interval _interval(const imatrix_slice &m) throw(ERROR_IMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_IMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE interval _interval(const imatrix_slice &m) noexcept(false);
 #else
       //! Constructor of class interval
       explicit INLINE interval(const ivector &) throw();
@@ -113,24 +113,24 @@ class interval
       //! Constructor of class interval
       explicit        interval(const l_real &) throw();     // in l_real.cpp
       //! Constructor of class interval
-                      interval(const l_real &,const l_real &) throw(ERROR_INTERVAL_EMPTY_INTERVAL);
+                      interval(const l_real &,const l_real &) noexcept(false);
       //! Constructor of class interval
       explicit        interval(const l_interval &) throw(); // in l_interval.cpp
       //! Constructor of class interval
       explicit        interval(const dotprecision &) throw();
       //! Constructor of class interval
-                      interval(const dotprecision &,const dotprecision &) throw(ERROR_INTERVAL_EMPTY_INTERVAL);
+                      interval(const dotprecision &,const dotprecision &) noexcept(false);
       //! Constructor of class interval
       explicit        interval(const idotprecision &) throw();
       
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       friend inline interval _interval(const l_real &a) throw(); // in l_interval.inl
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-      friend inline interval _interval(const l_real &a,const l_real &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) { return interval(a,b); }
+      friend inline interval _interval(const l_real &a,const l_real &b) noexcept(false) { return interval(a,b); }
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       friend        interval _interval(const l_interval &a) throw(); // in l_interv.inl
 //      friend inline interval _interval(const dotprecision &a) throw() { return interval(a); } 
-//      friend inline interval _interval(const dotprecision &a,const dotprecision &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) { return interval(a,b); }
+//      friend inline interval _interval(const dotprecision &a,const dotprecision &b) noexcept(false) { return interval(a,b); }
 //      friend inline interval _interval(const idotprecision &a) throw() { return interval(a); }
       
       // interval & operator= (const interval& a); Default passt
@@ -177,11 +177,11 @@ class interval
       //! Implementation of standard algebraic multiplication operation
       friend     inline interval operator *(const interval &,const interval &) throw();
       //! Implementation of standard algebraic division operation
-      friend     inline interval operator /(const interval &,const interval &) throw(DIV_BY_ZERO);
+      friend     inline interval operator /(const interval &,const interval &) noexcept(false);
       //! Returns the convex hull of the arguments
       friend     inline interval operator |(const interval &,const interval &) throw();
       //! Returns the intersection of the arguments
-      friend     inline interval operator &(const interval &,const interval &) throw(ERROR_INTERVAL_EMPTY_INTERVAL);
+      friend     inline interval operator &(const interval &,const interval &) noexcept(false);
 
       //! Implementation of standard algebraic addition operation
       friend     inline interval operator +(const interval &,const real &) throw();
@@ -206,9 +206,9 @@ class interval
       //! Returns the convex hull of the arguments
       friend     inline interval operator |(const real &,const real &)     throw();
       //! Returns the intersection of the arguments
-      friend     inline interval operator &(const real &,const interval &) throw(ERROR_INTERVAL_EMPTY_INTERVAL);
+      friend     inline interval operator &(const real &,const interval &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend     inline interval operator &(const interval &,const real &) throw(ERROR_INTERVAL_EMPTY_INTERVAL);
+      friend     inline interval operator &(const interval &,const real &) noexcept(false);
 
 
       //! Implementation of standard algebraic addition operation
@@ -224,9 +224,9 @@ class interval
       //! Returns the convex hull of the arguments
       friend     inline idotprecision operator |(const idotprecision &,const interval &) throw();
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const interval &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const interval &,const idotprecision &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const idotprecision &,const interval &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const idotprecision &,const interval &) noexcept(false);
  
       //! Implementation of standard algebraic addition and allocation operation
       friend     inline interval & operator +=(interval &,const interval &) throw();
@@ -239,7 +239,7 @@ class interval
       //! Allocates the convex hull of the arguments to the first argument
       friend     inline interval & operator |=(interval &,const interval &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend     inline interval & operator &=(interval &,const interval &) throw(ERROR_INTERVAL_EMPTY_INTERVAL);
+      friend     inline interval & operator &=(interval &,const interval &) noexcept(false);
 
       //! Implementation of standard algebraic addition and allocation operation
       friend     inline interval & operator +=(interval &,const real &) throw();   
@@ -252,7 +252,7 @@ class interval
       //! Allocates the convex hull of the arguments to the first argument
       friend     inline interval & operator |=(interval &,const real &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend     inline interval & operator &=(interval &,const real &) throw(ERROR_INTERVAL_EMPTY_INTERVAL);
+      friend     inline interval & operator &=(interval &,const real &) noexcept(false);
  
       // ---- Vergleichsop. ----
 
@@ -408,7 +408,7 @@ inline interval _interval(const real & r) throw() { return interval(r); }
 
 \sa cxsc::interval::interval(const real&, const real&)
 */
-inline interval _interval(const real & a, const real & b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) { return interval(a,b); }
+inline interval _interval(const real & a, const real & b) noexcept(false) { return interval(a,b); }
 /*!
 \deprecated use standard contructors for typecasting
 
@@ -420,7 +420,7 @@ inline interval _interval(const dotprecision &a) throw() { return interval(a); }
 
 \sa cxsc::interval::interval(const dotprecision &,const dotprecision &)
 */
-inline interval _interval(const dotprecision &a,const dotprecision &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) { return interval(a,b); }
+inline interval _interval(const dotprecision &a,const dotprecision &b) noexcept(false) { return interval(a,b); }
 /*!
 \deprecated use standard contructors for typecasting
 

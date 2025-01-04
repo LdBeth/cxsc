@@ -29,7 +29,7 @@
 
 namespace cxsc {
 
-l_real sqrt(const l_real &x) throw(ERROR_LREAL_STD_FKT_OUT_OF_DEF)
+l_real sqrt(const l_real &x) noexcept(false)
 // Blomquist, additional scaling, 10.12.02
 {
    int stagsave = stagprec, stagmax = 19, stagcalc;

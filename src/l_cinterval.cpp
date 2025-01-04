@@ -528,7 +528,7 @@ l_cinterval C_point_div(const l_cinterval& z, const l_cinterval& n)
 
 
 l_cinterval operator / (const l_cinterval & a, const l_cinterval & b) 
-                                                      throw(DIV_BY_ZERO)
+                                                      noexcept(false)
 {
     if (0.0 <= b.re && 0.0 <= b.im ) {
 //    if (0.0 <= (sqr(b.re) + sqr(b.im))) {
@@ -573,7 +573,7 @@ std::string & operator << (std::string &s, const l_cinterval& a) throw()
 }
 
 std::string & operator >> (std::string &s, l_cinterval &a) 
-                                     throw(EMPTY_INTERVAL)
+                                     noexcept(false)
 // With: 
 //       l_cinterval a;
 //       string("([1.234,1.234],[2.567,2.567])") >> a;
@@ -633,7 +633,7 @@ std::string & operator >> (std::string &s, l_cinterval &a)
 }
 
 std::istream & operator >> (std::istream & s, l_cinterval& a) 
-                                                 throw(EMPTY_INTERVAL)
+                                                 noexcept(false)
 // With: 
 //       l_cinterval lc;
 //       cout << "([a,b],[c,d]) = ?" << endl;
@@ -712,13 +712,13 @@ std::istream & operator >> (std::istream & s, l_cinterval& a)
    return s;
 }
 
-void operator >> (const std::string &s, l_cinterval &a) throw(EMPTY_INTERVAL)
+void operator >> (const std::string &s, l_cinterval &a) noexcept(false)
 {
    std::string r(s);
    r >> a;
 }
 
-void operator >> (const char *s, l_cinterval &a) throw(EMPTY_INTERVAL)
+void operator >> (const char *s, l_cinterval &a) noexcept(false)
 {
    std::string r(s);
    r >> a;

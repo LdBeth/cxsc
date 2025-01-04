@@ -56,7 +56,7 @@ class idotprecision
       //! Constructor of class idotprecision
       idotprecision() : k(0) {}
       //! Constructor of class idotprecision
-      inline idotprecision(const dotprecision&, const dotprecision&) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      inline idotprecision(const dotprecision&, const dotprecision&) noexcept(false);
       //! Constructor of class idotprecision
       inline idotprecision(const idotprecision&);
       
@@ -156,7 +156,7 @@ class idotprecision
       //! Returns the convex hull of the arguments
       friend     inline idotprecision operator |(const idotprecision &,const idotprecision &) throw();
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const idotprecision &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const idotprecision &,const idotprecision &) noexcept(false);
 
       //! Implementation of standard algebraic addition operation
       friend     inline idotprecision operator +(const idotprecision &,const dotprecision &) throw();
@@ -173,9 +173,9 @@ class idotprecision
       //! Returns the convex hull of the arguments
       friend     inline idotprecision operator |(const dotprecision &,const dotprecision &)  throw();
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const dotprecision &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const dotprecision &,const idotprecision &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const idotprecision &,const dotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const idotprecision &,const dotprecision &) noexcept(false);
 
       //! Implementation of standard algebraic addition operation
       friend     inline idotprecision operator +(const idotprecision &,const long &) throw();
@@ -190,9 +190,9 @@ class idotprecision
       //! Returns the convex hull of the arguments
       friend     inline idotprecision operator |(const idotprecision &,const long &) throw();
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const long &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const long &,const idotprecision &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const idotprecision &,const long &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const idotprecision &,const long &) noexcept(false);
 
       //! Implementation of standard algebraic addition operation
       friend     inline idotprecision operator +(const idotprecision &,const real &) throw();
@@ -207,9 +207,9 @@ class idotprecision
       //! Returns the convex hull of the arguments
       friend     inline idotprecision operator |(const idotprecision &,const real &) throw();
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const real &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const real &,const idotprecision &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const idotprecision &,const real &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const idotprecision &,const real &) noexcept(false);
       
       //! Implementation of standard algebraic addition operation
       friend            idotprecision operator +(const idotprecision &,const l_real &) throw();
@@ -224,9 +224,9 @@ class idotprecision
       //! Returns the convex hull of the arguments
       friend            idotprecision operator |(const idotprecision &,const l_real &) throw();
       //! Returns the intersection of the arguments
-      friend            idotprecision operator &(const l_real &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend            idotprecision operator &(const l_real &,const idotprecision &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend            idotprecision operator &(const idotprecision &,const l_real &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend            idotprecision operator &(const idotprecision &,const l_real &) noexcept(false);
 
       //! Implementation of standard algebraic addition operation
       friend     inline idotprecision operator +(const idotprecision &,const interval &) throw();
@@ -241,9 +241,9 @@ class idotprecision
       //! Returns the convex hull of the arguments
       friend     inline idotprecision operator |(const idotprecision &,const interval &) throw();
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const interval &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const interval &,const idotprecision &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend     inline idotprecision operator &(const idotprecision &,const interval &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision operator &(const idotprecision &,const interval &) noexcept(false);
 
       //! Implementation of standard algebraic addition and allocation operation
       friend     inline idotprecision & operator +=(idotprecision &,const idotprecision &) throw();
@@ -269,7 +269,7 @@ class idotprecision
       //! Allocates the convex hull of the arguments to the first argument
       friend     inline idotprecision & operator |=(idotprecision &,const idotprecision &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend     inline idotprecision & operator &=(idotprecision &,const idotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision & operator &=(idotprecision &,const idotprecision &) noexcept(false);
 
       //! Implementation of standard algebraic addition and allocation operation
       friend     inline idotprecision & operator +=(idotprecision &,const dotprecision &) throw();
@@ -279,24 +279,24 @@ class idotprecision
       //! Allocates the convex hull of the arguments to the first argument
       friend     inline idotprecision & operator |=(idotprecision &,const dotprecision &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend     inline idotprecision & operator &=(idotprecision &,const dotprecision &) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL);
+      friend     inline idotprecision & operator &=(idotprecision &,const dotprecision &) noexcept(false);
 
 //      friend     inline idotprecision & operator |=(idotprecision & i,const long & l) throw() { return i|=_dotprecision(l); }
-//      friend     inline idotprecision & operator &=(idotprecision & i,const long & l) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) { return i&=_dotprecision(l); }
+//      friend     inline idotprecision & operator &=(idotprecision & i,const long & l) noexcept(false) { return i&=_dotprecision(l); }
       //! Allocates the convex hull of the arguments to the first argument
       friend     inline idotprecision & operator |=(idotprecision & i,const real & l) throw() { return i|=dotprecision(l); }
       //! Allocates the intersection of the arguments to the first argument
-      friend     inline idotprecision & operator &=(idotprecision & i,const real & l) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) { return i&=dotprecision(l); }
+      friend     inline idotprecision & operator &=(idotprecision & i,const real & l) noexcept(false) { return i&=dotprecision(l); }
 
       //! Allocates the convex hull of the arguments to the first argument
       friend            idotprecision & operator |=(idotprecision & i,const l_real & l) throw(); // in l_real.cpp
       //! Allocates the intersection of the arguments to the first argument
-      friend            idotprecision & operator &=(idotprecision & i,const l_real & l) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL); // in l_real.cpp
+      friend            idotprecision & operator &=(idotprecision & i,const l_real & l) noexcept(false); // in l_real.cpp
 
       //! Allocates the convex hull of the arguments to the first argument
       friend     inline idotprecision & operator |=(idotprecision & i,const l_interval & l) throw(); // in l_interv.inl
       //! Allocates the intersection of the arguments to the first argument
-      friend     inline idotprecision & operator &=(idotprecision & i,const l_interval & l) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL); // in l_interv.inl
+      friend     inline idotprecision & operator &=(idotprecision & i,const l_interval & l) noexcept(false); // in l_interv.inl
 
       // ---- Vergleichsop. ----
 

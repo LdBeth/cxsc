@@ -46,7 +46,7 @@ inline real sqrtm1  (const real&); // Sqrt(x+1)-1; ohne Fehlerabsch�zung!
 //! Calculates \f$ \sqrt{x^2-1} \f$
        real sqrtx2m1(const real&);
 //! Calculates \f$ \sqrt{1-x^2} \f$
-       real sqrt1mx2(const real&) throw(STD_FKT_OUT_OF_DEF);
+       real sqrt1mx2(const real&) noexcept(false);
               
 
 //! Calculates \f$ \sin(x) \f$
@@ -125,7 +125,7 @@ inline real power  (const real&, const int);    // Power(x,n)
 //! Calculates \f$ \sqrt{x^2+y^2} \f$
        real sqrtx2y2(const real&, const real&) throw(); // Sqrt(x^2+y^2)
 //! Calculates \f$ \ln{\sqrt{x^2+y^2}} \f$
-       real ln_sqrtx2y2(const real&, const real&) throw(STD_FKT_OUT_OF_DEF);  
+       real ln_sqrtx2y2(const real&, const real&) noexcept(false);
                                                  // ln( sqrt(x^2+y^2) )
 
 //! Returns a real value, which corresponds with the first 24 mantissa bits of x

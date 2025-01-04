@@ -332,7 +332,7 @@ real sqrtx2m1(const real& x)
 
 //------------------------------------------------------------------
 
-real sqrt1mx2(const real& x) throw(STD_FKT_OUT_OF_DEF)
+real sqrt1mx2(const real& x) noexcept(false)
 // sqrt(1-x2);  rel. Fehlerschranke:  eps = 3.700747E-16 = e(f)
 // Blomquist, 19.06.04;
 { 
@@ -379,7 +379,7 @@ int Interval_Nr(int* v, const int& n, const int& ex)
 //------------------------------------------------------------------
 
 real ln_sqrtx2y2(const real& x, const real& y) 
-                                throw(STD_FKT_OUT_OF_DEF)
+                                noexcept(false)
 // ln( sqrt(x^2+y^2) ) == 0.5*ln(x^2+y^2); Blomquist, 21.11.03;
 // Relative error bound: 5.160563E-016;
 // Absolute error bound: 2.225075E-308; if x=1 and 0<=y<=b0;

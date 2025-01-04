@@ -4528,7 +4528,7 @@ class NO_BRACKETS_IN_STRING: virtual public ERROR_ALL // Blomquist,26.01.08
 
 
 template <class T>
-void cxscthrow(T e) throw(T)
+void cxscthrow(T e) noexcept(false)
 {
    if(e.errnum()!=16013) // NERVIGE MELDUNG
       std::cerr << e.errtext() << std::endl;

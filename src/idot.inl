@@ -27,7 +27,7 @@ namespace cxsc {
 
 // ---- Konstruktoren ----
 
-inline idotprecision::idotprecision(const dotprecision &a,const dotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL)
+inline idotprecision::idotprecision(const dotprecision &a,const dotprecision &b) noexcept(false)
          : inf(a), sup(b), k(0)
 {
    if(a>b)
@@ -135,11 +135,11 @@ inline idotprecision operator |(const dotprecision &a,const dotprecision &b) thr
    if(a>b) return idotprecision(b,a);
    else    return idotprecision(a,b);
 }
-inline idotprecision operator &(const dotprecision &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const dotprecision &a,const idotprecision &b) noexcept(false) 
 {
    return idotprecision((a>b.inf)?a:b.inf,(a<b.sup)?a:b.sup);
 }
-inline idotprecision operator &(const idotprecision &a,const dotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const idotprecision &a,const dotprecision &b) noexcept(false) 
 {
    return idotprecision((a.inf>b)?a.inf:b,(a.sup<b)?a.sup:b);
 }
@@ -159,15 +159,15 @@ inline idotprecision operator |(const idotprecision &a,const long &b) throw()
 {
    return idotprecision((a.inf<b)?a.inf:dotprecision(b),(a.sup>b)?a.sup:dotprecision(b));
 }
-inline idotprecision operator &(const idotprecision &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const idotprecision &a,const idotprecision &b) noexcept(false) 
 {
    return idotprecision((a.inf>b.inf)?a.inf:b.inf,(a.sup<b.sup)?a.sup:b.sup);
 }
-inline idotprecision operator &(const long &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const long &a,const idotprecision &b) noexcept(false) 
 {
    return idotprecision((a>b.inf)?dotprecision(a):b.inf,(a<b.sup)?dotprecision(a):b.sup);
 }
-inline idotprecision operator &(const idotprecision &a,const long &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const idotprecision &a,const long &b) noexcept(false) 
 {
    return idotprecision((a.inf>b)?a.inf:dotprecision(b),(a.sup<b)?a.sup:dotprecision(b));
 }
@@ -187,11 +187,11 @@ inline idotprecision operator |(const idotprecision &a,const real &b) throw()
 {
    return idotprecision((a.inf<b)?a.inf:dotprecision(b),(a.sup>b)?a.sup:dotprecision(b));
 }
-inline idotprecision operator &(const real &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const real &a,const idotprecision &b) noexcept(false) 
 {
    return idotprecision((a>b.inf)?dotprecision(a):b.inf,(a<b.sup)?dotprecision(a):b.sup);
 }
-inline idotprecision operator &(const idotprecision &a,const real &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const idotprecision &a,const real &b) noexcept(false) 
 {
    return idotprecision((a.inf>b)?a.inf:dotprecision(b),(a.sup<b)?a.sup:dotprecision(b));
 }
@@ -212,11 +212,11 @@ inline idotprecision operator |(const idotprecision &a,const interval &b) throw(
 {
    return idotprecision((a.inf<b.inf)?a.inf:dotprecision(b.inf),(a.sup>b.sup)?a.sup:dotprecision(b.sup));
 }
-inline idotprecision operator &(const interval &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const interval &a,const idotprecision &b) noexcept(false) 
 {
    return idotprecision((a.inf>b.inf)?dotprecision(a.inf):b.inf,(a.sup<b.sup)?dotprecision(a.sup):b.sup);
 }
-inline idotprecision operator &(const idotprecision &a,const interval &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision operator &(const idotprecision &a,const interval &b) noexcept(false) 
 {
    return idotprecision((a.inf>b.inf)?a.inf:dotprecision(b.inf),(a.sup<b.sup)?a.sup:dotprecision(b.sup));
 }
@@ -276,7 +276,7 @@ inline idotprecision & operator |=(idotprecision &a,const idotprecision &b) thro
       a.sup=b.sup;
    return a;
 }
-inline idotprecision & operator &=(idotprecision &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision & operator &=(idotprecision &a,const idotprecision &b) noexcept(false) 
 {
    if(b.inf>a.inf)
       a.inf=b.inf;
@@ -295,7 +295,7 @@ inline idotprecision & operator |=(idotprecision &a,const dotprecision &b) throw
       a.sup=b;
    return a;
 }
-inline idotprecision & operator &=(idotprecision &a,const dotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+inline idotprecision & operator &=(idotprecision &a,const dotprecision &b) noexcept(false) 
 {
    if(b>a.inf)
       a.inf=b;

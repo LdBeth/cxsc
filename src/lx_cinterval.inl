@@ -74,7 +74,7 @@ inline lx_cinterval::lx_cinterval(const lx_complex & a) throw()
       : re(Re(a)), im(Im(a)) { }
 
 inline lx_cinterval::lx_cinterval(const lx_complex & a, const lx_complex & b)
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
     : re(Re(a),Re(b)),
       im(Im(a),Im(b))
 {
@@ -83,7 +83,7 @@ inline lx_cinterval::lx_cinterval(const lx_complex & a, const lx_complex & b)
 }
 
 inline lx_cinterval::lx_cinterval(const l_complex & a, const l_complex & b)
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
     : re(Re(a),Re(b)),
       im(Im(a),Im(b))
 {
@@ -92,7 +92,7 @@ inline lx_cinterval::lx_cinterval(const l_complex & a, const l_complex & b)
 }
 
 inline lx_cinterval::lx_cinterval(const complex & a, const complex & b)
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
     : re(Re(a),Re(b)),
       im(Im(a),Im(b))
 {
@@ -1069,7 +1069,7 @@ inline lx_cinterval operator & (const lx_cinterval& a,
 }
 
 inline lx_cinterval & operator &= (lx_cinterval& a, const lx_cinterval& b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL) { return a = a&b; }
+    noexcept(false) { return a = a&b; }
 
 inline lx_cinterval operator & (const lx_cinterval& a, const lx_real& b) 
     throw() { return a & lx_cinterval(b,lx_real(0.0)); }
@@ -1315,7 +1315,7 @@ inline lx_cinterval operator | (const lx_complex& a, const lx_real& b)
 // ------------------------- Others --------------------------------------
 
 inline lx_cinterval & SetInf(lx_cinterval& a, const lx_complex& b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     Inf(a.re) = Re(b);
     Inf(a.im) = Im(b);
@@ -1327,7 +1327,7 @@ inline lx_cinterval & SetInf(lx_cinterval& a, const lx_complex& b)
 }
 
 inline lx_cinterval & SetInf(lx_cinterval& a, const l_complex& b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     Inf(a.re) = Re(b);
     Inf(a.im) = Im(b);
@@ -1339,7 +1339,7 @@ inline lx_cinterval & SetInf(lx_cinterval& a, const l_complex& b)
 }
 
 inline lx_cinterval & SetInf(lx_cinterval& a, const complex& b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     Inf(a.re) = Re(b);
     Inf(a.im) = Im(b);
@@ -1351,7 +1351,7 @@ inline lx_cinterval & SetInf(lx_cinterval& a, const complex& b)
 }
 
 inline lx_cinterval & SetInf(lx_cinterval& a, const lx_real & b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     Inf(a.re)=b;
     Inf(a.im)=0.0;
@@ -1363,7 +1363,7 @@ inline lx_cinterval & SetInf(lx_cinterval& a, const lx_real & b)
 }
 
 inline lx_cinterval & SetInf(lx_cinterval& a, const l_real & b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     Inf(a.re)=b;
     Inf(a.im)=0.0;
@@ -1376,7 +1376,7 @@ inline lx_cinterval & SetInf(lx_cinterval& a, const l_real & b)
 }
 
 inline lx_cinterval & SetInf(lx_cinterval& a, const real & b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     Inf(a.re)=b;
     Inf(a.im)=0.0;
@@ -1389,7 +1389,7 @@ inline lx_cinterval & SetInf(lx_cinterval& a, const real & b)
 }
 
 inline lx_cinterval & SetSup(lx_cinterval& a, const lx_complex& b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     Sup(a.re) = Re(b);
     Sup(a.im) = Im(b);
@@ -1403,7 +1403,7 @@ inline lx_cinterval & SetSup(lx_cinterval& a, const lx_complex& b)
 
 
 inline lx_cinterval & SetSup(lx_cinterval& a, const l_complex& b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     Sup(a.re) = Re(b);
     Sup(a.im) = Im(b);
@@ -1416,7 +1416,7 @@ inline lx_cinterval & SetSup(lx_cinterval& a, const l_complex& b)
 }
 
 inline lx_cinterval & SetSup(lx_cinterval& a, const complex& b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     Sup(a.re) = Re(b);
     Sup(a.im) = Im(b);
@@ -1429,7 +1429,7 @@ inline lx_cinterval & SetSup(lx_cinterval& a, const complex& b)
 }
 
 inline lx_cinterval & SetSup(lx_cinterval& a, const lx_real & b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     Sup(a.re) = b;
     Sup(a.im) = 0.0;
@@ -1442,7 +1442,7 @@ inline lx_cinterval & SetSup(lx_cinterval& a, const lx_real & b)
 }
 
 inline lx_cinterval & SetSup(lx_cinterval& a, const l_real & b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     Sup(a.re) = b;
     Sup(a.im) = 0.0;
@@ -1455,7 +1455,7 @@ inline lx_cinterval & SetSup(lx_cinterval& a, const l_real & b)
 }
 
 inline lx_cinterval & SetSup(lx_cinterval& a, const real & b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     Sup(a.re) = b;
     Sup(a.im) = 0.0;

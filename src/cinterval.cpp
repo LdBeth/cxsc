@@ -529,7 +529,7 @@ cinterval C_point_div(const cinterval& z, const cinterval& n)
     return cinterval(re,im);
 }  // C_point_div
 
-cinterval div_operator (const cinterval & a, const cinterval & b) throw(DIV_BY_ZERO)
+cinterval div_operator (const cinterval & a, const cinterval & b) noexcept(false)
 {
     bool a_point, b_point;
     a_point = InfRe(a)==SupRe(a) && InfIm(a)==SupIm(a);
@@ -568,7 +568,7 @@ std::string & operator << (std::string &s, const cinterval &a) throw()
    return s;
 }
 
-std::istream & operator >> (std::istream &s, cinterval &a) throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+std::istream & operator >> (std::istream &s, cinterval &a) noexcept(false)
 { // New version for cinterval input; Blomquist, 27.10.02;
     char c;
     skipeolnflag = inpdotflag = true;
@@ -614,7 +614,7 @@ std::istream & operator >> (std::istream &s, cinterval &a) throw(ERROR_CINTERVAL
    return s;
 }
 
-std::string & operator >> (std::string &s, cinterval &a) throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+std::string & operator >> (std::string &s, cinterval &a) noexcept(false)
 {
    s = skipwhitespacessinglechar (s, '(');
    s = skipwhitespacessinglechar (s, '[');
@@ -640,12 +640,12 @@ std::string & operator >> (std::string &s, cinterval &a) throw(ERROR_CINTERVAL_E
    return s;
 }
 
-void operator >>(const std::string &s,cinterval &a) throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+void operator >>(const std::string &s,cinterval &a) noexcept(false)
 {
    std::string r(s);
    r>>a;
 }
-void operator >>(const char *s,cinterval &a) throw(ERROR_CINTERVAL_EMPTY_INTERVAL)
+void operator >>(const char *s,cinterval &a) noexcept(false)
 {
    std::string r(s);
    r>>a;

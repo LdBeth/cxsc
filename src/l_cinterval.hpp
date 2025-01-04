@@ -67,10 +67,10 @@ class l_cinterval
       inline l_cinterval(const l_interval & a,const l_interval &b) throw(); 
       //! Constructor of class l_cinterval
       inline l_cinterval(const complex & a, const complex & b) 
-                                     throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                     noexcept(false);
       //! Constructor of class l_cinterval
       inline l_cinterval(const l_complex & a, const l_complex & b) 
-                                     throw(ERROR_CINTERVAL_EMPTY_INTERVAL); 
+                                     noexcept(false); 
 
       friend cinterval::cinterval(const l_cinterval &) throw();
 
@@ -142,16 +142,16 @@ class l_cinterval
                                                                     throw();
       //! Implementation of standard input method
       friend std::string &  operator >> (std::string &, l_cinterval &)
-                                                      throw(EMPTY_INTERVAL);
+                                                      noexcept(false);
       //! Implementation of standard input method
       friend std::istream & operator >>(std::istream &, l_cinterval &) 
-                                                      throw(EMPTY_INTERVAL);
+                                                      noexcept(false);
       //! Implementation of standard input method
       friend void operator >> (const char *, l_cinterval &) 
-                                                      throw(EMPTY_INTERVAL);
+                                                      noexcept(false);
       //! Implementation of standard input method
       friend void operator >> (const std::string &, l_cinterval &)  
-                                                      throw(EMPTY_INTERVAL);
+                                                      noexcept(false);
 
 
 // ----------------------------- Std.Operators ------------------------------
@@ -177,14 +177,14 @@ class l_cinterval
       //! Implementation of standard algebraic division operation
       friend        l_cinterval operator /(const l_cinterval &,
                                            const l_cinterval &) 
-                                                     throw(DIV_BY_ZERO);
+                                                     noexcept(false);
       //! Returns the convex hull of the arguments
       friend inline l_cinterval operator |(const l_cinterval &,
                                            const l_cinterval &) throw();
       //! Returns the intersection of the arguments
       friend inline l_cinterval operator &(const l_cinterval &,
                                            const l_cinterval &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                  noexcept(false);
       
       //! Implementation of standard algebraic addition and allocation operation
       friend inline l_cinterval & operator +=(l_cinterval &, 
@@ -204,7 +204,7 @@ class l_cinterval
       //! Allocates the intersection of the arguments to the first argument
       friend inline l_cinterval & operator &=(l_cinterval &, 
                                               const l_cinterval &) 
-                                     throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                     noexcept(false);
       
       // LCI <--> R
       
@@ -1110,31 +1110,31 @@ class l_cinterval
       
       //! Returns the interval with the new given infimum value
       friend inline l_cinterval & SetInf(l_cinterval &, const complex &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                  noexcept(false);
       //! Returns the interval with the new given supremum value
       friend inline l_cinterval & SetSup(l_cinterval &, const complex &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                  noexcept(false);
       //! Returns the interval with the new given infimum value
       friend inline l_cinterval & SetInf(l_cinterval &, const l_complex &) 
-                                    throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                    noexcept(false);
       //! Returns the interval with the new given supremum value
       friend inline l_cinterval & SetSup(l_cinterval &, const l_complex &) 
-                                    throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                    noexcept(false);
 
       //! Returns the interval with the new given infimum value
       friend inline l_cinterval & SetInf(l_cinterval &, const real &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                  noexcept(false);
 
       //! Returns the interval with the new given supremum value
       friend inline l_cinterval & SetSup(l_cinterval &, const real &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                  noexcept(false);
       //! Returns the interval with the new given infimum value
       friend inline l_cinterval & SetInf(l_cinterval &, const l_real &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                  noexcept(false);
 
       //! Returns the interval with the new given supremum value
       friend inline l_cinterval & SetSup(l_cinterval &, const l_real &) 
-                                  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+                                  noexcept(false);
 
       //! Returns the interval with the unchecked new given infimum value
       friend inline l_cinterval & UncheckedSetInf(l_cinterval &, 

@@ -50,7 +50,7 @@ interval sqr    (const interval &a) throw()
   return res;
 }
 
-interval sqrt   (const interval &a, int n)  throw(STD_FKT_OUT_OF_DEF)
+interval sqrt   (const interval &a, int n)  noexcept(false)
 { 
    if ( ((n>0) && (Inf(a)>=0.0)) || ((n<0) && (Inf(a)>0.0)) ) 
       return pow(a,interval(1.0,1.0)/n); 
@@ -360,7 +360,7 @@ interval erf    (const interval &a)         { return j_erf(a);  }
 */
 interval erfc   (const interval &a)         { return j_erfc(a); }
 
-//interval pow    (const interval &a, const interval &b) throw(ERROR_INTERVAL_STD_FKT_OUT_OF_DEF)
+//interval pow    (const interval &a, const interval &b) noexcept(false)
 //{
 //	if(Inf(a)>0)
 //		return j_exp(b*ln(a));

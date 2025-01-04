@@ -257,7 +257,7 @@ std::string & operator << (std::string &s,const lx_interval& a) throw();
 void Bin2Dec(const lx_interval& a, real& p, l_interval& m);
 
 //! b = expo2zero(a) returns \f$ a\subseteq b \f$ with \f$ \verb+b.ex+=0 \f$
-lx_interval expo2zero(const lx_interval &) throw(OVERFLOW_ERROR);
+lx_interval expo2zero(const lx_interval &) noexcept(false);
 //! Checks arguments for disjointness
 inline int Disjoint(const lx_interval &, const lx_interval &);
 //! Checks if first argument lies in the interior of second argument
@@ -567,38 +567,38 @@ inline lx_interval & operator *=(lx_interval &, const interval   &) throw();
 
 //! Implementation of standard algebraic division operation
 lx_interval operator / (const lx_interval &, const lx_interval &) 
-    throw(ERROR_LINTERVAL_DIV_BY_ZERO);
+    noexcept(false);
 
 //! Implementation of standard algebraic division operation
 inline lx_interval operator / (const lx_interval &, const l_interval &) 
-    throw(ERROR_LINTERVAL_DIV_BY_ZERO);
+    noexcept(false);
 //! Implementation of standard algebraic division operation
 inline lx_interval operator / (const l_interval &, const lx_interval &) 
-    throw(ERROR_LINTERVAL_DIV_BY_ZERO);
+    noexcept(false);
 //! Implementation of standard algebraic division operation
 inline lx_interval operator / (const lx_interval &, const l_real &) 
-    throw(ERROR_LINTERVAL_DIV_BY_ZERO);
+    noexcept(false);
 //! Implementation of standard algebraic division operation
 inline lx_interval operator / (const l_real &, const lx_interval &) 
-    throw(ERROR_LINTERVAL_DIV_BY_ZERO);
+    noexcept(false);
 //! Implementation of standard algebraic division operation
 inline lx_interval operator / (const lx_interval &, const real &) 
-    throw(ERROR_LINTERVAL_DIV_BY_ZERO);
+    noexcept(false);
 //! Implementation of standard algebraic division operation
 inline lx_interval operator / (const real &, const lx_interval &) 
-    throw(ERROR_LINTERVAL_DIV_BY_ZERO);
+    noexcept(false);
 //! Implementation of standard algebraic division operation
 inline lx_interval operator / (const lx_interval &, const interval &) 
-    throw(ERROR_LINTERVAL_DIV_BY_ZERO);
+    noexcept(false);
 //! Implementation of standard algebraic division operation
 inline lx_interval operator / (const interval &, const lx_interval &) 
-    throw(ERROR_LINTERVAL_DIV_BY_ZERO);
+    noexcept(false);
 //! Implementation of standard algebraic division operation
 inline lx_interval operator / (const lx_interval &, const lx_real &) 
-    throw(ERROR_LINTERVAL_DIV_BY_ZERO);
+    noexcept(false);
 //! Implementation of standard algebraic division operation
 inline lx_interval operator / (const lx_real &, const lx_interval &) 
-    throw(ERROR_LINTERVAL_DIV_BY_ZERO);
+    noexcept(false);
 
 //! Implementation of standard algebraic division and allocation operation
 inline lx_interval & operator /=(lx_interval &, const lx_interval &) throw();
@@ -674,77 +674,77 @@ inline lx_interval & operator /=(lx_interval &, const interval   &) throw();
 
     //! Returns the intersection of the arguments
     inline lx_interval operator & (const lx_interval&, const lx_interval&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the intersection of the arguments
     inline lx_interval operator & (const lx_interval&, const l_interval&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL); 
+	noexcept(false); 
     //! Allocates the intersection of the arguments to the first argument
     inline lx_interval & operator &= (lx_interval&, const l_interval&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL); 
+	noexcept(false); 
     //! Returns the intersection of the arguments
     inline lx_interval operator & (const l_interval&, const lx_interval&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the intersection of the arguments 
     inline lx_interval operator & (const lx_interval&, const interval&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Allocates the intersection of the arguments to the first argument 
     inline lx_interval & operator &= (lx_interval &a, const interval &b) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL); 
+	noexcept(false); 
     //! Returns the intersection of the arguments
     inline lx_interval operator & (const interval&, const lx_interval&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Allocates the intersection of the arguments to the first argument 
     inline lx_interval & operator &= (lx_interval&, const lx_interval&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL); 
+	noexcept(false); 
     //! Returns the intersection of the arguments
     inline lx_interval operator & (const lx_interval&, const lx_real&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the intersection of the arguments
     inline lx_interval operator & (const lx_interval&, const l_real&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL); 
+	noexcept(false); 
     //! Returns the intersection of the arguments
     inline lx_interval operator & (const lx_interval&, const real&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the intersection of the arguments 
     inline lx_interval operator & (const lx_real&, const lx_interval&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the intersection of the arguments
     inline lx_interval operator & (const l_real&, const lx_interval&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL); 
+	noexcept(false); 
     //! Returns the intersection of the arguments
     inline lx_interval operator & (const real&, const lx_interval&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Allocates the intersection of the arguments to the first argument 
     inline lx_interval & operator &= (lx_interval&, const lx_real&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL); 
+	noexcept(false); 
     //! Allocates the intersection of the arguments to the first argument
     inline lx_interval & operator &= (lx_interval&, const l_real&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL); 
+	noexcept(false); 
     //! Allocates the intersection of the arguments to the first argument
     inline lx_interval & operator &= (lx_interval&, const real&) 
-	throw(ERROR_LINTERVAL_EMPTY_INTERVAL); 
+	noexcept(false); 
 
 // ------------------------- SetInf, SetSup -----------------------------
 
 //! Returns the interval with the new given infimum value
 inline lx_interval & SetInf(lx_interval&, const lx_real&) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 //! Returns the interval with the new given infimum value
 inline lx_interval & SetInf(lx_interval&, const l_real&) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 //! Returns the interval with the new given infimum value
 inline lx_interval & SetInf(lx_interval&, const real&) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 
 //! Returns the interval with the new given supremum value
 inline lx_interval & SetSup(lx_interval&, const lx_real&) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 //! Returns the interval with the new given supremum value
 inline lx_interval & SetSup(lx_interval&, const l_real&) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 //! Returns the interval with the new given supremum value
 inline lx_interval & SetSup(lx_interval&, const real&) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 
 // ------------------------- Help Functions: ----------------------------
 

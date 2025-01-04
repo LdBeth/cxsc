@@ -70,7 +70,7 @@ interval _interval(const l_interval & a) throw()
 
 l_interval::l_interval(const dotprecision & a)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+   noexcept(false)
 #else
    throw()
 #endif
@@ -82,9 +82,9 @@ l_interval::l_interval(const dotprecision & a)
 
 l_interval::l_interval(const dotprecision & a,const dotprecision & b)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL)
+   noexcept(false)
 #else
-   throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+   noexcept(false)
 #endif
 {
    if(a>b)
@@ -98,7 +98,7 @@ l_interval::l_interval(const dotprecision & a,const dotprecision & b)
 
 l_interval & l_interval::operator =(const dotprecision & a)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+   noexcept(false)
 #else
    throw()
 #endif
@@ -115,7 +115,7 @@ l_interval & l_interval::operator =(const dotprecision & a)
 
 l_interval::l_interval(const idotprecision & a)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+   noexcept(false)
 #else
    throw()
 #endif
@@ -127,7 +127,7 @@ l_interval::l_interval(const idotprecision & a)
 
 l_interval & l_interval::operator =(const idotprecision & a)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+   noexcept(false)
 #else
    throw()
 #endif
@@ -144,9 +144,9 @@ l_interval & l_interval::operator =(const idotprecision & a)
 
 l_interval::l_interval(const l_real &a, const l_real &b) 
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL)
+   noexcept(false)
 #else
-   throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+   noexcept(false)
 #endif
 {
    _allo(stagprec);
@@ -161,9 +161,9 @@ l_interval::l_interval(const l_real &a, const l_real &b)
 
 l_interval::l_interval(const real &a, const l_real &b) 
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL)
+   noexcept(false)
 #else
-   throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+   noexcept(false)
 #endif
 {
    _allo(stagprec);
@@ -204,9 +204,9 @@ void l_realz2l_interval(const l_real& lr, const interval& z,
 
 l_interval::l_interval(const l_real &a, const real &b) 
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL)
+   noexcept(false)
 #else
-   throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+   noexcept(false)
 #endif
 {
    _allo(stagprec);
@@ -221,7 +221,7 @@ l_interval::l_interval(const l_real &a, const real &b)
 
 
 /*
-l_interval _l_interval(const l_real & a, const l_real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+l_interval _l_interval(const l_real & a, const l_real & b) noexcept(false)
 {
    if(a>b)
       cxscthrow(ERROR_LINTERVAL_EMPTY_INTERVAL("l_interval _l_interval(const l_real & a, const l_real & b)"));
@@ -373,7 +373,7 @@ l_interval operator * (const l_interval& li1, const l_interval& li2) throw()
     return li3;
 }    
 
-l_interval operator/(const l_interval & li1, const l_interval & li2) throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+l_interval operator/(const l_interval & li1, const l_interval & li2) noexcept(false)
 { 
 // ge�ndert am 29.07.92 von Frederic Toussaint
 // 13.5.93 AW: neuer Algorithmus nach der Beschreibung von W. Kraemer
@@ -533,7 +533,7 @@ void ConvexHull(const l_interval & li1, const l_interval & li2, l_interval & li3
    }
 }
 
-void Intersection(const l_interval & li1, const l_interval & li2, l_interval & li3, l_interval & li4) throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+void Intersection(const l_interval & li1, const l_interval & li2, l_interval & li3, l_interval & li4) noexcept(false)
 {
    if(li1<=li2) 
    {                                      // Trivialfall 1

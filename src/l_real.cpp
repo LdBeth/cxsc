@@ -514,8 +514,8 @@ l_real operator*(const l_real& lr1, const l_real& lr2) throw()
    return lr3;
 }
 
-l_real operator/(const l_real& lr1, const l_real& lr2) throw(DIV_BY_ZERO)
-{  // Blomquist, 09.12.02; throw() ---> throw(DIV_BY_ZERO)
+l_real operator/(const l_real& lr1, const l_real& lr2) noexcept(false)
+{  // Blomquist, 09.12.02; throw() ---> noexcept(false)
    real a, b;
    l_real lr3;
    lr3._clear(1);
@@ -613,12 +613,12 @@ idotprecision operator |(const l_real &a,const idotprecision &b) throw()
    return idotprecision((a.inf<b)?a.inf:_dotprecision(b),(a.sup>b)?a.sup:_dotprecision(b));
 }
 
- idotprecision operator &(const l_real &a,const idotprecision &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+ idotprecision operator &(const l_real &a,const idotprecision &b) noexcept(false) 
 {
    return idotprecision((a>b.inf)?_dotprecision(a):b.inf,(a<b.sup)?_dotprecision(a):b.sup);
 }
 
- idotprecision operator &(const idotprecision &a,const l_real &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) 
+ idotprecision operator &(const idotprecision &a,const l_real &b) noexcept(false) 
 {
    return idotprecision((a.inf>b)?a.inf:_dotprecision(b),(a.sup<b)?a.sup:_dotprecision(b));
 }
@@ -627,7 +627,7 @@ idotprecision operator |(const l_real &a,const idotprecision &b) throw()
 idotprecision & operator +=(idotprecision &a,const l_real &b) throw() { return a+=dotprecision(b); }      
 idotprecision & operator -=(idotprecision &a,const l_real &b) throw() { return a-=dotprecision(b); }
 idotprecision & operator |=(idotprecision &a,const l_real &b) throw() { return a|=dotprecision(b); }
-idotprecision & operator &=(idotprecision &a,const l_real &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) { return a&=dotprecision(b); }
+idotprecision & operator &=(idotprecision &a,const l_real &b) noexcept(false) { return a&=dotprecision(b); }
 
 
 bool operator ==(const interval &i,const l_real &r) throw() { return Inf(i)==r && Sup(i)==r; }

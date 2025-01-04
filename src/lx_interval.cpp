@@ -213,7 +213,7 @@ l_interval times2powr(const l_real &a, const real &r)
     return res;
 }
 
-lx_interval expo2zero(const lx_interval &a) throw(OVERFLOW_ERROR)
+lx_interval expo2zero(const lx_interval &a) noexcept(false)
 // The exponent to base 2 of the object a is set to zero.
 // The return value res is an inclusion of the object a
 // unless an overflow occurs. 
@@ -497,7 +497,7 @@ lx_interval operator * (const lx_interval &a, const lx_interval &b) throw()
 } // operator *
 
 lx_interval operator / (const lx_interval &a, const lx_interval &b) 
-                              throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+                              noexcept(false)
 {
     int stagsave = stagprec,
 	stagmax = 39,
@@ -1338,7 +1338,7 @@ lx_real operator * (const lx_real& a, const lx_real& b) throw()
 	return res;
 } // operator *
 
-lx_real operator / (const lx_real &a, const lx_real &b) throw(DIV_BY_ZERO)
+lx_real operator / (const lx_real &a, const lx_real &b) noexcept(false)
 {
 	int stagsave = stagprec,
  stagmax = 39,

@@ -89,25 +89,25 @@ class l_interval
       // ---- Konstruktoren ---------------------------------------
 #if (CXSC_INDEX_CHECK)
       //! Constructor of class l_interval
-      inline l_interval()                              throw(ERROR_LINTERVAL_WRONG_STAGPREC);
+      inline l_interval()                              noexcept(false);
       //! Constructor of class l_interval
-      inline l_interval(const l_interval &)            throw(ERROR_LINTERVAL_WRONG_STAGPREC); 
+      inline l_interval(const l_interval &)            noexcept(false); 
 
       //! Constructor of class l_interval
-             l_interval(const l_real &, const l_real &) throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL);
+             l_interval(const l_real &, const l_real &) noexcept(false);
       //! Constructor of class l_interval
-             l_interval(const real &, const l_real &)   throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL);
+             l_interval(const real &, const l_real &)   noexcept(false);
       //! Constructor of class l_interval
-             l_interval(const l_real &, const real &)   throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL);
+             l_interval(const l_real &, const real &)   noexcept(false);
       //! Constructor of class l_interval
-      inline l_interval(const real &, const real &)     throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL);
+      inline l_interval(const real &, const real &)     noexcept(false);
 
       //! Constructor of class l_interval
-      explicit        l_interval(const dotprecision &) throw(ERROR_LINTERVAL_WRONG_STAGPREC);
+      explicit        l_interval(const dotprecision &) noexcept(false);
       //! Constructor of class l_interval
-      explicit        l_interval(const dotprecision &,const dotprecision &) throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL);
+      explicit        l_interval(const dotprecision &,const dotprecision &) noexcept(false);
       //! Constructor of class l_interval
-      explicit        l_interval(const idotprecision &) throw(ERROR_LINTERVAL_WRONG_STAGPREC);
+      explicit        l_interval(const idotprecision &) noexcept(false);
 #else
       //! Constructor of class l_interval
       inline l_interval()                              throw();
@@ -115,18 +115,18 @@ class l_interval
       inline l_interval(const l_interval &)            throw(); 
 
       //! Constructor of class l_interval
-      l_interval(const l_real &, const l_real &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      l_interval(const l_real &, const l_real &) noexcept(false);
       //! Constructor of class l_interval
-      l_interval(const real &, const l_real &)   throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      l_interval(const real &, const l_real &)   noexcept(false);
       //! Constructor of class l_interval
-      l_interval(const l_real &, const real &)   throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      l_interval(const l_real &, const real &)   noexcept(false);
       //! Constructor of class l_interval
-      l_interval(const real &, const real &)     throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      l_interval(const real &, const real &)     noexcept(false);
 
       //! Constructor of class l_interval
       explicit        l_interval(const dotprecision &) throw();
       //! Constructor of class l_interval
-      explicit        l_interval(const dotprecision &,const dotprecision &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      explicit        l_interval(const dotprecision &,const dotprecision &) noexcept(false);
       //! Constructor of class l_interval
       explicit        l_interval(const idotprecision &) throw();
 #endif 
@@ -138,21 +138,21 @@ class l_interval
 
 #if(CXSC_INDEX_CHECK)
       //! Constructor of class l_interval
-      explicit INLINE l_interval(const l_ivector &) throw(ERROR_LIVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_LIVECTOR_USE_OF_UNINITIALIZED_OBJ);      
+      explicit INLINE l_interval(const l_ivector &) noexcept(false);      
       //! Constructor of class l_interval
-      explicit INLINE l_interval(const l_ivector_slice &) throw(ERROR_LIVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_LIVECTOR_USE_OF_UNINITIALIZED_OBJ);      
+      explicit INLINE l_interval(const l_ivector_slice &) noexcept(false);      
       //! Constructor of class l_interval
-      explicit INLINE l_interval(const l_imatrix &m) throw(ERROR_LIMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_LIMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE l_interval(const l_imatrix &m) noexcept(false);
       //! Constructor of class l_interval
-      explicit INLINE l_interval(const l_imatrix_slice &m) throw(ERROR_LIMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_LIMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      explicit INLINE l_interval(const l_imatrix_slice &m) noexcept(false);
       //! Constructor of class l_interval
-      friend INLINE interval _l_interval(const l_ivector &) throw(ERROR_LIVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_LIVECTOR_USE_OF_UNINITIALIZED_OBJ);      
+      friend INLINE interval _l_interval(const l_ivector &) noexcept(false);      
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-      friend INLINE interval _l_interval(const l_ivector_slice &) throw(ERROR_LIVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_LIVECTOR_USE_OF_UNINITIALIZED_OBJ);      
+      friend INLINE interval _l_interval(const l_ivector_slice &) noexcept(false);      
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-      friend INLINE interval _l_interval(const l_imatrix &m) throw(ERROR_LIMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_LIMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE interval _l_interval(const l_imatrix &m) noexcept(false);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-      friend INLINE interval _l_interval(const l_imatrix_slice &m) throw(ERROR_LIMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_LIMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      friend INLINE interval _l_interval(const l_imatrix_slice &m) noexcept(false);
 #else
       //! Constructor of class l_interval
       explicit INLINE l_interval(const l_ivector &) throw();
@@ -186,9 +186,9 @@ class l_interval
              l_interval& operator = (const lx_interval&) throw();
 #if (CXSC_INDEX_CHECK)
       //! Implementation of standard assigning operator
-             l_interval & operator= (const dotprecision &a) throw(ERROR_LINTERVAL_WRONG_STAGPREC);
+             l_interval & operator= (const dotprecision &a) noexcept(false);
       //! Implementation of standard assigning operator
-             l_interval & operator= (const idotprecision &) throw(ERROR_LINTERVAL_WRONG_STAGPREC);
+             l_interval & operator= (const idotprecision &) noexcept(false);
 #else
       //! Implementation of standard assigning operator
              l_interval & operator= (const dotprecision &a) throw();
@@ -213,15 +213,15 @@ class l_interval
       friend        interval _unchecked_interval(const l_real &, const l_real &) throw();
 
 //      friend inline l_interval _l_interval(const real & a) throw() { return l_interval(a); }
-//      friend inline l_interval _l_interval(const real & a, const real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return l_interval(a,b); }
+//      friend inline l_interval _l_interval(const real & a, const real & b) noexcept(false) { return l_interval(a,b); }
 //      friend inline l_interval _l_interval(const l_real & a) throw() { return l_interval(a); }
-//      friend inline l_interval _l_interval(const l_real & a,const l_real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return l_interval(a,b); }
-//      friend inline l_interval _l_interval(const real & a, const l_real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return l_interval(a,b); }
-//      friend inline l_interval _l_interval(const l_real & a, const real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return l_interval(a,b); }
+//      friend inline l_interval _l_interval(const l_real & a,const l_real & b) noexcept(false) { return l_interval(a,b); }
+//      friend inline l_interval _l_interval(const real & a, const l_real & b) noexcept(false) { return l_interval(a,b); }
+//      friend inline l_interval _l_interval(const l_real & a, const real & b) noexcept(false) { return l_interval(a,b); }
 
 //      friend inline l_interval _l_interval(const interval & a) throw() { return l_interval(a); }
 //      friend inline l_interval _l_interval(const dotprecision & a) throw() { return l_interval(a); }
-//      friend inline l_interval _l_interval(const dotprecision & a,const dotprecision & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return l_interval(a,b); }
+//      friend inline l_interval _l_interval(const dotprecision & a,const dotprecision & b) noexcept(false) { return l_interval(a,b); }
 //      friend inline l_interval _l_interval(const idotprecision & a) throw() { return l_interval(a); }
 
       friend        l_interval _unchecked_l_interval(const l_real &, const l_real &) throw();      
@@ -258,11 +258,11 @@ class l_interval
       //! Implementation of standard algebraic multiplication operation
       friend l_interval operator *(const l_interval &,const l_interval &) throw();
       //! Implementation of standard algebraic division operation
-      friend l_interval operator /(const l_interval &,const l_interval &) throw(ERROR_LINTERVAL_DIV_BY_ZERO);
+      friend l_interval operator /(const l_interval &,const l_interval &) noexcept(false);
       //! Returns the convex hull of the arguments
-      friend inline l_interval operator |(const l_interval &,const l_interval &) throw(ERROR_LINTERVAL_IN_EXACT_CH_OR_IS);
+      friend inline l_interval operator |(const l_interval &,const l_interval &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend inline l_interval operator &(const l_interval &,const l_interval &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL,ERROR_LINTERVAL_IN_EXACT_CH_OR_IS);
+      friend inline l_interval operator &(const l_interval &,const l_interval &) noexcept(false);
 
       //! Implementation of standard algebraic addition and allocation operation
       friend inline l_interval & operator +=(l_interval &,const l_interval &) throw();
@@ -275,7 +275,7 @@ class l_interval
       //! Allocates the convex hull of the arguments to the first argument
       friend inline l_interval & operator |=(l_interval &,const l_interval &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline l_interval & operator &=(l_interval &,const l_interval &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval & operator &=(l_interval &,const l_interval &) noexcept(false);
 
       // LI-ID
       //! Implementation of standard algebraic addition operation
@@ -291,14 +291,14 @@ class l_interval
       //! Returns the convex hull of the arguments
       friend inline idotprecision operator |(const l_interval &,const idotprecision &) throw();
       //! Returns the intersection of the arguments
-      friend inline idotprecision operator &(const idotprecision &,const l_interval &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline idotprecision operator &(const idotprecision &,const l_interval &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend inline idotprecision operator &(const l_interval &,const idotprecision &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline idotprecision operator &(const l_interval &,const idotprecision &) noexcept(false);
 
       //! Allocates the convex hull of the arguments to the first argument
       friend inline l_interval & operator |=(l_interval &,const idotprecision &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline l_interval & operator &=(l_interval &,const idotprecision &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval & operator &=(l_interval &,const idotprecision &) noexcept(false);
  
       // LI-LR
       //! Implementation of standard algebraic addition operation
@@ -324,9 +324,9 @@ class l_interval
       //! Returns the convex hull of the arguments
       friend inline l_interval operator |(const l_real &,const l_real &)     throw();
       //! Returns the intersection of the arguments
-      friend inline l_interval operator &(const l_real &,const l_interval &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval operator &(const l_real &,const l_interval &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend inline l_interval operator &(const l_interval &,const l_real &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval operator &(const l_interval &,const l_real &) noexcept(false);
 
       //! Implementation of standard algebraic addition and allocation operation
       friend inline l_interval & operator +=(l_interval &,const l_real &) throw();      
@@ -339,7 +339,7 @@ class l_interval
       //! Allocates the convex hull of the arguments to the first argument
       friend inline l_interval & operator |=(l_interval &,const l_real &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline l_interval & operator &=(l_interval &,const l_real &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval & operator &=(l_interval &,const l_real &) noexcept(false);
  
       // LI-I
       //! Implementation of standard algebraic addition operation
@@ -363,9 +363,9 @@ class l_interval
       //! Returns the convex hull of the arguments
       friend inline l_interval operator |(const l_interval &,const interval &) throw();
       //! Returns the intersection of the arguments
-      friend inline l_interval operator &(const interval &,const l_interval &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval operator &(const interval &,const l_interval &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend inline l_interval operator &(const l_interval &,const interval &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval operator &(const l_interval &,const interval &) noexcept(false);
 
       //! Implementation of standard algebraic addition and allocation operation
       friend inline l_interval & operator +=(l_interval &,const interval &) throw();      
@@ -378,7 +378,7 @@ class l_interval
       //! Allocates the convex hull of the arguments to the first argument
       friend inline l_interval & operator |=(l_interval &,const interval &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline l_interval & operator &=(l_interval &,const interval &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval & operator &=(l_interval &,const interval &) noexcept(false);
  
       // LI-R
       //! Implementation of standard algebraic addition operation
@@ -402,9 +402,9 @@ class l_interval
       //! Returns the convex hull of the arguments
       friend inline l_interval operator |(const l_interval &,const real &) throw();
       //! Returns the intersection of the arguments
-      friend inline l_interval operator &(const real &,const l_interval &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval operator &(const real &,const l_interval &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend inline l_interval operator &(const l_interval &,const real &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval operator &(const l_interval &,const real &) noexcept(false);
 
       //! Implementation of standard algebraic addition and allocation operation
       friend inline l_interval & operator +=(l_interval &,const real &) throw();      
@@ -417,7 +417,7 @@ class l_interval
       //! Allocates the convex hull of the arguments to the first argument
       friend inline l_interval & operator |=(l_interval &,const real &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline l_interval & operator &=(l_interval &,const real &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval & operator &=(l_interval &,const real &) noexcept(false);
 
       // LR-I
       //! Implementation of standard algebraic addition operation
@@ -441,9 +441,9 @@ class l_interval
       //! Returns the convex hull of the arguments
       friend inline l_interval operator |(const l_real &,const interval &) throw();
       //! Returns the intersection of the arguments
-      friend inline l_interval operator &(const interval &,const l_real &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval operator &(const interval &,const l_real &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend inline l_interval operator &(const l_real &,const interval &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval operator &(const l_real &,const interval &) noexcept(false);
  
       // ---- Vergleichsop. ----
       //! Implementation of standard negation operation
@@ -616,13 +616,13 @@ class l_interval
       friend inline int StagPrec(const l_interval &) throw();
 
       //! Returns the interval with the new given infimum value
-      friend inline l_interval & SetInf (l_interval & a, const l_real & b)  throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval & SetInf (l_interval & a, const l_real & b)  noexcept(false);
       //! Returns the interval with the new given supremum value
-      friend inline l_interval & SetSup (l_interval & a, const l_real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval & SetSup (l_interval & a, const l_real & b) noexcept(false);
       //! Returns the interval with the new given infimum value
-      friend inline l_interval & SetInf (l_interval & a, const real & b)  throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval & SetInf (l_interval & a, const real & b)  noexcept(false);
       //! Returns the interval with the new given supremum value
-      friend inline l_interval & SetSup (l_interval & a, const real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend inline l_interval & SetSup (l_interval & a, const real & b) noexcept(false);
       //! Sets the precision of a specific long datatype value
       friend inline l_interval  adjust (const l_interval &) throw();         
 
@@ -638,7 +638,7 @@ class l_interval
       //! Allocates the convex hull of the arguments to the first argument
       friend void ConvexHull(const l_interval &, const l_interval &, l_interval &, l_interval &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend void Intersection(const l_interval &, const l_interval &, l_interval &, l_interval &) throw(ERROR_LINTERVAL_EMPTY_INTERVAL);
+      friend void Intersection(const l_interval &, const l_interval &, l_interval &, l_interval &) noexcept(false);
    
       //! Returns the absolute value of the interval
       friend inline l_interval abs  (const l_interval & a) throw();
@@ -648,64 +648,64 @@ class l_interval
       friend inline l_real     diam (const l_interval & a) throw();
 
       //! Calculates \f$ [x]^{[y]} \f$
-      friend l_interval pow(const l_interval &, const l_interval &) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF); // Pow(x,y)
+      friend l_interval pow(const l_interval &, const l_interval &) noexcept(false); // Pow(x,y)
       //! Calculates \f$ [x]^n \f$
       friend l_interval power(const l_interval &, int);       // Power(x,n)
       //! Calculates \f$ [x]^2  \f$
       friend l_interval sqr(const l_interval &);              // Sqr(x)
 
       //! Calculates \f$ \sqrt{[x]}  \f$
-      friend l_interval sqrt(const l_interval &) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF);             // Sqrt(x)
+      friend l_interval sqrt(const l_interval &) noexcept(false);             // Sqrt(x)
       //! Calculates \f$ \sqrt[n]{[x]} \f$
-      friend l_interval sqrt(const l_interval &, int) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF);        // NSqrt(n,x)
+      friend l_interval sqrt(const l_interval &, int) noexcept(false);        // NSqrt(n,x)
 
       //! Calculates \f$ \sin([x]) \f$
-      friend l_interval sin(const l_interval &) throw(ERROR_LINTERVAL_FAK_OVERFLOW);    // Sin(x)
+      friend l_interval sin(const l_interval &) noexcept(false);    // Sin(x)
       //! Calculates \f$ \cos([x]) \f$
-      friend l_interval cos(const l_interval &) throw(ERROR_LINTERVAL_FAK_OVERFLOW);    // Cos(x)
+      friend l_interval cos(const l_interval &) noexcept(false);    // Cos(x)
       //! Calculates \f$ \tan([x]) \f$
-      friend l_interval tan(const l_interval &) throw(ERROR_LINTERVAL_FAK_OVERFLOW,ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF);    // Tan(x)
+      friend l_interval tan(const l_interval &) noexcept(false);    // Tan(x)
       //! Calculates \f$ \cot([x]) \f$
-      friend l_interval cot(const l_interval &) throw(ERROR_LINTERVAL_FAK_OVERFLOW,ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF);    // Cot(x)
+      friend l_interval cot(const l_interval &) noexcept(false);    // Cot(x)
 
       //! Calculates \f$ \arcsin([x]) \f$
-      friend l_interval asin(const l_interval &) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF);   // ASin(x)
+      friend l_interval asin(const l_interval &) noexcept(false);   // ASin(x)
       //! Calculates \f$ \arccos([x]) \f$
-      friend l_interval acos(const l_interval &) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF);   // ACos(x)
+      friend l_interval acos(const l_interval &) noexcept(false);   // ACos(x)
       //! Calculates \f$ \arctan([x]) \f$
       friend l_interval atan(const l_interval &) throw();   // ATan(x)
       //! Calculates \f$ \mbox{arccot}([x]) \f$
       friend l_interval acot(const l_interval &) throw();   // ACot(x)
 
       //! Calculates \f$ \exp([x]) \f$
-      friend l_interval exp(const l_interval &) throw(ERROR_LINTERVAL_FAK_OVERFLOW);    // Exp(x)
+      friend l_interval exp(const l_interval &) noexcept(false);    // Exp(x)
       //! Calculates \f$ \exp2([x]) \f$
       friend l_interval exp2(const l_interval &); // 2^x
       //! Calculates \f$ \exp10([x]) \f$
       friend l_interval exp10(const l_interval &); // 10^x		 
       //! Calculates \f$ \ln([x]) \f$
-      friend l_interval ln(const l_interval &) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF);     // Ln(x)
+      friend l_interval ln(const l_interval &) noexcept(false);     // Ln(x)
       //! Calculates \f$ \log2([x]) \f$
       friend l_interval log2(const l_interval &);
       //! Calculates \f$ \log10([x]) \f$
       friend l_interval log10(const l_interval &);
       //! Calculates \f$ \sinh([x]) \f$
-      friend l_interval sinh(const l_interval &) throw(ERROR_LINTERVAL_FAK_OVERFLOW);   // Sinh(x)
+      friend l_interval sinh(const l_interval &) noexcept(false);   // Sinh(x)
       //! Calculates \f$ \cosh([x]) \f$
-      friend l_interval cosh(const l_interval &) throw(ERROR_LINTERVAL_FAK_OVERFLOW);   // Cosh(x)
+      friend l_interval cosh(const l_interval &) noexcept(false);   // Cosh(x)
       //! Calculates \f$ \tanh([x]) \f$
       friend l_interval tanh(const l_interval &) throw();   // Tanh(x)
       //! Calculates \f$ \coth([x]) \f$
       friend l_interval coth(const l_interval &) throw();   // Coth(x)           
  
       //! Calculates \f$ \mbox{arcsinh}([x]) \f$
-      friend l_interval asinh(const l_interval &) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF,ERROR_LINTERVAL_FAK_OVERFLOW);  // ASinh(x)
+      friend l_interval asinh(const l_interval &) noexcept(false);  // ASinh(x)
       //! Calculates \f$ \mbox{arccosh}([x]) \f$
       friend l_interval acosh(const l_interval &) throw();  // ACosh(x)
       //! Calculates \f$ \mbox{arctanh}([x]) \f$
-      friend l_interval atanh(const l_interval &) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF,ERROR_LINTERVAL_FAK_OVERFLOW);  // ATanh(x)
+      friend l_interval atanh(const l_interval &) noexcept(false);  // ATanh(x)
       //! Calculates \f$ \mbox{arccoth}([x]) \f$
-      friend l_interval acoth(const l_interval &) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF,ERROR_LINTERVAL_FAK_OVERFLOW);  // ACoth(x)
+      friend l_interval acoth(const l_interval &) noexcept(false);  // ACoth(x)
 
       //! Enclosure-Interval for \f$ \ln 2 \f$
       friend l_interval Ln2_l_interval() throw();     // ln(2)
@@ -846,7 +846,7 @@ class l_interval
       
 #if (CXSC_INDEX_CHECK)
       //! Access to the single components used to store the long data type value
-      inline real & operator [](int) throw(ERROR_LINTERVAL_ELEMENT_NOT_IN_LONG);
+      inline real & operator [](int) noexcept(false);
 #else
       //! Access to the single components used to store the long data type value
       inline real & operator [](int) throw();
@@ -854,7 +854,7 @@ class l_interval
             
    private:
 #if (CXSC_INDEX_CHECK)
-      inline void _allo(int) throw(ERROR_LINTERVAL_WRONG_STAGPREC);
+      inline void _allo(int) noexcept(false);
 #else
       inline void _allo(int) throw();
 #endif
@@ -882,7 +882,7 @@ inline l_interval _l_interval(const real & a) throw() { return l_interval(a); }
 
 \sa cxsc::l_interval::l_interval(const real &, const real &) 
 */
-inline l_interval _l_interval(const real & a, const real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return l_interval(a,b); }
+inline l_interval _l_interval(const real & a, const real & b) noexcept(false) { return l_interval(a,b); }
 /*!
 \deprecated use standard contructors for typecasting
 
@@ -894,19 +894,19 @@ inline l_interval _l_interval(const l_real & a) throw() { return l_interval(a); 
 
 \sa cxsc::l_interval::l_interval(const l_real &, const l_real &)
 */
-inline l_interval _l_interval(const l_real & a,const l_real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return l_interval(a,b); }
+inline l_interval _l_interval(const l_real & a,const l_real & b) noexcept(false) { return l_interval(a,b); }
 /*!
 \deprecated use standard contructors for typecasting
 
 \sa cxsc::l_interval::l_interval(const real &, const l_real &)
 */
-inline l_interval _l_interval(const real & a, const l_real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return l_interval(a,b); }
+inline l_interval _l_interval(const real & a, const l_real & b) noexcept(false) { return l_interval(a,b); }
 /*!
 \deprecated use standard contructors for typecasting
 
 \sa cxsc::l_interval::l_interval(const l_real &, const real &)
 */
-inline l_interval _l_interval(const l_real & a, const real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return l_interval(a,b); }
+inline l_interval _l_interval(const l_real & a, const real & b) noexcept(false) { return l_interval(a,b); }
 
 /*!
 \deprecated use standard contructors for typecasting
@@ -925,7 +925,7 @@ inline l_interval _l_interval(const dotprecision & a) throw() { return l_interva
 
 \sa cxsc::l_interval::l_interval(const dotprecision &,const dotprecision &)
 */
-inline l_interval _l_interval(const dotprecision & a,const dotprecision & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return l_interval(a,b); }
+inline l_interval _l_interval(const dotprecision & a,const dotprecision & b) noexcept(false) { return l_interval(a,b); }
 /*!
 \deprecated use standard contructors for typecasting
 
@@ -970,10 +970,10 @@ class l_interval_Inf
       l_interval_Inf(l_interval &a) throw() : my_l_interval(a) {}
                    operator l_real(void) const { return Inf((const l_interval)my_l_interval); }  
       //! Implementation of standard assigning operator
-      l_interval & operator =(const l_real & a) throw(ERROR_LINTERVAL_EMPTY_INTERVAL)  { SetInf(my_l_interval,a); return my_l_interval; }
+      l_interval & operator =(const l_real & a) noexcept(false)  { SetInf(my_l_interval,a); return my_l_interval; }
       //! Implementation of standard assigning operator
-      l_interval & operator =(const real & a) throw(ERROR_LINTERVAL_EMPTY_INTERVAL)    { SetInf(my_l_interval,_l_real(a)); return my_l_interval; }
-      // l_interval & operator =(int a) throw(ERROR_LINTERVAL_EMPTY_INTERVAL)             { SetInf(my_l_interval,_l_real(a)); return my_l_interval; }
+      l_interval & operator =(const real & a) noexcept(false)    { SetInf(my_l_interval,_l_real(a)); return my_l_interval; }
+      // l_interval & operator =(int a) noexcept(false)             { SetInf(my_l_interval,_l_real(a)); return my_l_interval; }
 };
 //! The Multiple-Precision Data Type l_interval_Sup
 /*!
@@ -988,10 +988,10 @@ class l_interval_Sup
       l_interval_Sup(l_interval &a) throw() : my_l_interval(a) {}
                    operator l_real(void) const { return Sup((const l_interval)my_l_interval); }
       //! Implementation of standard assigning operator
-      l_interval & operator =(const l_real & a) throw(ERROR_LINTERVAL_EMPTY_INTERVAL)  { SetSup(my_l_interval,a); return my_l_interval; }
+      l_interval & operator =(const l_real & a) noexcept(false)  { SetSup(my_l_interval,a); return my_l_interval; }
       //! Implementation of standard assigning operator
-      l_interval & operator =(const real & a) throw(ERROR_LINTERVAL_EMPTY_INTERVAL)    { SetSup(my_l_interval,_l_real(a)); return my_l_interval; }
-      // l_interval & operator =(int a) throw(ERROR_LINTERVAL_EMPTY_INTERVAL)             { SetSup(my_l_interval,_l_real(a)); return my_l_interval; }    
+      l_interval & operator =(const real & a) noexcept(false)    { SetSup(my_l_interval,_l_real(a)); return my_l_interval; }
+      // l_interval & operator =(int a) noexcept(false)             { SetSup(my_l_interval,_l_real(a)); return my_l_interval; }    
 };
 
 } // namespace cxsc 

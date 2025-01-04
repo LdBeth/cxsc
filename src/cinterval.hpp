@@ -65,18 +65,18 @@ class cinterval
       //! Constructor of class cinterval
       inline cinterval(const interval & a,const interval &b) throw(); 
       //! Constructor of class cinterval
-      inline cinterval(const complex & a,const complex & b)  throw(ERROR_CINTERVAL_EMPTY_INTERVAL); 
+      inline cinterval(const complex & a,const complex & b)  noexcept(false); 
 
       // The following are defined in the specific vector, matrix-files
 #if(CXSC_INDEX_CHECK) 
       //! Constructor of class cinterval
-      INLINE cinterval(const civector &)       throw (ERROR_CIVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_CIVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      INLINE cinterval(const civector &)       noexcept(false);
       //! Constructor of class cinterval
-      INLINE cinterval(const civector_slice &) throw (ERROR_CIVECTOR_TYPE_CAST_OF_THICK_OBJ,ERROR_CIVECTOR_USE_OF_UNINITIALIZED_OBJ);
+      INLINE cinterval(const civector_slice &) noexcept(false);
       //! Constructor of class cinterval
-      INLINE cinterval(const cimatrix &)       throw (ERROR_CIMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_CIMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      INLINE cinterval(const cimatrix &)       noexcept(false);
       //! Constructor of class cinterval
-      INLINE cinterval(const cimatrix_slice &) throw (ERROR_CIMATRIX_TYPE_CAST_OF_THICK_OBJ,ERROR_CIMATRIX_USE_OF_UNINITIALIZED_OBJ);
+      INLINE cinterval(const cimatrix_slice &) noexcept(false);
 #else
       //! Constructor of class cinterval
       INLINE cinterval(const civector &)       throw ();
@@ -171,15 +171,15 @@ class cinterval
       //! Implementation of standard output method
       friend std::ostream & operator <<(std::ostream &,const cinterval &) throw();
       //! Implementation of standard input method
-      friend std::istream & operator >>(std::istream &,cinterval &)       throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+      friend std::istream & operator >>(std::istream &,cinterval &)       noexcept(false);
       //! Implementation of standard output method
       friend std::string &  operator <<(std::string &,const cinterval &)  throw();
       //! Implementation of standard input method
-      friend std::string &  operator >>(std::string &,cinterval &)        throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+      friend std::string &  operator >>(std::string &,cinterval &)        noexcept(false);
       //! Implementation of standard input method
-      friend void           operator >>(const char *,cinterval &)         throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+      friend void           operator >>(const char *,cinterval &)         noexcept(false);
       //! Implementation of standard input method
-      friend void           operator >>(const std::string &,cinterval &)  throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+      friend void           operator >>(const std::string &,cinterval &)  noexcept(false);
 
       // ---- Std.Operators ---------------------------------------
 
@@ -199,11 +199,11 @@ class cinterval
       //! Implementation of standard algebraic multiplication operation
       friend        cinterval operator *(const cinterval &,const cinterval &) throw();
       //! Implementation of standard algebraic division operation
-      friend        cinterval operator /(const cinterval &,const cinterval &) throw(DIV_BY_ZERO);
+      friend        cinterval operator /(const cinterval &,const cinterval &) noexcept(false);
       //! Returns the convex hull of the arguments
       friend inline cinterval operator |(const cinterval &,const cinterval &) throw();
       //! Returns the intersection of the arguments
-      friend inline cinterval operator &(const cinterval &,const cinterval &) throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+      friend inline cinterval operator &(const cinterval &,const cinterval &) noexcept(false);
       
       //! Implementation of standard algebraic addition and allocation operation
       friend inline cinterval & operator +=(cinterval &, const cinterval &) throw();
@@ -216,7 +216,7 @@ class cinterval
       //! Allocates the convex hull of the arguments to the first argument
       friend inline cinterval & operator |=(cinterval &, const cinterval &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline cinterval & operator &=(cinterval &, const cinterval &) throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+      friend inline cinterval & operator &=(cinterval &, const cinterval &) noexcept(false);
       
       // CI-R
       
@@ -497,13 +497,13 @@ class cinterval
       friend inline complex    Sup(const cinterval &) throw();
       
       //! Returns the complex interval with the new given infimum value
-      friend inline cinterval & SetInf(cinterval &,const complex &) throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+      friend inline cinterval & SetInf(cinterval &,const complex &) noexcept(false);
       //! Returns the complex interval with the new given infimum value
-      friend inline cinterval & SetInf(cinterval &,const real &) throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+      friend inline cinterval & SetInf(cinterval &,const real &) noexcept(false);
       //! Returns the complex interval with the new given supremum value
-      friend inline cinterval & SetSup(cinterval &,const complex &) throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+      friend inline cinterval & SetSup(cinterval &,const complex &) noexcept(false);
       //! Returns the complex interval with the new given supremum value
-      friend inline cinterval & SetSup(cinterval &,const real &) throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+      friend inline cinterval & SetSup(cinterval &,const real &) noexcept(false);
       //! Returns the complex interval with the unchecked new given infimum value
       friend inline cinterval & UncheckedSetInf(cinterval &,const complex &) throw();
       //! Returns the complex interval with the unchecked new given infimum value

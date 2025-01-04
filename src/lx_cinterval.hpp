@@ -87,13 +87,13 @@ public:
     inline lx_cinterval(const lx_complex &) throw();
     //! Constructor of class lx_cinterval
     inline lx_cinterval(const lx_complex&, const lx_complex&)
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Constructor of class lx_cinterval
     inline lx_cinterval(const l_complex&, const l_complex&)
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Constructor of class lx_cinterval
     inline lx_cinterval(const complex&, const complex&)
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Constructor of class lx_cinterval
     inline lx_cinterval(const real&, const l_interval&, const real&, const l_interval&) throw();
     //! Constructor of class lx_cinterval
@@ -449,30 +449,30 @@ friend inline lx_cinterval operator | (const lx_cinterval& a,
 // ---------------------------- Others --------------------------------------
 
 friend inline lx_cinterval & SetInf(lx_cinterval& a, const lx_complex& b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 friend inline lx_cinterval & SetInf(lx_cinterval& a, const l_complex& b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 friend inline lx_cinterval & SetInf(lx_cinterval& a, const complex& b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 friend inline lx_cinterval & SetInf(lx_cinterval& a, const lx_real & b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 friend inline lx_cinterval & SetInf(lx_cinterval& a, const l_real & b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
 friend inline lx_cinterval & SetInf(lx_cinterval& a, const real & b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
 
 friend inline lx_cinterval & SetSup(lx_cinterval& a, const lx_complex& b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 friend inline lx_cinterval & SetSup(lx_cinterval& a, const l_complex& b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 friend inline lx_cinterval & SetSup(lx_cinterval& a, const complex& b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 friend inline lx_cinterval & SetSup(lx_cinterval& a, const lx_real & b) 
-    throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+    noexcept(false);
 friend inline lx_cinterval & SetSup(lx_cinterval& a, const l_real & b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
 friend inline lx_cinterval & SetSup(lx_cinterval& a, const real & b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
 
 }; // end of class lx_cinterval
 
@@ -762,41 +762,41 @@ friend inline lx_cinterval & SetSup(lx_cinterval& a, const real & b)
 
     //! Returns the complex interval with the new given infimum value
     inline lx_cinterval & SetInf(lx_cinterval& a, const lx_complex& b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the complex interval with the new given infimum value
     inline lx_cinterval & SetInf(lx_cinterval& a, const l_complex& b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the complex interval with the new given infimum value
     inline lx_cinterval & SetInf(lx_cinterval& a, const complex& b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the complex interval with the new given infimum value
     inline lx_cinterval & SetInf(lx_cinterval& a, const lx_real & b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the complex interval with the new given infimum value
     inline lx_cinterval & SetInf(lx_cinterval& a, const l_real & b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the complex interval with the new given infimum value
     inline lx_cinterval & SetInf(lx_cinterval& a, const real & b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
 
     //! Returns the complex interval with the new given supremum value
     inline lx_cinterval & SetSup(lx_cinterval& a, const lx_complex& b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the complex interval with the new given supremum value
     inline lx_cinterval & SetSup(lx_cinterval& a, const l_complex& b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the complex interval with the new given supremum value
     inline lx_cinterval & SetSup(lx_cinterval& a, const complex& b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the complex interval with the new given supremum value
     inline lx_cinterval & SetSup(lx_cinterval& a, const lx_real & b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the complex interval with the new given supremum value
     inline lx_cinterval & SetSup(lx_cinterval& a, const l_real & b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the complex interval with the new given supremum value
     inline lx_cinterval & SetSup(lx_cinterval& a, const real & b) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
 
     //! Returns 1 if the argument is an empty interval
     inline bool IsEmpty(const lx_cinterval&) throw();
@@ -1478,7 +1478,7 @@ friend inline lx_cinterval & SetSup(lx_cinterval& a, const real & b)
 
     //! Allocates the intersection of the arguments to the first argument
     inline lx_cinterval & operator &= (lx_cinterval&, const lx_cinterval&) 
-	throw(ERROR_CINTERVAL_EMPTY_INTERVAL);
+	noexcept(false);
     //! Returns the intersection of the arguments
     inline lx_cinterval operator & (const lx_cinterval&, const lx_real&) 
 	throw();

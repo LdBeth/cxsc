@@ -36,11 +36,11 @@ inline cidotprecision _cidotprecision(const interval &) throw();
 inline cidotprecision _cidotprecision(const cinterval &) throw();
       
 inline cidotprecision _cidotprecision(const idotprecision &,const idotprecision &) throw();
-inline cidotprecision _cidotprecision(const cdotprecision &,const cdotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+inline cidotprecision _cidotprecision(const cdotprecision &,const cdotprecision &) noexcept(false);
 inline cidotprecision _cidotprecision(const idotprecision &,const dotprecision &) throw();
-inline cidotprecision _cidotprecision(const cdotprecision &,const dotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+inline cidotprecision _cidotprecision(const cdotprecision &,const dotprecision &) noexcept(false);
 inline cidotprecision _cidotprecision(const dotprecision &,const idotprecision &) throw();
-inline cidotprecision _cidotprecision(const dotprecision &,const cdotprecision&) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+inline cidotprecision _cidotprecision(const dotprecision &,const cdotprecision&) noexcept(false);
 inline cidotprecision _cidotprecision(const cdotprecision &) throw();
 inline cidotprecision _cidotprecision(const idotprecision &) throw();
 inline cidotprecision _cidotprecision(const dotprecision &) throw();
@@ -230,7 +230,7 @@ inline cidotprecision _cidotprecision(const idotprecision & a,const idotprecisio
 
 \sa ???
 */
-inline cidotprecision _cidotprecision(const cdotprecision & a,const cdotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision _cidotprecision(const cdotprecision & a,const cdotprecision & b) noexcept(false)
 {
    cidotprecision tmp;
    tmp.reinf=Re(a);
@@ -261,7 +261,7 @@ inline cidotprecision _cidotprecision(const idotprecision & a,const dotprecision
 
 \sa ???
 */
-inline cidotprecision _cidotprecision(const cdotprecision & a,const dotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision _cidotprecision(const cdotprecision & a,const dotprecision & b) noexcept(false)
 {
    cidotprecision tmp;
    tmp.reinf=Re(a);
@@ -292,7 +292,7 @@ inline cidotprecision _cidotprecision(const dotprecision & a,const idotprecision
 
 \sa ???
 */
-inline cidotprecision _cidotprecision(const dotprecision & a,const cdotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision _cidotprecision(const dotprecision & a,const cdotprecision & b) noexcept(false)
 {
    cidotprecision tmp;
    tmp.reinf=a;
@@ -489,7 +489,7 @@ inline cidotprecision operator |(const cidotprecision & a,const cidotprecision &
    return tmp;   
 }
 
-inline cidotprecision operator &(const cidotprecision & a,const cidotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const cidotprecision & a,const cidotprecision & b) noexcept(false)
 {
    cidotprecision tmp(a);
    if(tmp.reinf<b.reinf)
@@ -538,7 +538,7 @@ inline cidotprecision & operator |=(cidotprecision & a, const cidotprecision & b
    return a;
 }
 
-inline cidotprecision & operator &=(cidotprecision & a, const cidotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision & operator &=(cidotprecision & a, const cidotprecision & b) noexcept(false)
 {
    if(a.reinf<b.reinf)
       a.reinf=b.reinf;
@@ -594,13 +594,13 @@ inline cidotprecision operator |(const real & a,const cidotprecision & b) throw(
    return tmp|=_cinterval(a);   
 }
 
-inline cidotprecision operator &(const cidotprecision & a,const real & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const cidotprecision & a,const real & b) noexcept(false)
 {
    cidotprecision tmp(a);
    return tmp&=_cinterval(b);   
 }
 
-inline cidotprecision operator &(const real & a,const cidotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const real & a,const cidotprecision & b) noexcept(false)
 {
    cidotprecision tmp(b);
    return tmp&=_cinterval(a);   
@@ -625,7 +625,7 @@ inline cidotprecision & operator |=(cidotprecision & a, const real & b) throw()
    return a|=_cinterval(b);
 }
 
-inline cidotprecision & operator &=(cidotprecision & a, const real & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision & operator &=(cidotprecision & a, const real & b) noexcept(false)
 {
    return a&=_cinterval(b);
 }
@@ -668,13 +668,13 @@ inline cidotprecision operator |(const complex & a,const cidotprecision & b) thr
    return tmp|=_cinterval(a);   
 }
 
-inline cidotprecision operator &(const cidotprecision & a,const complex & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const cidotprecision & a,const complex & b) noexcept(false)
 {
    cidotprecision tmp(a);
    return tmp&=_cinterval(b);   
 }
 
-inline cidotprecision operator &(const complex & a,const cidotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const complex & a,const cidotprecision & b) noexcept(false)
 {
    cidotprecision tmp(b);
    return tmp&=_cinterval(a);   
@@ -703,7 +703,7 @@ inline cidotprecision & operator |=(cidotprecision & a, const complex & b) throw
    return a|=_cinterval(b);
 }
 
-inline cidotprecision & operator &=(cidotprecision & a, const complex & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision & operator &=(cidotprecision & a, const complex & b) noexcept(false)
 {
    return a&=_cinterval(b);
 }
@@ -746,13 +746,13 @@ inline cidotprecision operator |(const interval & a,const cidotprecision & b) th
    return tmp|=_cinterval(a);   
 }
 
-inline cidotprecision operator &(const cidotprecision & a,const interval & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const cidotprecision & a,const interval & b) noexcept(false)
 {
    cidotprecision tmp(a);
    return tmp&=_cinterval(b);   
 }
 
-inline cidotprecision operator &(const interval & a,const cidotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const interval & a,const cidotprecision & b) noexcept(false)
 {
    cidotprecision tmp(b);
    return tmp&=_cinterval(a);   
@@ -777,7 +777,7 @@ inline cidotprecision & operator |=(cidotprecision & a, const interval & b) thro
    return a|=_cinterval(b);
 }
 
-inline cidotprecision & operator &=(cidotprecision & a, const interval & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision & operator &=(cidotprecision & a, const interval & b) noexcept(false)
 {
    return a&=_cinterval(b);
 }
@@ -820,13 +820,13 @@ inline cidotprecision operator |(const cinterval & a,const cidotprecision & b) t
    return tmp|=a;   
 }
 
-inline cidotprecision operator &(const cidotprecision & a,const cinterval & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const cidotprecision & a,const cinterval & b) noexcept(false)
 {
    cidotprecision tmp(a);
    return tmp&=b;   
 }
 
-inline cidotprecision operator &(const cinterval & a,const cidotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const cinterval & a,const cidotprecision & b) noexcept(false)
 {
    cidotprecision tmp(b);
    return tmp&=a;   
@@ -863,7 +863,7 @@ inline cidotprecision & operator |=(cidotprecision & a, const cinterval & b) thr
    return a;
 }
 
-inline cidotprecision & operator &=(cidotprecision & a, const cinterval & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision & operator &=(cidotprecision & a, const cinterval & b) noexcept(false)
 {
    if(Sup(Re(b))<a.resup)
       a.resup=Sup(Re(b));
@@ -918,13 +918,13 @@ inline cidotprecision operator |(const dotprecision & a,const cidotprecision & b
    return tmp|=a;
 }
 
-inline cidotprecision operator &(const cidotprecision & a,const dotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const cidotprecision & a,const dotprecision & b) noexcept(false)
 {
    cidotprecision tmp(a);
    return tmp&=b;
 }
 
-inline cidotprecision operator &(const dotprecision & a,const cidotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const dotprecision & a,const cidotprecision & b) noexcept(false)
 {
    cidotprecision tmp(b);
    return tmp&=a;
@@ -957,7 +957,7 @@ inline cidotprecision & operator |=(cidotprecision & a, const dotprecision & b) 
    return a;
 }
 
-inline cidotprecision & operator &=(cidotprecision & a, const dotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision & operator &=(cidotprecision & a, const dotprecision & b) noexcept(false)
 {
    if(b>a.reinf)
       a.reinf=b;
@@ -1012,13 +1012,13 @@ inline cidotprecision operator |(const cdotprecision & a,const cidotprecision & 
    return tmp|=a;
 }
 
-inline cidotprecision operator &(const cidotprecision & a,const cdotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const cidotprecision & a,const cdotprecision & b) noexcept(false)
 {
    cidotprecision tmp(a);
    return tmp&=b;
 }
 
-inline cidotprecision operator &(const cdotprecision & a,const cidotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const cdotprecision & a,const cidotprecision & b) noexcept(false)
 {
    cidotprecision tmp(b);
    return tmp&=a;
@@ -1055,7 +1055,7 @@ inline cidotprecision & operator |=(cidotprecision & a, const cdotprecision & b)
    return a;
 }
 
-inline cidotprecision & operator &=(cidotprecision & a, const cdotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision & operator &=(cidotprecision & a, const cdotprecision & b) noexcept(false)
 {
    if(Re(b)>a.reinf)
       a.reinf=Re(b);
@@ -1111,13 +1111,13 @@ inline cidotprecision operator |(const idotprecision & a,const cidotprecision & 
    return tmp|=a;
 }
 
-inline cidotprecision operator &(const cidotprecision & a,const idotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const cidotprecision & a,const idotprecision & b) noexcept(false)
 {
    cidotprecision tmp(a);
    return tmp&=b;
 }
 
-inline cidotprecision operator &(const idotprecision & a,const cidotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision operator &(const idotprecision & a,const cidotprecision & b) noexcept(false)
 {
    cidotprecision tmp(b);
    return tmp&=a;
@@ -1150,7 +1150,7 @@ inline cidotprecision & operator |=(cidotprecision & a, const idotprecision & b)
    return a;
 }
 
-inline cidotprecision & operator &=(cidotprecision & a, const idotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+inline cidotprecision & operator &=(cidotprecision & a, const idotprecision & b) noexcept(false)
 {
    if(Inf(b)>a.reinf)
       a.reinf=Inf(b);
@@ -1578,7 +1578,7 @@ inline bool operator >=(const cidotprecision & a,const idotprecision & b) throw(
 cdotprecision   Inf(const cidotprecision & a) throw() { return cdotprecision(a.reinf,a.iminf); }
 cdotprecision   Sup(const cidotprecision & a) throw() { return cdotprecision(a.resup,a.imsup); }
 
-cidotprecision & SetInf(cidotprecision & a, const cdotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+cidotprecision & SetInf(cidotprecision & a, const cdotprecision & b) noexcept(false)
 {
    a.reinf=Re(b);
    a.iminf=Im(b);
@@ -1589,7 +1589,7 @@ cidotprecision & SetInf(cidotprecision & a, const cdotprecision & b) throw(ERROR
    return a;
 }
 
-cidotprecision & SetSup(cidotprecision & a, const cdotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+cidotprecision & SetSup(cidotprecision & a, const cdotprecision & b) noexcept(false)
 {
    a.resup=Re(b);
    a.imsup=Im(b);
@@ -1600,7 +1600,7 @@ cidotprecision & SetSup(cidotprecision & a, const cdotprecision & b) throw(ERROR
    return a;
 }
 
-cidotprecision & SetInf(cidotprecision & a, const dotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+cidotprecision & SetInf(cidotprecision & a, const dotprecision & b) noexcept(false)
 {
    a.reinf=b;
    a.iminf=b;
@@ -1611,7 +1611,7 @@ cidotprecision & SetInf(cidotprecision & a, const dotprecision & b) throw(ERROR_
    return a;
 }
 
-cidotprecision & SetSup(cidotprecision & a, const dotprecision & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+cidotprecision & SetSup(cidotprecision & a, const dotprecision & b) noexcept(false)
 {
    a.resup=b;
    a.imsup=b;
@@ -1622,7 +1622,7 @@ cidotprecision & SetSup(cidotprecision & a, const dotprecision & b) throw(ERROR_
    return a;
 }
 
-cidotprecision & SetInf(cidotprecision & a, const complex & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+cidotprecision & SetInf(cidotprecision & a, const complex & b) noexcept(false)
 {
    a.reinf=Re(b);
    a.iminf=Im(b);
@@ -1633,7 +1633,7 @@ cidotprecision & SetInf(cidotprecision & a, const complex & b) throw(ERROR_CIDOT
    return a;
 }
 
-cidotprecision & SetSup(cidotprecision & a, const complex & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+cidotprecision & SetSup(cidotprecision & a, const complex & b) noexcept(false)
 {
    a.resup=Re(b);
    a.imsup=Im(b);
@@ -1644,7 +1644,7 @@ cidotprecision & SetSup(cidotprecision & a, const complex & b) throw(ERROR_CIDOT
    return a;
 }
 
-cidotprecision & SetInf(cidotprecision & a, const real & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+cidotprecision & SetInf(cidotprecision & a, const real & b) noexcept(false)
 {
    a.reinf=b;
    a.iminf=b;
@@ -1655,7 +1655,7 @@ cidotprecision & SetInf(cidotprecision & a, const real & b) throw(ERROR_CIDOTPRE
    return a;
 }
 
-cidotprecision & SetSup(cidotprecision & a, const real & b) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+cidotprecision & SetSup(cidotprecision & a, const real & b) noexcept(false)
 {
    a.resup=b;
    a.imsup=b;

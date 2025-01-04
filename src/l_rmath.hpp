@@ -33,7 +33,7 @@ namespace cxsc {
 //! Calculates \f$ x^2  \f$
 inline l_real sqr     (const l_real&) throw(); // Sqr(x)
 //! Calculates \f$ \sqrt{x}  \f$
-       l_real sqrt    (const l_real&) throw(ERROR_LREAL_STD_FKT_OUT_OF_DEF);
+       l_real sqrt    (const l_real&) noexcept(false);
                                                // Sqrt(x)
 //! Calculates \f$ \sqrt{x^2+y^2} \f$
        l_real sqrtx2y2(const l_real&, const l_real&) throw(); 

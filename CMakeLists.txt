@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.10)
 project(cxsc C CXX)
 
 #set(CMAKE_BUILD_TYPE release)
+set(CMAKE_CXX_STANDARD 20)
 
 # the current C-XSC version
 set(VER_MAJOR "2")
@@ -288,7 +289,7 @@ install(FILES
 DESTINATION include)
 
 # installation of the documentation
-install(FILES changelog README DESTINATION doc)
+# install(FILES changelog README DESTINATION doc)
 
 # install the library
 install(TARGETS cxsc LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)

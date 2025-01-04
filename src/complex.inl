@@ -479,7 +479,7 @@ inline real quotient (real z1, interval z2, real n1,
    return q1;
 } // end of quotient
 
-inline complex _c_division(complex a, complex b, int round) throw(DIV_BY_ZERO)
+inline complex _c_division(complex a, complex b, int round) noexcept(false)
 {
     if (0.0 == (sqr(Re(b))+sqr(Im(b)))) {
       cxscthrow(DIV_BY_ZERO("complex operator / (const complex&,const complex&)"));

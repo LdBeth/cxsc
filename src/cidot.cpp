@@ -55,7 +55,7 @@ std::string & operator << (std::string &s, const cidotprecision &a) throw()
    return s;
 }
 
-std::istream & operator >> (std::istream &s, cidotprecision &a) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+std::istream & operator >> (std::istream &s, cidotprecision &a) noexcept(false)
 {
    char c;
 
@@ -92,7 +92,7 @@ std::istream & operator >> (std::istream &s, cidotprecision &a) throw(ERROR_CIDO
    return s;
 }
 
-std::string & operator >> (std::string &s, cidotprecision &a) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+std::string & operator >> (std::string &s, cidotprecision &a) noexcept(false)
 {
    s = skipwhitespacessinglechar (s, '(');
    s = skipwhitespacessinglechar (s, '[');
@@ -118,12 +118,12 @@ std::string & operator >> (std::string &s, cidotprecision &a) throw(ERROR_CIDOTP
    return s;
 }
 
-void operator >>(const std::string &s,cidotprecision &a) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+void operator >>(const std::string &s,cidotprecision &a) noexcept(false)
 {
    std::string r(s);
    r>>a;
 }
-void operator >>(const char *s,cidotprecision &a) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL)
+void operator >>(const char *s,cidotprecision &a) noexcept(false)
 {
    std::string r(s);
    r>>a;

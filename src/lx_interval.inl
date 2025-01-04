@@ -305,43 +305,43 @@ inline lx_interval & operator *=(lx_interval &a, const interval &b) throw()
 {  return a = a*b; } 
 
 inline lx_interval operator / (const lx_interval &a, const l_interval &b) 
-                              throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+                              noexcept(false)
 { return a / lx_interval(b); }
 
 inline lx_interval operator / (const l_interval &a, const lx_interval &b) 
-                              throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+                              noexcept(false)
 { return lx_interval(a) / b; }
 
 inline lx_interval operator / (const lx_interval &a, const l_real &b) 
-                              throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+                              noexcept(false)
 { return a / lx_interval(b); }
 
 inline lx_interval operator / (const l_real &a, const lx_interval &b) 
-                              throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+                              noexcept(false)
 { return lx_interval(a) / b; }
 
 inline lx_interval operator / (const lx_interval &a, const real &b) 
-                              throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+                              noexcept(false)
 { return a / lx_interval(b); }
 
 inline lx_interval operator / (const real &a, const lx_interval &b) 
-                              throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+                              noexcept(false)
 { return lx_interval(a) / b; }
 
 inline lx_interval operator / (const lx_interval &a, const interval &b) 
-                              throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+                              noexcept(false)
 { return a / lx_interval(b); }
 
 inline lx_interval operator / (const interval &a, const lx_interval &b) 
-                              throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+                              noexcept(false)
 { return lx_interval(a) / b; }
 
 inline lx_interval operator / (const lx_interval &a, const lx_real &b) 
-                                      throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+                                      noexcept(false)
 {  return a / lx_interval(b); }
 
 inline lx_interval operator / (const lx_real &a, const lx_interval &b) 
-                                      throw(ERROR_LINTERVAL_DIV_BY_ZERO)
+                                      noexcept(false)
 {  return lx_interval(a) / b; }
 
 
@@ -744,14 +744,14 @@ inline lx_interval operator |(const lx_real &a, const lx_real &b) throw()
 // --------------------------- Intersection -----------------------------
 
 inline lx_interval operator & (const lx_interval &a, const lx_interval &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     return lx_interval( (Inf(a)>Inf(b)) ? Inf(a) : Inf(b),
                        (Sup(a)<Sup(b)) ? Sup(a) : Sup(b));
 }
 
 inline lx_interval operator & (const lx_interval &a, const l_interval &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     lx_interval Lb(0.0,b);
     return lx_interval( (Inf(a)>Inf(Lb)) ? Inf(a) : Inf(Lb),
@@ -759,7 +759,7 @@ inline lx_interval operator & (const lx_interval &a, const l_interval &b)
 }
 
 inline lx_interval & operator &= (lx_interval &a, const l_interval &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     lx_interval Lb(0.0,b);
     Inf(a) = (Inf(a)>Inf(Lb)) ? Inf(a) : Inf(Lb),
@@ -770,7 +770,7 @@ inline lx_interval & operator &= (lx_interval &a, const l_interval &b)
 }
 
 inline lx_interval operator & (const l_interval &a, const lx_interval &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     lx_interval La(0.0,a);
     return lx_interval( (Inf(La)>Inf(b)) ? Inf(La) : Inf(b),
@@ -778,7 +778,7 @@ inline lx_interval operator & (const l_interval &a, const lx_interval &b)
 }
 
 inline lx_interval operator & (const lx_interval &a, const interval &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     lx_interval Lb(0.0,l_interval(b));
     return lx_interval( (Inf(a)>Inf(Lb)) ? Inf(a) : Inf(Lb),
@@ -786,7 +786,7 @@ inline lx_interval operator & (const lx_interval &a, const interval &b)
 }
 
 inline lx_interval & operator &= (lx_interval &a, const interval &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     lx_interval Lb(0.0,l_interval(b));
     Inf(a) = (Inf(a)>Inf(Lb)) ? Inf(a) : Inf(Lb),
@@ -797,7 +797,7 @@ inline lx_interval & operator &= (lx_interval &a, const interval &b)
 }
 
 inline lx_interval operator & (const interval &a, const lx_interval &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     lx_interval La(0.0,l_interval(a));
     return lx_interval( (Inf(La)>Inf(b)) ? Inf(La) : Inf(b),
@@ -805,7 +805,7 @@ inline lx_interval operator & (const interval &a, const lx_interval &b)
 }
 
 inline lx_interval & operator &= (lx_interval &a, const lx_interval &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     Inf(a)=(Inf(a)>Inf(b))?Inf(a):Inf(b),Sup(a)=(Sup(a)<Sup(b))?Sup(a):Sup(b);
     if (Inf(a)>Sup(a))
@@ -814,14 +814,14 @@ inline lx_interval & operator &= (lx_interval &a, const lx_interval &b)
 }
 
 inline lx_interval operator & (const lx_interval &a, const lx_real &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
    return lx_interval( (Inf(a)>b) ? Inf(a) : b,
                       (Sup(a)<b) ? Sup(a) : b );
 }
 
 inline lx_interval operator & (const lx_interval &a, const real &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     lx_real Lb(b);
     return lx_interval( (Inf(a)>Lb) ? Inf(a) : Lb,
@@ -829,7 +829,7 @@ inline lx_interval operator & (const lx_interval &a, const real &b)
 }
 
 inline lx_interval operator & (const lx_interval &a, const l_real &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     lx_real Lb(0.0,b);
     return lx_interval( (Inf(a)>Lb) ? Inf(a) : Lb,
@@ -837,14 +837,14 @@ inline lx_interval operator & (const lx_interval &a, const l_real &b)
 }
 
 inline lx_interval operator & (const lx_real &a, const lx_interval &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     return lx_interval( (a>Inf(b)) ? a : Inf(b),
                        (a<Sup(b)) ? a : Sup(b) );
 }
 
 inline lx_interval operator & (const real &a, const lx_interval &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     lx_real La(a);
     return lx_interval( (La>Inf(b)) ? La : Inf(b),
@@ -852,7 +852,7 @@ inline lx_interval operator & (const real &a, const lx_interval &b)
 }
 
 inline lx_interval operator & (const l_real &a, const lx_interval &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     lx_real La(0.0,a);
     return lx_interval( (La>Inf(b)) ? La : Inf(b),
@@ -860,7 +860,7 @@ inline lx_interval operator & (const l_real &a, const lx_interval &b)
 }
 
 inline lx_interval & operator &= (lx_interval &a,const lx_real &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     Inf(a) = (Inf(a)>b) ? Inf(a) : b, Sup(a) = (Sup(a)<b) ? Sup(a) : b;
     if(Inf(a)>Sup(a))
@@ -869,7 +869,7 @@ inline lx_interval & operator &= (lx_interval &a,const lx_real &b)
 }
 
 inline lx_interval & operator &= (lx_interval &a, const real &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     lx_real Lb(b);
     Inf(a) = (Inf(a)>Lb) ? Inf(a) : Lb, Sup(a) = (Sup(a)<Lb) ? Sup(a) : Lb;
@@ -879,7 +879,7 @@ inline lx_interval & operator &= (lx_interval &a, const real &b)
 }
 
 inline lx_interval & operator &= (lx_interval &a, const l_real &b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL) 
+    noexcept(false) 
 {
     lx_real Lb(0.0,b);
     Inf(a) = (Inf(a)>Lb) ? Inf(a) : Lb, Sup(a) = (Sup(a)<Lb) ? Sup(a) : Lb;
@@ -891,37 +891,37 @@ inline lx_interval & operator &= (lx_interval &a, const l_real &b)
 // ------------------------- SetInf, SetSup -----------------------------
 
 inline lx_interval & SetInf(lx_interval& a, const lx_real& b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     return a = lx_interval(b,Sup(a));
 }
 
 inline lx_interval & SetInf(lx_interval& a, const l_real& b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     return a = lx_interval(lx_real(0.0,b),Sup(a));
 }
 
 inline lx_interval & SetInf(lx_interval& a, const real& b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     return a = lx_interval(lx_real(0.0,l_real(b)),Sup(a));
 }
 
 inline lx_interval & SetSup(lx_interval& a, const lx_real& b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     return a = lx_interval(Inf(a),b);
 }
 
 inline lx_interval & SetSup(lx_interval& a, const l_real& b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     return a = lx_interval(Inf(a),lx_real(0.0,b));
 }
 
 inline lx_interval & SetSup(lx_interval& a, const real& b) 
-    throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+    noexcept(false)
 {
     return a = lx_interval(Inf(a),lx_real(0.0,l_real(b)));
 }

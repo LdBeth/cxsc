@@ -36,7 +36,7 @@ namespace cxsc {
 //! Calculates \f$ \sqrt{[x]}  \f$
 inline interval sqrt    (const interval&);         // sqrt(x)
 //! Calculates \f$ \sqrt[n]{[x]} \f$
-       interval sqrt    (const interval &, int) throw(STD_FKT_OUT_OF_DEF);  // sqrt(x, n)
+       interval sqrt    (const interval &, int) noexcept(false);  // sqrt(x, n)
 //! Calculates \f$ \sqrt{1+[x]^2} \f$
        interval sqrt1px2(const interval&) throw(); // sqrt(1+x^2)
 //! Calculates \f$ \sqrt{([x]+1)-1} \f$

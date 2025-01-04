@@ -31,37 +31,37 @@
 namespace cxsc {
 
 //! Calculates \f$ [x]^{[y]} \f$
-l_interval pow     (const l_interval&, const l_interval&) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF); // Pow(x,y)
+l_interval pow     (const l_interval&, const l_interval&) noexcept(false); // Pow(x,y)
 //! Calculates \f$ [x]^n \f$
 l_interval power   (const l_interval&, int);    // Power(x,n)
 //! Calculates \f$ [x]^2  \f$
 l_interval sqr     (const l_interval&);         // Sqr(x)
 
 //! Calculates \f$ \sqrt{[x]}  \f$
-l_interval sqrt    (const l_interval&) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF); 
+l_interval sqrt    (const l_interval&) noexcept(false); 
                                                 // Sqrt(x)
 //! Calculates \f$ \sqrt[n]{[x]} \f$
-l_interval sqrt    (const l_interval&, int) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF); 
+l_interval sqrt    (const l_interval&, int) noexcept(false); 
                                                 // NSqrt(n,x)
 
 //! Calculates \f$ \sin([x]) \f$
-l_interval sin     (const l_interval&) throw(ERROR_LINTERVAL_FAK_OVERFLOW);    
+l_interval sin     (const l_interval&) noexcept(false);    
                                                 // Sin(x)
 //! Calculates \f$ \cos([x]) \f$
-l_interval cos     (const l_interval&) throw(ERROR_LINTERVAL_FAK_OVERFLOW);    
+l_interval cos     (const l_interval&) noexcept(false);    
                                                 // Cos(x)
 //! Calculates \f$ \tan([x]) \f$
-l_interval tan     (const l_interval&) throw(ERROR_LINTERVAL_FAK_OVERFLOW,ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF);
+l_interval tan     (const l_interval&) noexcept(false);
                                                 // Tan(x)
 //! Calculates \f$ \cot([x]) \f$
-l_interval cot     (const l_interval&) throw(ERROR_LINTERVAL_FAK_OVERFLOW,ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF);
+l_interval cot     (const l_interval&) noexcept(false);
                                                 // Cot(x)
 
 //! Calculates \f$ \arcsin([x]) \f$
-l_interval asin    (const l_interval&) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF);   
+l_interval asin    (const l_interval&) noexcept(false);   
                                                 // ASin(x)
 //! Calculates \f$ \arccos([x]) \f$
-l_interval acos    (const l_interval&) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF);   
+l_interval acos    (const l_interval&) noexcept(false);   
                                                 // ACos(x)
 //! Calculates \f$ \arctan([x]) \f$
 l_interval atan    (const l_interval&) throw(); // ATan(x)
@@ -69,7 +69,7 @@ l_interval atan    (const l_interval&) throw(); // ATan(x)
 l_interval acot    (const l_interval&) throw(); // ACot(x)
 
 //! Calculates \f$ \exp([x]) \f$
-l_interval exp     (const l_interval&) throw(ERROR_LINTERVAL_FAK_OVERFLOW);    
+l_interval exp     (const l_interval&) noexcept(false);    
                                                 // exp(x)
 //! Calculates \f$ \exp2([x]) \f$
 l_interval exp2(const l_interval &); // 2^x
@@ -82,7 +82,7 @@ l_interval expm1(const l_interval & x) throw(); // exp(x)-1;
 //! Calculates \f$ \exp(-[x]^2) \f$
 l_interval expmx2  (const l_interval&);         // e^(-x^2);
 //! Calculates \f$ \ln([x]) \f$
-l_interval ln      (const l_interval&) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF);
+l_interval ln      (const l_interval&) noexcept(false);
                                                 // Ln(x)
 //! Calculates \f$ \log2([x]) \f$
 l_interval log2(const l_interval &);
@@ -91,10 +91,10 @@ l_interval log10(const l_interval &);
 //! Calculates \f$ \ln(1+[x]) \f$
 l_interval lnp1    (const l_interval&) throw(); // ln(1+x)
 //! Calculates \f$ \sinh([x]) \f$
-l_interval sinh    (const l_interval&) throw(ERROR_LINTERVAL_FAK_OVERFLOW);   
+l_interval sinh    (const l_interval&) noexcept(false);   
                                                 // Sinh(x)
 //! Calculates \f$ \cosh([x]) \f$
-l_interval cosh    (const l_interval&) throw(ERROR_LINTERVAL_FAK_OVERFLOW);   
+l_interval cosh    (const l_interval&) noexcept(false);   
                                                 // Cosh(x)
 //! Calculates \f$ \tanh([x]) \f$
 l_interval tanh    (const l_interval&) throw(); // Tanh(x)
@@ -102,17 +102,17 @@ l_interval tanh    (const l_interval&) throw(); // Tanh(x)
 l_interval coth    (const l_interval&) throw(); // Coth(x)           
  
 //! Calculates \f$ \mbox{arcsinh}([x]) \f$
-l_interval asinh   (const l_interval&) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF,ERROR_LINTERVAL_FAK_OVERFLOW);  
+l_interval asinh   (const l_interval&) noexcept(false);  
                                                 // ASinh(x)
 //! Calculates \f$ \mbox{arccosh}([x]) \f$
 l_interval acosh   (const l_interval&) throw(); // ACosh(x)
 //! Calculates \f$ \arccos(1+[x]) \f$
 l_interval acoshp1 (const l_interval& x);
 //! Calculates \f$ \mbox{arctanh}([x]) \f$
-l_interval atanh   (const l_interval&) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF,ERROR_LINTERVAL_FAK_OVERFLOW);
+l_interval atanh   (const l_interval&) noexcept(false);
                                                 // ATanh(x)
 //! Calculates \f$ \mbox{arccoth}([x]) \f$
-l_interval acoth   (const l_interval&) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF,ERROR_LINTERVAL_FAK_OVERFLOW);  
+l_interval acoth   (const l_interval&) noexcept(false);  
                                                 // ACoth(x)
 
 //! Calculates \f$ \sqrt{1+[x]^2} \f$
@@ -121,7 +121,7 @@ l_interval sqrt1px2(const l_interval&) throw(); // Sqrt(1+x^2);
 l_interval sqrtx2y2(const l_interval&, const l_interval&) throw(); 
                                                 // Sqrt(x^2+y^2); 
 //! Calculates \f$ \sqrt{([x]+1)-1} \f$
-l_interval sqrtp1m1(const l_interval&) throw(STD_FKT_OUT_OF_DEF);
+l_interval sqrtp1m1(const l_interval&) noexcept(false);
                                                 // sqrtp1m1(x) calculates an inclusion of sqrt(x+1)-1
 //! Calculates \f$ \sqrt{[x]^2-1} \f$
 l_interval sqrtx2m1(const l_interval&);         // sqrt(x^2-1)

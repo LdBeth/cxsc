@@ -27,7 +27,7 @@ namespace cxsc {
 
 inline void l_interval::_allo(int nprec)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+   noexcept(false)
 #else
    throw()
 #endif
@@ -44,7 +44,7 @@ inline void l_interval::_allo(int nprec)
 
 inline l_interval::l_interval() 
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+   noexcept(false)
 #else
    throw()
 #endif
@@ -54,7 +54,7 @@ inline l_interval::l_interval()
 
 inline l_interval::l_interval(const l_interval & a) 
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC)
+   noexcept(false)
 #else
    throw()
 #endif
@@ -67,9 +67,9 @@ inline l_interval::l_interval(const l_interval & a)
       
 inline l_interval::l_interval(const real &a, const real &b) 
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_WRONG_STAGPREC,ERROR_LINTERVAL_EMPTY_INTERVAL)
+   noexcept(false)
 #else
-   throw(ERROR_LINTERVAL_EMPTY_INTERVAL)
+   noexcept(false)
 #endif
 {
    _allo(1);
@@ -149,7 +149,7 @@ inline interval _unchecked_interval(const l_real & a, const l_real & b) throw() 
 inline l_interval operator+(const l_interval &a) throw() { return a; }
 
 // LI-LI
-inline l_interval operator|(const l_interval & li1, const l_interval & li2) throw(ERROR_LINTERVAL_IN_EXACT_CH_OR_IS)
+inline l_interval operator|(const l_interval & li1, const l_interval & li2) noexcept(false)
 {  
    // liefert ConvexHull zweier Intervalle; Einschluss von aussen!
    l_interval li3, li4;    // innen, aussen
@@ -163,7 +163,7 @@ inline l_interval operator|(const l_interval & li1, const l_interval & li2) thro
    return li4;
 }  
 
-inline l_interval operator&(const l_interval & li1, const l_interval & li2) throw(ERROR_LINTERVAL_EMPTY_INTERVAL, ERROR_LINTERVAL_IN_EXACT_CH_OR_IS)
+inline l_interval operator&(const l_interval & li1, const l_interval & li2) noexcept(false)
 {  
    // liefert Intersection zweier Intervalle; Einschluss von aussen!
    l_interval li3, li4;    // innen, aussen
@@ -189,7 +189,7 @@ inline l_interval & operator -=(l_interval &a,const l_interval &b) throw() { ret
 inline l_interval & operator *=(l_interval &a,const l_interval &b) throw() { return a=a*b; }
 inline l_interval & operator /=(l_interval &a,const l_interval &b) throw() { return a=a/b; }
 inline l_interval & operator |=(l_interval &a,const l_interval &b) throw() { return a=a|b; }
-inline l_interval & operator &=(l_interval &a,const l_interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a=a&b; }
+inline l_interval & operator &=(l_interval &a,const l_interval &b) noexcept(false) { return a=a&b; }
 
 // LI-LR
 inline l_interval operator +(const l_interval &a,const l_real &b) throw() { return a+_l_interval(b); }
@@ -203,15 +203,15 @@ inline l_interval operator /(const l_real &a,const l_interval &b) throw() { retu
 inline l_interval operator |(const l_real &a,const l_interval &b) throw() { return _l_interval(a)|b; }
 inline l_interval operator |(const l_interval &a,const l_real &b) throw() { return a|_l_interval(b); }
 inline l_interval operator |(const l_real &a,const l_real &b)     throw() { return _l_interval(a)|_l_interval(b); }  // WARNING! For exact upper and lower bounds use the constructor!
-inline l_interval operator &(const l_real &a,const l_interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return _l_interval(a)&b; }
-inline l_interval operator &(const l_interval &a,const l_real &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a&_l_interval(b); }
+inline l_interval operator &(const l_real &a,const l_interval &b) noexcept(false) { return _l_interval(a)&b; }
+inline l_interval operator &(const l_interval &a,const l_real &b) noexcept(false) { return a&_l_interval(b); }
 
 inline l_interval & operator +=(l_interval &a,const l_real &b) throw() { return a=a+_l_interval(b); }      
 inline l_interval & operator -=(l_interval &a,const l_real &b) throw() { return a=a-_l_interval(b); }
 inline l_interval & operator *=(l_interval &a,const l_real &b) throw() { return a=a*_l_interval(b); }              
 inline l_interval & operator /=(l_interval &a,const l_real &b) throw() { return a=a/_l_interval(b); } 
 inline l_interval & operator |=(l_interval &a,const l_real &b) throw() { return a=a|_l_interval(b); }
-inline l_interval & operator &=(l_interval &a,const l_real &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a=a&_l_interval(b); }
+inline l_interval & operator &=(l_interval &a,const l_real &b) noexcept(false) { return a=a&_l_interval(b); }
  
 // LI-I
 inline l_interval operator +(const l_interval &a,const interval &b) throw() { return a+_l_interval(b); }
@@ -224,15 +224,15 @@ inline l_interval operator /(const l_interval &a,const interval &b) throw() { re
 inline l_interval operator /(const interval &a,const l_interval &b) throw() { return _l_interval(a)/b; } 
 inline l_interval operator |(const interval &a,const l_interval &b) throw() { return _l_interval(a)|b; }
 inline l_interval operator |(const l_interval &a,const interval &b) throw() { return a|_l_interval(b); }
-inline l_interval operator &(const interval &a,const l_interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return _l_interval(a)&b; }
-inline l_interval operator &(const l_interval &a,const interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a&_l_interval(b); }
+inline l_interval operator &(const interval &a,const l_interval &b) noexcept(false) { return _l_interval(a)&b; }
+inline l_interval operator &(const l_interval &a,const interval &b) noexcept(false) { return a&_l_interval(b); }
 
 inline l_interval & operator +=(l_interval &a,const interval &b) throw() { return a=a+_l_interval(b); }      
 inline l_interval & operator -=(l_interval &a,const interval &b) throw() { return a=a-_l_interval(b); }
 inline l_interval & operator *=(l_interval &a,const interval &b) throw() { return a=a*_l_interval(b); }              
 inline l_interval & operator /=(l_interval &a,const interval &b) throw() { return a=a/_l_interval(b); } 
 inline l_interval & operator |=(l_interval &a,const interval &b) throw() { return a=a|_l_interval(b); }
-inline l_interval & operator &=(l_interval &a,const interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a=a&_l_interval(b); }
+inline l_interval & operator &=(l_interval &a,const interval &b) noexcept(false) { return a=a&_l_interval(b); }
  
 // LI-R
 inline l_interval operator +(const l_interval &a,const real &b) throw() { return a+_l_interval(b); }
@@ -245,15 +245,15 @@ inline l_interval operator /(const l_interval &a,const real &b) throw() { return
 inline l_interval operator /(const real &a,const l_interval &b) throw() { return _l_interval(a)/b; } 
 inline l_interval operator |(const real &a,const l_interval &b) throw() { return _l_interval(a)|b; }
 inline l_interval operator |(const l_interval &a,const real &b) throw() { return a|_l_interval(b); }
-inline l_interval operator &(const real &a,const l_interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return _l_interval(a)&b; }
-inline l_interval operator &(const l_interval &a,const real &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a&_l_interval(b); }
+inline l_interval operator &(const real &a,const l_interval &b) noexcept(false) { return _l_interval(a)&b; }
+inline l_interval operator &(const l_interval &a,const real &b) noexcept(false) { return a&_l_interval(b); }
 
 inline l_interval & operator +=(l_interval &a,const real &b) throw() { return a=a+_l_interval(b); }      
 inline l_interval & operator -=(l_interval &a,const real &b) throw() { return a=a-_l_interval(b); }
 inline l_interval & operator *=(l_interval &a,const real &b) throw() { return a=a*_l_interval(b); }              
 inline l_interval & operator /=(l_interval &a,const real &b) throw() { return a=a/_l_interval(b); } 
 inline l_interval & operator |=(l_interval &a,const real &b) throw() { return a=a|_l_interval(b); }
-inline l_interval & operator &=(l_interval &a,const real &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a=a&_l_interval(b); }
+inline l_interval & operator &=(l_interval &a,const real &b) noexcept(false) { return a=a&_l_interval(b); }
 
 // LI-ID
 inline idotprecision operator +(const l_interval &a,const idotprecision &b) throw() { return _idotprecision(a)+b; }
@@ -262,13 +262,13 @@ inline idotprecision operator -(const l_interval &a,const idotprecision &b) thro
 inline idotprecision operator -(const idotprecision &a,const l_interval &b) throw() { return a-_idotprecision(b); }
 inline idotprecision operator |(const idotprecision &a,const l_interval &b) throw() { return a|_idotprecision(b); }
 inline idotprecision operator |(const l_interval &a,const idotprecision &b) throw() { return _idotprecision(a)|b; }
-inline idotprecision operator &(const idotprecision &a,const l_interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a&_idotprecision(b); }
-inline idotprecision operator &(const l_interval &a,const idotprecision &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return _idotprecision(a)&b; }
+inline idotprecision operator &(const idotprecision &a,const l_interval &b) noexcept(false) { return a&_idotprecision(b); }
+inline idotprecision operator &(const l_interval &a,const idotprecision &b) noexcept(false) { return _idotprecision(a)&b; }
 
 inline idotprecision & operator +=(idotprecision &a,const l_interval &b) throw() { return a+=_idotprecision(b); }      
 inline idotprecision & operator -=(idotprecision &a,const l_interval &b) throw() { return a-=_idotprecision(b); }
 inline idotprecision & operator |=(idotprecision &a,const l_interval &b) throw() { return a|=_idotprecision(b); }
-inline idotprecision & operator &=(idotprecision &a,const l_interval &b) throw(ERROR_IDOTPRECISION_EMPTY_INTERVAL) { return a&=idotprecision(b); }
+inline idotprecision & operator &=(idotprecision &a,const l_interval &b) noexcept(false) { return a&=idotprecision(b); }
 
 // LR-R
 inline l_interval operator |(const real &a,const l_real &b) throw() { return l_real(a)|b; }
@@ -289,8 +289,8 @@ inline l_interval operator /(const l_real &a,const interval &b) throw() { return
 inline l_interval operator /(const interval &a,const l_real &b) throw() { return _l_interval(a)/b; } 
 inline l_interval operator |(const interval &a,const l_real &b) throw() { return _l_interval(a)|b; }
 inline l_interval operator |(const l_real &a,const interval &b) throw() { return a|_l_interval(b); }
-inline l_interval operator &(const interval &a,const l_real &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return _l_interval(a)&b; }
-inline l_interval operator &(const l_real &a,const interval &b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a&_l_interval(b); }
+inline l_interval operator &(const interval &a,const l_real &b) noexcept(false) { return _l_interval(a)&b; }
+inline l_interval operator &(const l_real &a,const interval &b) noexcept(false) { return a&_l_interval(b); }
 
 // ---- Vergleichsop. ----
 inline bool operator !=(const l_interval &a,const l_interval &b) throw() { return !(a==b); }
@@ -406,10 +406,10 @@ inline l_real Sup (const l_interval &li) throw()
 
 inline int StagPrec(const l_interval &a) throw() { return a.prec; }
       
-inline l_interval & SetInf (l_interval & a, const l_real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a=_l_interval(b,Sup((const l_interval)a)); }
-inline l_interval & SetSup (l_interval & a, const l_real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return a=_l_interval(Inf((const l_interval)a),b); }
-inline l_interval & SetInf (l_interval & a, const real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return SetInf(a,_l_real(b)); }
-inline l_interval & SetSup (l_interval & a, const real & b) throw(ERROR_LINTERVAL_EMPTY_INTERVAL) { return SetSup(a,_l_real(b)); }
+inline l_interval & SetInf (l_interval & a, const l_real & b) noexcept(false) { return a=_l_interval(b,Sup((const l_interval)a)); }
+inline l_interval & SetSup (l_interval & a, const l_real & b) noexcept(false) { return a=_l_interval(Inf((const l_interval)a),b); }
+inline l_interval & SetInf (l_interval & a, const real & b) noexcept(false) { return SetInf(a,_l_real(b)); }
+inline l_interval & SetSup (l_interval & a, const real & b) noexcept(false) { return SetSup(a,_l_real(b)); }
 
 inline l_interval adjust(const l_interval & x) throw()
 {  
@@ -472,7 +472,7 @@ inline void accumulate(idotprecision & a, const interval & b, const l_interval &
 
 inline real & l_interval::operator[](int a)
 #if (CXSC_INDEX_CHECK)
-   throw(ERROR_LINTERVAL_ELEMENT_NOT_IN_LONG)
+   noexcept(false)
 #else
    throw()
 #endif

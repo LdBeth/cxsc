@@ -281,7 +281,7 @@ inline void times2pown_neg(lx_real&, const real&) throw();
 		 inline lx_real & operator *=(lx_real &, const real &) throw();
 
 //! Implementation of standard algebraic division operation
-		 lx_real operator / (const lx_real &, const lx_real &) throw(DIV_BY_ZERO);
+		 lx_real operator / (const lx_real &, const lx_real &) noexcept(false);
 //! Implementation of standard algebraic division operation
 		 inline lx_real operator / (const lx_real&, const l_real &) throw();
 //! Implementation of standard algebraic division operation

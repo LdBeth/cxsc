@@ -4,7 +4,7 @@
 **  Copyright (C) 1990-2000 Institut fuer Angewandte Mathematik,
 **                          Universitaet Karlsruhe, Germany
 **            (C) 2000-2014 Wiss. Rechnen/Softwaretechnologie
-**                          Universitaet Wuppertal, Germany   
+**                          Universitaet Wuppertal, Germany
 **
 **  This library is free software; you can redistribute it and/or
 **  modify it under the terms of the GNU Library General Public
@@ -27,24 +27,24 @@ namespace cxsc {
 
 // ---- Konstruktoren ----
 
-inline interval::interval(const real &a,const real &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL)
+inline interval::interval(const real &a,const real &b) noexcept(false)
                                                        : inf(a), sup(b)
 {
-   if (a > b) 
+   if (a > b)
       cxscthrow(ERROR_INTERVAL_EMPTY_INTERVAL("inline interval::interval(const real &a,const real &b)"));
 }
 
-/*inline interval::interval(int a,int b) throw(ERROR_INTERVAL_EMPTY_INTERVAL)
+/*inline interval::interval(int a,int b) noexcept(false)
                                       : inf(a), sup(b)
 {
-   if (a > b) 
+   if (a > b)
       cxscthrow(ERROR_INTERVAL_EMPTY_INTERVAL("inline interval::interval(int a,int b)"));
 }
 
-inline interval::interval(const double & a,const double & b) throw(ERROR_INTERVAL_EMPTY_INTERVAL)
+inline interval::interval(const double & a,const double & b) noexcept(false)
                                                              : inf(a), sup(b)
 {
-   if (a > b) 
+   if (a > b)
       cxscthrow(ERROR_INTERVAL_EMPTY_INTERVAL("inline interval::interval(const double & a,const double & b)"));
 }
 */
@@ -63,7 +63,7 @@ inline interval& interval::operator= (const real& a)
 
 \sa cxsc::interval::interval(const real&, const real&)
 */
-inline interval _unchecked_interval(const real& a, const real& b) 
+inline interval _unchecked_interval(const real& a, const real& b)
 {
   interval tmp;
   tmp.inf = a;
@@ -87,23 +87,23 @@ inline interval & operator /=(interval &a,const interval &b) throw() { return a=
 inline interval & operator /=(interval &a,const real &b)     throw() { return a=a/b; }
 
 
-inline interval operator |(const interval &a,const interval &b) throw() 
+inline interval operator |(const interval &a,const interval &b) throw()
 {
    return interval((a.inf<b.inf)?a.inf:b.inf,(a.sup>b.sup)?a.sup:b.sup);
 }
-inline interval operator &(const interval &a,const interval &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) 
+inline interval operator &(const interval &a,const interval &b) noexcept(false)
 {
    return interval((a.inf>b.inf)?a.inf:b.inf,(a.sup<b.sup)?a.sup:b.sup);
 }
-inline interval operator |(const real &a,const interval &b) throw() 
+inline interval operator |(const real &a,const interval &b) throw()
 {
    return interval((a<b.inf)?a:b.inf,(a>b.sup)?a:b.sup);
 }
-inline interval operator &(const real &a,const interval &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) 
+inline interval operator &(const real &a,const interval &b) noexcept(false)
 {
    return interval((a>b.inf)?a:b.inf,(a<b.sup)?a:b.sup);
 }
-inline interval operator |(const interval &a,const real &b) throw() 
+inline interval operator |(const interval &a,const real &b) throw()
 {
    return interval((a.inf<b)?a.inf:b,(a.sup>b)?a.sup:b);
 }
@@ -112,28 +112,28 @@ inline interval operator |(const real &a,const real &b) throw()
    if(a>b) return interval(b,a);
    else    return interval(a,b);
 }
-inline interval operator &(const interval &a,const real &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) 
+inline interval operator &(const interval &a,const real &b) noexcept(false)
 {
    return interval((a.inf>b)?a.inf:b,(a.sup<b)?a.sup:b);
 }
-inline interval & operator |=(interval &a,const interval &b) throw() 
+inline interval & operator |=(interval &a,const interval &b) throw()
 {
    a.inf=(a.inf<b.inf)?a.inf:b.inf,a.sup=(a.sup>b.sup)?a.sup:b.sup;
    return a;
 }
-inline interval & operator &=(interval &a,const interval &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) 
+inline interval & operator &=(interval &a,const interval &b) noexcept(false)
 {
    a.inf=(a.inf>b.inf)?a.inf:b.inf,a.sup=(a.sup<b.sup)?a.sup:b.sup;
    if(a.inf>a.sup)
       cxscthrow(ERROR_INTERVAL_EMPTY_INTERVAL("inline interval & operator &=(interval &a,const interval &b)"));
    return a;
 }
-inline interval & operator |=(interval &a,const real &b) throw() 
+inline interval & operator |=(interval &a,const real &b) throw()
 {
    a.inf=(a.inf<b)?a.inf:b,a.sup=(a.sup>b)?a.sup:b;
    return a;
 }
-inline interval & operator &=(interval &a,const real &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL) 
+inline interval & operator &=(interval &a,const real &b) noexcept(false)
 {
    a.inf=(a.inf>b)?a.inf:b,a.sup=(a.sup<b)?a.sup:b;
    if(a.inf>a.sup)
@@ -168,48 +168,48 @@ inline bool operator !=(const interval &a,const double &r)  throw() {   return(r
 // <,>,...
 inline bool operator <=(const interval &a,const interval &b) throw()
 {
-   return(a.inf>=b.inf && a.sup<=b.sup);   
+   return(a.inf>=b.inf && a.sup<=b.sup);
 }
 inline bool operator >=(const interval &a,const interval &b) throw()
 {
-   return(a.inf<=b.inf && a.sup>=b.sup);   
+   return(a.inf<=b.inf && a.sup>=b.sup);
 }
 inline bool operator <(const interval &a,const interval &b) throw()
 {
-   return(a.inf>b.inf && a.sup<b.sup);   
+   return(a.inf>b.inf && a.sup<b.sup);
 }
 inline bool operator >(const interval &a,const interval &b) throw()
 {
-   return(a.inf<b.inf && a.sup>b.sup);   
+   return(a.inf<b.inf && a.sup>b.sup);
 }
 
 inline bool operator <=(const real &a,const interval &b) throw()
 {
-   return(a>=b.inf && a<=b.sup);   
+   return(a>=b.inf && a<=b.sup);
 }
 inline bool operator >=(const real &a,const interval &b) throw()
 {
-   return(a<=b.inf && a>=b.sup);   
+   return(a<=b.inf && a>=b.sup);
 }
 inline bool operator <(const real &a,const interval &b) throw()
 {
-   return(a>b.inf && a<b.sup);   
+   return(a>b.inf && a<b.sup);
 }
 
 inline bool operator <=(const interval &a,const real &b) throw()
 {
-   return(a.inf>=b && a.sup<=b);   
+   return(a.inf>=b && a.sup<=b);
 }
 inline bool operator >=(const interval &a,const real &b) throw()
 {
-   return(a.inf<=b && a.sup>=b);   
+   return(a.inf<=b && a.sup>=b);
 }
 inline bool operator >(const interval &a,const real &b) throw()
 {
-   return(a.inf<b && a.sup>b);   
+   return(a.inf<b && a.sup>b);
 }
 
-inline bool operator !(const interval &a) throw() { return (a.inf <= 0.0 && a.sup >= 0.0); }  
+inline bool operator !(const interval &a) throw() { return (a.inf <= 0.0 && a.sup >= 0.0); }
 
 inline       real & Inf (interval& a)       throw() { return a.inf; }
 inline const real & Inf (const interval &a) throw() { return a.inf; }
@@ -229,17 +229,17 @@ inline interval abs(const interval &a) throw()
    real h2  = abs(a.sup);
 
    if (IsEmpty(a)) return a;
-   if (!a)         
+   if (!a)
       return interval(0.0, (h1 > h2) ? h1 : h2);
-   if (h1 > h2)    
+   if (h1 > h2)
       return interval(h2, h1);
 
-   return interval(h1, h2); 
+   return interval(h1, h2);
 }
 
 inline real diam(const interval & a) throw()
 {
-   return subup(a.sup,a.inf); 
+   return subup(a.sup,a.inf);
 }
 
 inline real Mid(const interval & a) throw()
@@ -254,44 +254,44 @@ inline void times2pown(interval& x, const int& n) throw()
     r1 = x.inf;  r2 = x.sup;
     j = expo(r1) + n;
     if (j >= -1021) r1 = comp(mant(r1),j);
-    else 
+    else
     {
-	j += 1021;
-	r1 = comp(mant(r1), -1021);
-	if (j<-53)
-	{
-	    if (sign(r1)>=0) r1 = 0;
-	    else r1 = -minreal;
-	} else 
-	    r1 = muld(r1,comp(0.5,j+1));
+    j += 1021;
+    r1 = comp(mant(r1), -1021);
+    if (j<-53)
+    {
+        if (sign(r1)>=0) r1 = 0;
+        else r1 = -minreal;
+    } else
+        r1 = muld(r1,comp(0.5,j+1));
     }
     j = expo(r2) + n;
     if (j >= -1021) r2 = comp(mant(r2),j);
-    else 
+    else
     {
-	j += 1021;
-	r2 = comp(mant(r2), -1021);
-	if (j<-53)
-	{
-	    if (sign(r2)>0) r2 = minreal;
-	    else r2 = 0;
-	} else r2 = mulu(r2,comp(0.5,j+1));
+    j += 1021;
+    r2 = comp(mant(r2), -1021);
+    if (j<-53)
+    {
+        if (sign(r2)>0) r2 = minreal;
+        else r2 = 0;
+    } else r2 = mulu(r2,comp(0.5,j+1));
     }
     x = _interval(r1,r2);
 } // times2pown(...)
 
 interval operator+ (const interval& a, const interval& b) throw()
   { return interval (adddown(a.inf,b.inf),addup(a.sup,b.sup)); }
-interval operator+ (const interval& a, const real& b) throw() 
+interval operator+ (const interval& a, const real& b) throw()
   { return interval (adddown(a.inf,b),addup(a.sup,b)); }
-interval operator+ (const real& a, const interval& b) throw() 
+interval operator+ (const real& a, const interval& b) throw()
   { return interval (adddown(a,b.inf),addup(a,b.sup)); }
 
-interval operator-  (const interval& a, const interval& b) throw() 
+interval operator-  (const interval& a, const interval& b) throw()
   { return interval ( subdown(a.inf,b.sup), subup(a.sup,b.inf)); }
-interval operator-  (const interval& a, const real& b) throw() 
+interval operator-  (const interval& a, const real& b) throw()
   { return interval ( subdown(a.inf,b), subup(a.sup,b)); }
-interval operator-  (const real& a, const interval& b) throw() 
+interval operator-  (const real& a, const interval& b) throw()
   { return interval ( subdown(a,b.sup), subup(a,b.inf)); }
 
   //------------------------------------------------------------------------
@@ -312,58 +312,58 @@ interval operator *(const interval& a, const interval& b) throw()
 {
    interval tmp;
 
-   if (sign(a.inf) >= 0) 
+   if (sign(a.inf) >= 0)
    {                                   // 1. Zeile der Entscheidungstabelle
       if (sign(b.inf) >= 0)
       {                                  //     1. Spalte: [ai*bi, as*bs]
          tmp.inf = multdown(a.inf,b.inf);
          tmp.sup = multup(a.sup,b.sup);
-      } else if (sign(b.sup) >= 0) 
+      } else if (sign(b.sup) >= 0)
       {                                  //     2. Spalte: [as*bi, as*bs]
          tmp.inf = multdown(a.sup,b.inf);
          tmp.sup = multup(a.sup,b.sup);
-      } else 
+      } else
       {                                  //     3. Spalte: [as*bi, ai*bs]
          tmp.inf = multdown(a.sup,b.inf);
          tmp.sup = multup(a.inf,b.sup);
       }
-   } else if (sign(a.sup) >= 0) 
+   } else if (sign(a.sup) >= 0)
    {                                   // 2. Zeile der Entscheidungstabelle
-      if (sign(b.inf) >= 0) 
+      if (sign(b.inf) >= 0)
       {                                  //     1. Spalte: [ai*bs, as*bs]
          tmp.inf = multdown(a.inf,b.sup);
          tmp.sup = multup(a.sup,b.sup);
-      } else if (sign(b.sup) >= 0) 
+      } else if (sign(b.sup) >= 0)
       {                                  //   2. Spalte: [min(ai*bs, as*bi),
          real hlp;                       //                 max(ai*ai, as*as)]
 
          tmp.inf = multdown(a.inf,b.sup);
          hlp     = multdown(a.sup,b.inf);
 
-         if (hlp < tmp.inf) 
+         if (hlp < tmp.inf)
             tmp.inf = hlp;
 
          tmp.sup = multup(a.inf,b.inf);
          hlp     = multup(a.sup,b.sup);
-         
-         if (hlp > tmp.sup) 
-            tmp.sup = hlp;               
-      } else 
+
+         if (hlp > tmp.sup)
+            tmp.sup = hlp;
+      } else
       {                                  //     3. Spalte: [as*bi, ai*bi]
          tmp.inf = multdown(a.sup,b.inf);
          tmp.sup = multup(a.inf,b.inf);
       }
-   } else 
+   } else
    {                                   // 3. Zeile der Entscheidungstabelle
-      if (sign(b.inf) >= 0) 
+      if (sign(b.inf) >= 0)
       {                                  //     1. Spalte: [ai*bs, as*bi]
          tmp.inf = multdown(a.inf,b.sup);
          tmp.sup = multup(a.sup,b.inf);
-      } else if (sign(b.sup) >= 0) 
+      } else if (sign(b.sup) >= 0)
       {                                  //   2. Spalte: [ai*bs, ai*bi]
          tmp.inf = multdown(a.inf,b.sup);
          tmp.sup = multup(a.inf,b.inf);
-      } else 
+      } else
       {                                  //     3. Spalte: [as*bs, ai*bi]
          tmp.inf = multdown(a.sup,b.sup);
          tmp.sup = multup(a.inf,b.inf);
@@ -384,42 +384,42 @@ interval operator *(const interval& a, const interval& b) throw()
   // ai,as < 0       I   ai/bi, as/bs   I   as/bi, ai/bs
   // ----------------+------------------+------------------
   //
-interval operator/  (const interval& a, const interval& b) throw(DIV_BY_ZERO)
+interval operator/  (const interval& a, const interval& b) noexcept(false)
 {
    interval tmp;
 
    if ((sign(b.inf) <= 0) && (sign(b.sup) >= 0))
-      cxscthrow(DIV_BY_ZERO("interval::interval operator/(const interval&,const interval&)"));   
+      cxscthrow(DIV_BY_ZERO("interval::interval operator/(const interval&,const interval&)"));
 
-   if (sign(a.inf) >= 0) 
+   if (sign(a.inf) >= 0)
    {                                    // 1. Zeile der Entscheidungstabelle
-      if (sign(b.inf) > 0) 
+      if (sign(b.inf) > 0)
       {                                 //     1. Spalte: [ai/bs, as/bi]
          tmp.inf = divdown(a.inf,b.sup);
          tmp.sup = divup(a.sup,b.inf);
-      } else 
+      } else
       {                                 //     2. Spalte: [as/bs, ai/bi]
          tmp.inf = divdown(a.sup,b.sup);
          tmp.sup = divup(a.inf,b.inf);
       }
-   } else if (sign(a.sup) >= 0) 
+   } else if (sign(a.sup) >= 0)
    {                                    // 2. Zeile der Entscheidungstabelle
-      if (sign(b.inf) > 0) 
+      if (sign(b.inf) > 0)
       {                                 //     1. Spalte: [ai/bi, as/bi]
          tmp.inf = divdown(a.inf,b.inf);
          tmp.sup = divup(a.sup,b.inf);
-      } else 
+      } else
       {                                 //     2. Spalte: [as/bs, ai/bs]
          tmp.inf = divdown(a.sup,b.sup);
          tmp.sup = divup(a.inf,b.sup);
       }
-   } else 
+   } else
    {                                    // 3. Zeile der Entscheidungstabelle
-      if (sign(b.inf) > 0) 
+      if (sign(b.inf) > 0)
       {                                 //     1. Spalte: [ai/bi, as/bs]
          tmp.inf = divdown(a.inf,b.inf);
          tmp.sup = divup(a.sup,b.sup);
-      } else 
+      } else
       {                                 //     2. Spalte: [as/bi, ai/bs]
          tmp.inf = divdown(a.sup,b.inf);
          tmp.sup = divup(a.inf,b.sup);
@@ -432,15 +432,15 @@ interval operator/  (const interval& a, const interval& b) throw(DIV_BY_ZERO)
 interval operator*  (const real& a, const interval& b) throw()
 {
    interval tmp;
-   if (sign(a) == 0) 
+   if (sign(a) == 0)
    {
       tmp.inf = 0.0;
-      tmp.sup = 0.0;      
-   } else if (sign(a) > 0) 
+      tmp.sup = 0.0;
+   } else if (sign(a) > 0)
    {
       tmp.inf = multdown(a,b.inf);
       tmp.sup = multup(a,b.sup);
-   } else // if (sign(a) < 0) 
+   } else // if (sign(a) < 0)
    {
       tmp.inf = multdown(a,b.sup);
       tmp.sup = multup(a,b.inf);
@@ -451,15 +451,15 @@ interval operator*  (const real& a, const interval& b) throw()
 interval operator*  (const interval& a, const real& b) throw()
 {
    interval tmp;
-   if (sign(b) == 0) 
+   if (sign(b) == 0)
    {
       tmp.inf = 0.0;
-      tmp.sup = 0.0;      
-   } else if (sign(b) > 0) 
+      tmp.sup = 0.0;
+   } else if (sign(b) > 0)
    {
       tmp.inf = multdown(a.inf,b);
       tmp.sup = multup(a.sup,b);
-   } else // if (sign(b) < 0) 
+   } else // if (sign(b) < 0)
    {
       tmp.inf = multdown(a.sup,b);
       tmp.sup = multup(a.inf,b);
@@ -472,4 +472,3 @@ interval operator/  (const interval& a, const real& b)  throw() { return (a / in
 
 
 } // namespace cxsc
-

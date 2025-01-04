@@ -53,7 +53,7 @@ interval::interval(const dotprecision & a) throw()
    rnd(a,inf,sup);
 }
 
-interval::interval(const dotprecision &a,const dotprecision &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL)
+interval::interval(const dotprecision &a,const dotprecision &b) noexcept(false)
 {
    inf=rnd(a,RND_DOWN);
    sup=rnd(b,RND_UP);
@@ -61,7 +61,7 @@ interval::interval(const dotprecision &a,const dotprecision &b) throw(ERROR_INTE
       cxscthrow(ERROR_INTERVAL_EMPTY_INTERVAL("interval::interval(const dotprecision &,const dotprecision &)"));   
 }
 
-interval::interval(const l_real &a,const l_real &b) throw(ERROR_INTERVAL_EMPTY_INTERVAL)
+interval::interval(const l_real &a,const l_real &b) noexcept(false)
 {
    dotprecision dot(a);
    inf=rnd(dot,RND_DOWN);

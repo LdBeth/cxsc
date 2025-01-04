@@ -34,7 +34,7 @@ namespace cxsc {
 #define  CXSC_Zero      0.
 #define  CXSC_MinusOne  -1.
 
-l_interval pow(const l_interval & x, const l_interval & e) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF)
+l_interval pow(const l_interval & x, const l_interval & e) noexcept(false)
 {
    int         stagsave = stagprec,
                stagmax = 19,
@@ -174,7 +174,7 @@ l_interval sqr(const l_interval & x)              // Sqr(x)
 }
 
 l_interval sqrt(const l_interval & x) 
-                         throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF) // Sqrt(x)
+                         noexcept(false) // Sqrt(x)
 {  // Blomquist: scaling with 2^ex is necessary if expo(Sup(dx)) is too small!
    int         stagsave = stagprec,
                stagmax = 30,
@@ -230,7 +230,7 @@ l_interval sqrt(const l_interval & x)
 }
 
 l_interval sqrt(const l_interval &x, int n) 
-                throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF) // Sqrt(x,n)
+                noexcept(false) // Sqrt(x,n)
 // -1073741822 <= n <= +1073741823, sonst autom. Programm-Abbruch
 // sqrt(x,n) jetzt mit Skalierung --> Hohe Genauigkeit in allen Bereichen!
 // Blomquist, 28.12.03;
@@ -373,7 +373,7 @@ l_interval sqrtx2y2(const l_interval& x, const l_interval& y) throw()
     return r;
 } // sqrtx2y2
 
-l_interval sqrtp1m1(const l_interval& x) throw(STD_FKT_OUT_OF_DEF)
+l_interval sqrtp1m1(const l_interval& x) noexcept(false)
 // sqrtp1m1(x) calculates an inclusion of sqrt(x+1)-1;
 // Blomquist, 05.08.03;
 {
@@ -394,7 +394,7 @@ l_interval sqrtp1m1(const l_interval& x) throw(STD_FKT_OUT_OF_DEF)
 } // sqrtp1m1
 
 
-l_interval sin(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)    // Sin(x)
+l_interval sin(const l_interval & x) noexcept(false)    // Sin(x)
 {
    int         stagsave = stagprec,
                stagmax = 19;
@@ -438,7 +438,7 @@ l_interval sin(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)    // S
    return y;
 }
 
-l_interval cos(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)   // Cos(x)
+l_interval cos(const l_interval & x) noexcept(false)   // Cos(x)
 {
    long int    mm = 6;
    int         stagsave = stagprec,
@@ -610,7 +610,7 @@ l_interval cos(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)   // Co
    return y;
 }
 
-l_interval tan(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW,ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF)   // Tan(x)
+l_interval tan(const l_interval & x) noexcept(false)   // Tan(x)
 {
    interval    dx = interval(x),
                einfachgenau;
@@ -654,7 +654,7 @@ l_interval tan(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW,ERROR_LI
    return y;
 }
 
-l_interval cot(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW,ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF)   // Cot(x)
+l_interval cot(const l_interval & x) noexcept(false)   // Cot(x)
 {
    interval    dx = interval(x),
                einfachgenau;
@@ -702,7 +702,7 @@ l_interval cot(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW,ERROR_LI
    return y;
 }
 
-l_interval asin(const l_interval & x) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF)  // ASin(x)
+l_interval asin(const l_interval & x) noexcept(false)  // ASin(x)
 {
    l_interval  t, ta, u, pihalbe,
                y;
@@ -764,7 +764,7 @@ l_interval asin(const l_interval & x) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF) 
    return y;
 }
 
-l_interval acos(const l_interval & x) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF)   // ACos(x)
+l_interval acos(const l_interval & x) noexcept(false)   // ACos(x)
 {
    bool        neg=false;
    l_interval  pi, s, y;
@@ -3535,7 +3535,7 @@ l_interval acot(const l_interval &x) throw()  // ACot(x)
    return y;
 }
 
-l_interval exp(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW) // exp(x)
+l_interval exp(const l_interval & x) noexcept(false) // exp(x)
 {
    long int    n = 2;
    int         stagsave = stagprec,
@@ -3757,7 +3757,7 @@ l_interval expmx2(const l_interval& x)
 
 int cxsc_zweihoch(int) throw();
 
-l_interval ln(const l_interval & x) throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF)    // Ln(x)
+l_interval ln(const l_interval & x) noexcept(false)    // Ln(x)
 { 
    int         stagsave = stagprec,
                stagmax = 19,
@@ -3973,7 +3973,7 @@ l_interval log10(const l_interval & x) // log10(x)
 	return y;
 }
 
-l_interval sinh(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)   // Sinh(x)
+l_interval sinh(const l_interval & x) noexcept(false)   // Sinh(x)
 {
    long int    n = 1;
    int         stagsave = stagprec,
@@ -4108,7 +4108,7 @@ l_interval sinh(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)   // S
    return y;
 }
 
-l_interval cosh(const l_interval & x) throw(ERROR_LINTERVAL_FAK_OVERFLOW)   // Cosh(x)
+l_interval cosh(const l_interval & x) noexcept(false)   // Cosh(x)
 {
    int         stagsave = stagprec,
                stagmax = 19;
@@ -4330,7 +4330,7 @@ l_interval acosh(const l_interval & x) throw()
 }
 
 l_interval asinh(const l_interval & x) 
-    throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF,ERROR_LINTERVAL_FAK_OVERFLOW) 
+    noexcept(false) 
 // ASinh(x) hier ohne zeitaufwendiges Newton-Verfahren, da die Funktion 
 // sqrt1px2(x) = sqrt(1+x*x) zur Verfuegung steht, die Overflow vermeidet!
 // Blomquist, 28.12.03;
@@ -4389,7 +4389,7 @@ l_interval asinh(const l_interval & x)
 } // asinh(x)
 
 l_interval atanh(const l_interval & x) 
-   throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF,ERROR_LINTERVAL_FAK_OVERFLOW) 
+   noexcept(false) 
 // ATanh(x), Blomquist 29.12.03;
 {
    int         stagsave = stagprec,
@@ -4430,7 +4430,7 @@ l_interval atanh(const l_interval & x)
 } // atanh
 
 l_interval acoth(const l_interval & x) 
-    throw(ERROR_LINTERVAL_STD_FKT_OUT_OF_DEF,ERROR_LINTERVAL_FAK_OVERFLOW)
+    noexcept(false)
 // Acoth(x) hier ohne das langsame Newtonverfahren; Fue grosse x gilt:
 // Acoth = 0.5*ln(1+2/(x-1));  Blomquist, 28.12.03;
 {

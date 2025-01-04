@@ -139,15 +139,15 @@ class cidotprecision
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       friend inline cidotprecision _cidotprecision(const idotprecision &,const idotprecision &) throw();
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-      friend inline cidotprecision _cidotprecision(const cdotprecision &,const cdotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision _cidotprecision(const cdotprecision &,const cdotprecision &) noexcept(false);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       friend inline cidotprecision _cidotprecision(const idotprecision &,const dotprecision &) throw();
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-      friend inline cidotprecision _cidotprecision(const cdotprecision &,const dotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision _cidotprecision(const cdotprecision &,const dotprecision &) noexcept(false);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       friend inline cidotprecision _cidotprecision(const dotprecision &,const idotprecision &) throw();
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
-      friend inline cidotprecision _cidotprecision(const dotprecision &,const cdotprecision&) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision _cidotprecision(const dotprecision &,const cdotprecision&) noexcept(false);
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
       friend inline cidotprecision _cidotprecision(const cdotprecision &) throw();
       //! Deprecated typecast, which only exist for the reason of compatibility with older versions of C-XSC
@@ -172,17 +172,17 @@ class cidotprecision
 
       // ---- Ausgabefunkt. ---------------------------------------
       //! Implementation of standard input method
-      friend std::istream& operator >> (std::istream& s, cidotprecision& a)       throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend std::istream& operator >> (std::istream& s, cidotprecision& a)       noexcept(false);
       //! Implementation of standard output method
       friend std::ostream& operator << (std::ostream& s, const cidotprecision& a) throw();
       //! Implementation of standard input method
-      friend std::string&  operator >> (std::string&  s, cidotprecision& a)       throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend std::string&  operator >> (std::string&  s, cidotprecision& a)       noexcept(false);
       //! Implementation of standard output method
       friend std::string&  operator << (std::string&  s, const cidotprecision& a) throw();
       //! Implementation of standard input method
-      friend void          operator >> (const std::string &s,cidotprecision& a)   throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend void          operator >> (const std::string &s,cidotprecision& a)   noexcept(false);
       //! Implementation of standard input method
-      friend void          operator >> (const char *s       ,cidotprecision& a)   throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend void          operator >> (const char *s       ,cidotprecision& a)   noexcept(false);
 
       // ---- Standardfunkt ---- (arithmetische Operatoren)
       //! Implementation of standard algebraic negative sign operation
@@ -197,7 +197,7 @@ class cidotprecision
       //! Returns the convex hull of the arguments
       friend inline cidotprecision operator |(const cidotprecision &,const cidotprecision &) throw();
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const cidotprecision &,const cidotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const cidotprecision &,const cidotprecision &) noexcept(false);
 
       //! Returns the convex hull of the arguments
       friend inline cidotprecision operator |(const cdotprecision &,const cdotprecision &)  throw();
@@ -209,7 +209,7 @@ class cidotprecision
       //! Allocates the convex hull of the arguments to the first argument
       friend inline cidotprecision & operator |=(cidotprecision &, const cidotprecision &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline cidotprecision & operator &=(cidotprecision &, const cidotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision & operator &=(cidotprecision &, const cidotprecision &) noexcept(false);
 
       // CID-R
       
@@ -226,9 +226,9 @@ class cidotprecision
       //! Returns the convex hull of the arguments
       friend inline cidotprecision operator |(const real &,const cidotprecision &) throw();
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const cidotprecision &,const real &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const cidotprecision &,const real &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const real &,const cidotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const real &,const cidotprecision &) noexcept(false);
       
       //! Implementation of standard algebraic addition and allocation operation
       friend inline cidotprecision & operator +=(cidotprecision &, const real &) throw();
@@ -237,7 +237,7 @@ class cidotprecision
       //! Allocates the convex hull of the arguments to the first argument
       friend inline cidotprecision & operator |=(cidotprecision &, const real &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline cidotprecision & operator &=(cidotprecision &, const real &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision & operator &=(cidotprecision &, const real &) noexcept(false);
       
       // CID-C
 
@@ -254,9 +254,9 @@ class cidotprecision
       //! Returns the convex hull of the arguments
       friend inline cidotprecision operator |(const complex &,const cidotprecision &) throw();
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const cidotprecision &,const complex &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const cidotprecision &,const complex &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const complex &,const cidotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const complex &,const cidotprecision &) noexcept(false);
       
 
       //! Implementation of standard algebraic addition and allocation operation
@@ -266,7 +266,7 @@ class cidotprecision
       //! Allocates the convex hull of the arguments to the first argument
       friend inline cidotprecision & operator |=(cidotprecision &, const complex &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline cidotprecision & operator &=(cidotprecision &, const complex &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision & operator &=(cidotprecision &, const complex &) noexcept(false);
       
       // CID-I
 
@@ -283,9 +283,9 @@ class cidotprecision
       //! Returns the convex hull of the arguments
       friend inline cidotprecision operator |(const interval &,const cidotprecision &) throw();
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const cidotprecision &,const interval &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const cidotprecision &,const interval &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const interval &,const cidotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const interval &,const cidotprecision &) noexcept(false);
       
       //! Implementation of standard algebraic addition and allocation operation
       friend inline cidotprecision & operator +=(cidotprecision &, const interval &) throw();
@@ -294,7 +294,7 @@ class cidotprecision
       //! Allocates the convex hull of the arguments to the first argument
       friend inline cidotprecision & operator |=(cidotprecision &, const interval &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline cidotprecision & operator &=(cidotprecision &, const interval &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision & operator &=(cidotprecision &, const interval &) noexcept(false);
 
       // CID-CI
 
@@ -311,9 +311,9 @@ class cidotprecision
       //! Returns the convex hull of the arguments
       friend inline cidotprecision operator |(const cinterval &,const cidotprecision &) throw();
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const cidotprecision &,const cinterval &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const cidotprecision &,const cinterval &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const cinterval &,const cidotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const cinterval &,const cidotprecision &) noexcept(false);
       
       //! Implementation of standard algebraic addition and allocation operation
       friend inline cidotprecision & operator +=(cidotprecision &, const cinterval &) throw();
@@ -322,7 +322,7 @@ class cidotprecision
       //! Allocates the convex hull of the arguments to the first argument
       friend inline cidotprecision & operator |=(cidotprecision &, const cinterval &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline cidotprecision & operator &=(cidotprecision &, const cinterval &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision & operator &=(cidotprecision &, const cinterval &) noexcept(false);
       
       // CID-D
       
@@ -339,9 +339,9 @@ class cidotprecision
       //! Returns the convex hull of the arguments
       friend inline cidotprecision operator |(const dotprecision &,const cidotprecision &) throw();
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const cidotprecision &,const dotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const cidotprecision &,const dotprecision &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const dotprecision &,const cidotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const dotprecision &,const cidotprecision &) noexcept(false);
       
       //! Implementation of standard algebraic addition and allocation operation
       friend inline cidotprecision & operator +=(cidotprecision &, const dotprecision &) throw();
@@ -350,7 +350,7 @@ class cidotprecision
       //! Allocates the convex hull of the arguments to the first argument
       friend inline cidotprecision & operator |=(cidotprecision &, const dotprecision &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline cidotprecision & operator &=(cidotprecision &, const dotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision & operator &=(cidotprecision &, const dotprecision &) noexcept(false);
       
       // CID-CD
 
@@ -367,9 +367,9 @@ class cidotprecision
       //! Returns the convex hull of the arguments
       friend inline cidotprecision operator |(const cdotprecision &,const cidotprecision &) throw();
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const cidotprecision &,const cdotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const cidotprecision &,const cdotprecision &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const cdotprecision &,const cidotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const cdotprecision &,const cidotprecision &) noexcept(false);
       
 
       //! Implementation of standard algebraic addition and allocation operation
@@ -379,7 +379,7 @@ class cidotprecision
       //! Allocates the convex hull of the arguments to the first argument
       friend inline cidotprecision & operator |=(cidotprecision &, const cdotprecision &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline cidotprecision & operator &=(cidotprecision &, const cdotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision & operator &=(cidotprecision &, const cdotprecision &) noexcept(false);
       
       // CID-ID
 
@@ -396,9 +396,9 @@ class cidotprecision
       //! Returns the convex hull of the arguments
       friend inline cidotprecision operator |(const idotprecision &,const cidotprecision &) throw();
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const cidotprecision &,const idotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const cidotprecision &,const idotprecision &) noexcept(false);
       //! Returns the intersection of the arguments
-      friend inline cidotprecision operator &(const idotprecision &,const cidotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision operator &(const idotprecision &,const cidotprecision &) noexcept(false);
       
       //! Implementation of standard algebraic addition and allocation operation
       friend inline cidotprecision & operator +=(cidotprecision &, const idotprecision &) throw();
@@ -407,7 +407,7 @@ class cidotprecision
       //! Allocates the convex hull of the arguments to the first argument
       friend inline cidotprecision & operator |=(cidotprecision &, const idotprecision &) throw();
       //! Allocates the intersection of the arguments to the first argument
-      friend inline cidotprecision & operator &=(cidotprecision &, const idotprecision &) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision & operator &=(cidotprecision &, const idotprecision &) noexcept(false);
 
       // ---- Vergleichsop. ----
       //! Implementation of standard negation operation
@@ -653,21 +653,21 @@ class cidotprecision
       //! Returns the supremum of a complex dotprecison interval
       friend inline cdotprecision   Sup(const cidotprecision&) throw();
       //! Returns the complex dotprecison interval with the new given infimum value
-      friend inline cidotprecision& SetInf(cidotprecision&, const cdotprecision&) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision& SetInf(cidotprecision&, const cdotprecision&) noexcept(false);
       //! Returns the complex dotprecison interval with the new given supremum value
-      friend inline cidotprecision& SetSup(cidotprecision&, const cdotprecision&) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision& SetSup(cidotprecision&, const cdotprecision&) noexcept(false);
       //! Returns the complex dotprecison interval with the new given infimum value
-      friend inline cidotprecision& SetInf(cidotprecision&, const dotprecision&) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision& SetInf(cidotprecision&, const dotprecision&) noexcept(false);
       //! Returns the complex dotprecison interval with the new given supremum value
-      friend inline cidotprecision& SetSup(cidotprecision&, const dotprecision&) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision& SetSup(cidotprecision&, const dotprecision&) noexcept(false);
       //! Returns the complex dotprecison interval with the new given infimum value
-      friend inline cidotprecision& SetInf(cidotprecision&, const complex&) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision& SetInf(cidotprecision&, const complex&) noexcept(false);
       //! Returns the complex dotprecison interval with the new given supremum value
-      friend inline cidotprecision& SetSup(cidotprecision&, const complex&) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision& SetSup(cidotprecision&, const complex&) noexcept(false);
       //! Returns the complex dotprecison interval with the new given infimum value
-      friend inline cidotprecision& SetInf(cidotprecision&, const real&) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision& SetInf(cidotprecision&, const real&) noexcept(false);
       //! Returns the complex dotprecison interval with the new given supremum value
-      friend inline cidotprecision& SetSup(cidotprecision&, const real&) throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+      friend inline cidotprecision& SetSup(cidotprecision&, const real&) noexcept(false);
       //! Returns the complex dotprecison interval with the unchecked new given infimum value
       friend inline cidotprecision& UncheckedSetInf(cidotprecision&, const cdotprecision&) throw();
       //! Returns the complex dotprecison interval with the unchecked new given supremum value
@@ -775,12 +775,12 @@ class cidotprecision
 // ----                                                                   ----
 // ---------------------------------------------------------------------------
 
-std::istream& operator >> (std::istream& s, cidotprecision& a)       throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+std::istream& operator >> (std::istream& s, cidotprecision& a)       noexcept(false);
 std::ostream& operator << (std::ostream& s, const cidotprecision& a) throw();
-std::string&  operator >> (std::string&  s, cidotprecision& a)       throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+std::string&  operator >> (std::string&  s, cidotprecision& a)       noexcept(false);
 std::string&  operator << (std::string&  s, const cidotprecision& a) throw();
-void          operator >> (const std::string &s,cidotprecision& a)   throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
-void          operator >> (const char *s       ,cidotprecision& a)   throw(ERROR_CIDOTPRECISION_EMPTY_INTERVAL);
+void          operator >> (const std::string &s,cidotprecision& a)   noexcept(false);
+void          operator >> (const char *s       ,cidotprecision& a)   noexcept(false);
 
 void accumulate  (cidotprecision&, const cinterval&, const cinterval&) throw();
 
