@@ -33,11 +33,7 @@
 #include <fenv.h>
 #endif
 
-#if ROUND_C96_SAVE+ROUND_C96_QUICK
-#include <fenv96.h>
-#endif
-
-#if SUN4_FORTE&&(ROUND_C96_SAVE+ROUND_C96_QUICK+ROUND_C99_SAVE+ROUND_C99_QUICK)
+#if SUN4_FORTE&&(ROUND_C99_SAVE+ROUND_C99_QUICK)
 #if SUN_STUDIO_10
 extern "C"{ void presub(){} }
 #else
@@ -55,12 +51,8 @@ cxsc_status::cxsc_status()                     //constructor is private
 { 
 //   std::cout << "  *** class C-XSC Status available *** " << std::endl;
 
-#if ROUND_C96_SAVE+ROUND_C96_QUICK+ROUND_C99_SAVE+ROUND_C99_QUICK
-#if SUN4_FORTE
-  fex_set_handling(FEX_COMMON,FEX_NOHANDLER,presub);
-#else
+#if ROUND_C99_SAVE+ROUND_C99_QUICK
   feenableexcept(FE_DIVBYZERO|FE_OVERFLOW|FE_INVALID); //(***)
-#endif
 #endif
 }
 

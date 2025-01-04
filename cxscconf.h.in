@@ -32,8 +32,6 @@
 #cmakedefine DEC_ALPHA_C	@DEC_ALPHA_C@
 #cmakedefine ROUND_C99_SAVE	@ROUND_C99_SAVE@
 #cmakedefine ROUND_C99_QUICK	@ROUND_C99_QUICK@
-#cmakedefine ROUND_C96_SAVE	@ROUND_C96_SAVE@
-#cmakedefine ROUND_C96_QUICK	@ROUND_C96_QUICK@
 #cmakedefine ROUND_ASM	@ROUND_ASM@
 #cmakedefine GNU_X86_64	@GNU_X86_64@
 #cmakedefine CXSC_x86_64	@CXSC_x86_64@

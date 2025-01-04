@@ -48,7 +48,10 @@ include_directories(
 
 # Rounding mode options
 if(NOT WIN32)
-  if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "ppc64")
+  if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" OR
+    ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" OR
+    ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "ppc64" OR
+    ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "arm64")
     option(ROUNDING_ASM "Use assembler routines for rounding" ON)
     if(NOT ROUNDING_ASM)
       option(ROUNDING_HARD "Use hardware support for IEEE 759 arithmetic" ON)
@@ -56,13 +59,10 @@ if(NOT WIN32)
         option(ROUNDING_QUICK "Use the fast but critical hardware IEEE arithmetic" OFF)
       endif(ROUNDING_HARD)
     endif(NOT ROUNDING_ASM)
-  elseif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "arm64")
-    option(ROUNDING_ASM "Use assembler routines for rounding" OFF)
-    option(ROUNDING_HARD "Use hardware support for IEEE 759 arithmetic" ON)
-    if(ROUNDING_HARD)
-      option(ROUNDING_QUICK "Use the fast but critical hardware IEEE arithmetic" OFF)
-    endif(ROUNDING_HARD)
-  endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "ppc64")
+  endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" OR
+    ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" OR
+    ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "ppc64" OR
+    ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "arm64")
 else(NOT WIN32)
   option(ROUNDING_HARD "Use hardware support for IEEE 759 arithmetic" ON)
   if(ROUNDING_HARD)

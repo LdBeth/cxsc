@@ -204,13 +204,6 @@ inline real Max(const real & a, const real & b) { return a>b?a:b; }
 
 #endif
 
-#if ROUND_C96_SAVE+ROUND_C96_QUICK
-#include <fenv96.h>
-#define fegetround fegetround96
-#define fesetround fesetround96
-#endif
-
-
 namespace cxsc {
 
 inline real addup(const real &x, const real &y)
@@ -219,7 +212,7 @@ inline real addup(const real &x, const real &y)
 		double ret;
 		ret = ra_addu(x.w,y.w);
 		return real(ret);	        	
-	#elif ROUND_C99_SAVE+ROUND_C96_SAVE
+	#elif ROUND_C99_SAVE
                 int mode;
 		mode=fegetround();
                 fesetround(FE_UPWARD);
@@ -227,7 +220,7 @@ inline real addup(const real &x, const real &y)
 		ret = x.w + y.w;
                 fesetround(mode);
 		return real(ret);
-	#elif ROUND_C99_QUICK+ROUND_C96_QUICK
+	#elif ROUND_C99_QUICK
 	        fesetround(FE_UPWARD);
                 return( x.w + y.w);
     #elif _MSC_VER
@@ -252,7 +245,7 @@ inline real adddown(const real &x, const real &y)
 		double ret;
 		ret = ra_addd(x.w,y.w);
 		return real(ret);
-	#elif ROUND_C99_SAVE+ROUND_C96_SAVE
+	#elif ROUND_C99_SAVE
                 int mode;
 		mode=fegetround();
                 fesetround(FE_DOWNWARD);
@@ -260,7 +253,7 @@ inline real adddown(const real &x, const real &y)
 		ret = x.w + y.w;
                 fesetround(mode);
 		return real(ret);
-	#elif ROUND_C99_QUICK+ROUND_C96_QUICK
+	#elif ROUND_C99_QUICK
 	        fesetround(FE_DOWNWARD);
                 return( x.w + y.w);
     #elif _MSC_VER
@@ -285,7 +278,7 @@ inline real subup(const real &x, const real &y)
 	        double ret;
 	        ret = ra_subu(x.w,y.w);
 	    	return real(ret);
-	#elif ROUND_C99_SAVE+ROUND_C96_SAVE
+	#elif ROUND_C99_SAVE
                 int mode;
 		mode=fegetround();
                 fesetround(FE_UPWARD);
@@ -293,7 +286,7 @@ inline real subup(const real &x, const real &y)
 		ret = x.w - y.w;
                 fesetround(mode);
 		return real(ret);
-	#elif ROUND_C99_QUICK+ROUND_C96_QUICK
+	#elif ROUND_C99_QUICK
 	        fesetround(FE_UPWARD);
                 return( x.w - y.w);
     #elif _MSC_VER
@@ -318,7 +311,7 @@ inline real subdown(const real &x, const real &y)
 		double ret;
 		ret = ra_subd(x.w,y.w);
         	return real(ret);		        	
-	#elif ROUND_C99_SAVE+ROUND_C96_SAVE
+	#elif ROUND_C99_SAVE
                 int mode;
 		mode=fegetround();
                 fesetround(FE_DOWNWARD);
@@ -326,7 +319,7 @@ inline real subdown(const real &x, const real &y)
 		ret = x.w - y.w;
                 fesetround(mode);
 		return real(ret);
-	#elif ROUND_C99_QUICK+ROUND_C96_QUICK
+	#elif ROUND_C99_QUICK
 	        fesetround(FE_DOWNWARD);
                 return( x.w - y.w);
     #elif _MSC_VER
@@ -351,7 +344,7 @@ inline real multup(const real &x, const real &y)
 	        double ret;
 	        ret = ra_mulu(x.w,y.w);
         	return real(ret);
-	#elif ROUND_C99_SAVE+ROUND_C96_SAVE
+	#elif ROUND_C99_SAVE
                 int mode;
 		mode=fegetround();
                 fesetround(FE_UPWARD);
@@ -359,7 +352,7 @@ inline real multup(const real &x, const real &y)
 		ret = x.w * y.w;
                 fesetround(mode);
 		return real(ret);
-	#elif ROUND_C99_QUICK+ROUND_C96_QUICK
+	#elif ROUND_C99_QUICK
 	        fesetround(FE_UPWARD);
                 return( x.w * y.w);
     #elif _MSC_VER
@@ -384,7 +377,7 @@ inline real multdown(const real &x, const real &y)
 	        double ret;
 	        ret = ra_muld(x.w,y.w);
 	    	return real(ret);
-	#elif ROUND_C99_SAVE+ROUND_C96_SAVE
+	#elif ROUND_C99_SAVE
                 int mode;
 		mode=fegetround();
                 fesetround(FE_DOWNWARD);
@@ -392,7 +385,7 @@ inline real multdown(const real &x, const real &y)
 		ret = x.w * y.w;
                 fesetround(mode);
 		return real(ret);
-	#elif ROUND_C99_QUICK+ROUND_C96_QUICK
+	#elif ROUND_C99_QUICK
 	        fesetround(FE_DOWNWARD);
                 return( x.w * y.w);
     #elif _MSC_VER
@@ -417,7 +410,7 @@ inline real divup(const real &x, const real &y)
 		double ret;
 	        ret = ra_divu(x.w,y.w);
         	return real(ret);
-	#elif ROUND_C99_SAVE+ROUND_C96_SAVE
+	#elif ROUND_C99_SAVE
                 int mode;
 		mode=fegetround();
                 fesetround(FE_UPWARD);
@@ -425,7 +418,7 @@ inline real divup(const real &x, const real &y)
 		ret = x.w / y.w;
                 fesetround(mode);
 		return real(ret);
-	#elif ROUND_C99_QUICK+ROUND_C96_QUICK
+	#elif ROUND_C99_QUICK
 	        fesetround(FE_UPWARD);
                 return( x.w / y.w);
     #elif _MSC_VER
@@ -450,7 +443,7 @@ inline real divdown(const real &x, const real &y)
 		double ret;
 	        ret = ra_divd(x.w,y.w);
         	return real(ret);
-	#elif ROUND_C99_SAVE+ROUND_C96_SAVE
+	#elif ROUND_C99_SAVE
                 int mode;
 		mode=fegetround();
                 fesetround(FE_DOWNWARD);
@@ -458,7 +451,7 @@ inline real divdown(const real &x, const real &y)
 		ret = x.w / y.w;
                 fesetround(mode);
 		return real(ret);
-	#elif ROUND_C99_QUICK+ROUND_C96_QUICK
+	#elif ROUND_C99_QUICK
 	        fesetround(FE_DOWNWARD);
                 return( x.w / y.w);
     #elif _MSC_VER
