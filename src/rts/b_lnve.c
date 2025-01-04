@@ -257,7 +257,8 @@ dynamic *Larg;
 
    if (rc != 0) ERREXIT(RESUL,266,poolvars);
 
-   if ((rc = COPY_(y,Res)) != 0)  ERREXIT(rc,268,poolvars);
+   COPY_(y,Res);
+   if (rc != 0)  ERREXIT(rc,268,poolvars);
 
    Maxl = Currprec+2;
 
