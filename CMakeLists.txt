@@ -240,20 +240,18 @@ endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" AND CMAKE_COMPILER_IS_GNUCXX)
 
 #Add static or shared library to build
 if(NOT WIN32)
-  if(BUILD_SHARED)
-    add_library(cxscShared SHARED
-      ${cxsc_src}
-      ${rts_src}
-      ${fi_lib_src}
-      ${ctoolbox_src}
-    )
-  endif(BUILD_SHARED)
-  add_library(cxsc STATIC
+  add_library(cxsclibobj OBJECT
     ${cxsc_src}
     ${rts_src}
     ${fi_lib_src}
     ${ctoolbox_src}
   )
+  if(BUILD_SHARED)
+    add_library(cxscShared SHARED)
+    target_link_libraries(cxscShared cxsclibobj)
+  endif(BUILD_SHARED)
+  add_library(cxsc STATIC)
+  target_link_libraries(cxsc cxsclibobj)
 else(NOT WIN32)
   # on Windows only a static version of the library can be built.
   add_library(cxsc STATIC

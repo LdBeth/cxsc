@@ -63,11 +63,11 @@ std::string realToHex(const real& a)
 
    for (i=0; i < realwidth-19; i++) cs[i] = ' ';
    cs[i] = 0;
-   sprintf (&cs[strlen(cs)], "%s", ((b[HIGHREAL] & 0x80000000L) ? "-" : "+"));
-   sprintf (&cs[strlen(cs)],"%c",   '1');
-   sprintf (&cs[strlen(cs)],"%05lX", (b[HIGHREAL] & 0xFFFFFL));
-   sprintf (&cs[strlen(cs)],"%08lX",(long unsigned int)(b[LOWREAL]));
-   sprintf (&cs[strlen(cs)],"e%03X",(unsigned int)((b[HIGHREAL] >> 20) & 0x7FF));
+   snprintf (&cs[strlen(cs)], 2, "%s", ((b[HIGHREAL] & 0x80000000L) ? "-" : "+"));
+   snprintf (&cs[strlen(cs)], 2, "%c",   '1');
+   snprintf (&cs[strlen(cs)], 10, "%05lX", (b[HIGHREAL] & 0xFFFFFL));
+   snprintf (&cs[strlen(cs)], 10, "%08lX",(long unsigned int)(b[LOWREAL]));
+   snprintf (&cs[strlen(cs)], 10, "e%03X",(unsigned int)((b[HIGHREAL] >> 20) & 0x7FF));
    return string(cs);
 }
 
@@ -89,11 +89,11 @@ std::string & operator<<(std::string &s, const real& a) throw()
 
       for (i=0; i < realwidth-19; i++) cs[i] = ' ';
       cs[i] = 0;
-      sprintf (&cs[strlen(cs)], "%s", ((b[HIGHREAL] & 0x80000000L) ? "-" : "+"));
-      sprintf (&cs[strlen(cs)],"%c",   '1');
-      sprintf (&cs[strlen(cs)],"%05lX", (b[HIGHREAL] & 0xFFFFFL));
-      sprintf (&cs[strlen(cs)],"%08lX",(long unsigned int)(b[LOWREAL]));
-      sprintf (&cs[strlen(cs)],"e%03X",(unsigned int)((b[HIGHREAL] >> 20) & 0x7FF));
+      snprintf (&cs[strlen(cs)], 2, "%s", ((b[HIGHREAL] & 0x80000000L) ? "-" : "+"));
+      snprintf (&cs[strlen(cs)], 2, "%c",   '1');
+      snprintf (&cs[strlen(cs)], 10,"%05lX", (b[HIGHREAL] & 0xFFFFFL));
+      snprintf (&cs[strlen(cs)], 10,"%08lX",(long unsigned int)(b[LOWREAL]));
+      snprintf (&cs[strlen(cs)], 10,"e%03X",(unsigned int)((b[HIGHREAL] >> 20) & 0x7FF));
       s+=cs;
    } else if (ioflags.isset(IOFlags::rndnone))
    {
@@ -103,11 +103,11 @@ std::string & operator<<(std::string &s, const real& a) throw()
       else 
       {
          if (realdigits && realwidth)
-            sprintf (cs, "%*.*g", realwidth, realdigits, a.w); // no need for "lg"
+           snprintf (cs, realwidth+10, "%*.*g", realwidth, realdigits, a.w); // no need for "lg"
          else if (realwidth)
-            sprintf (cs, "%*g", realwidth, a.w);
+           snprintf (cs, realwidth+10, "%*g", realwidth, a.w);
          else
-            sprintf (cs, "%g", a.w);
+           snprintf (cs, 30, "%g", a.w);
          s+=cs;
       }
    } else
