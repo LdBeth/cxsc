@@ -49,7 +49,7 @@ _PROTOTYPE(a_btyp   y_yxch, (a_intg index,y_bnds range));
 a_VOID   y_inxc(y_dscp d,...);
 a_VOID   y_inxn(y_dscp d,...);
 a_VOID   y_suba(a_VOID m,a_VOID s,a_char *mode,...);
-a_VOID   y_stat(y_dscp d,a_VOID s,size_t z,a_byte dim,...);
+a_VOID   y_stat(y_dscp d,a_VOID s,size_t z,size_t dim,...);
 a_VOID   y_yxcn(y_dscp d,...);
 a_VOID   y_ynxn(y_dscp d,...);
 void     y_new (y_dscp d,...);

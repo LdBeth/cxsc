@@ -58,7 +58,7 @@
 
 #ifdef LINT_ARGS
 #if C_P_7
-local a_VOID y_stat(y_dscp d,a_VOID s,size_t z,a_byte dim,...)
+local a_VOID y_stat(y_dscp d,a_VOID s,size_t z,size_t dim,...)
 #else
 local a_VOID y_stat(d,s,z,dim,e_args)
 
@@ -88,7 +88,7 @@ e_list
         /* dynamic array descriptor                             */
         ((y_desc *)d)->destroy = ((y_desc *)d)->subarr = FALSE;
 
-        ((y_desc *)d)->numdim = dim;
+        ((y_desc *)d)->numdim = (a_byte)dim;
         ((y_desc *)d)->elsize = z;
 
         /* read lower and upper bounds from argument list       */

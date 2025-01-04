@@ -102,7 +102,7 @@ memcpy(&logcnst,logvalue,sizeof(logcnst));
    /* --- Log2 gerichtet gerundet --- */
    ret = _s_ln(arg, res, &rr);
    mulee(res, &logcnst, res);
-   if ((rndg == DOWN))
+   if (rndg == DOWN)
       {
       round_ln(DOWN, rr, res, res);
       }

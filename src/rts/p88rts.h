@@ -539,7 +539,7 @@ extern a_VOID y_suba (a_VOID md, a_VOID sd,
 
 				       /* convert static to dynamic array */
 extern a_VOID y_stat (y_dscp d, a_VOID statarray, size_t elsize,
-		      a_byte dim, ...) ;
+		      size_t dim, ...) ;
 extern a_VOID y_ynxn (y_dscp d,...) ; /*  without Index check */
 extern a_VOID y_yxcn (y_dscp d,...) ; /*  with Index check */
 extern void   y_new  (y_dscp d,...) ; /*  with Index check */
