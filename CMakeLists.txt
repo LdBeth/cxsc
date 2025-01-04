@@ -1,4 +1,4 @@
-#CMakeLists.txt Configuration File, 2012-12-11
+#CMakeLists.txt Configuration File, 2012-12-11 -*- mode:cmake-ts -*-
 cmake_minimum_required(VERSION 3.10)
 
 project(cxsc C CXX)
@@ -72,11 +72,7 @@ endif(NOT WIN32)
 
 # Option for shared or static library (either/or)
 if(NOT WIN32)
-  if(APPLE)
-    option(BUILD_SHARED "Build the shared version of the library" ON)
-  else(APPLE)
-    option(BUILD_SHARED "Build the shared version of the library" ON)
-  endif(APPLE)
+  option(BUILD_SHARED "Build the shared version of the library" ON)
 endif(NOT WIN32)
 
 # option(BUILD_ALL_FILES "Build all .c and .cpp files instead of only those specified by the CMakeLists.txt in the subdirectories" OFF)
@@ -223,6 +219,11 @@ elseif(CMAKE_COMPILER_IS_GNUCXX)
     set(CMAKE_CXX_FLAGS "-O1 -finline-functions")
     set(CMAKE_CC_FLAGS "-O1 -finline-functions")
   endif(ROUNDING_ASM)
+elseif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "arm64")
+  #Apple Silicon
+  #Full optimizations
+  set(CMAKE_CXX_FLAGS "-O3")
+  set(CMAKE_CC_FLAGS "-O3")
 else(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" AND CMAKE_COMPILER_IS_GNUCXX)
   #Default compiler options
   if(ROUNDING_ASM)
@@ -240,20 +241,19 @@ endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" AND CMAKE_COMPILER_IS_GNUCXX)
 #Add static or shared library to build
 if(NOT WIN32)
   if(BUILD_SHARED)
-    add_library(cxsc SHARED
-      ${cxsc_src}
-      ${rts_src}
-      ${fi_lib_src}
-      ${ctoolbox_src}
-    )
-  else(BUILD_SHARED)
-    add_library(cxsc STATIC
+    add_library(cxscShared SHARED
       ${cxsc_src}
       ${rts_src}
       ${fi_lib_src}
       ${ctoolbox_src}
     )
   endif(BUILD_SHARED)
+  add_library(cxsc STATIC
+    ${cxsc_src}
+    ${rts_src}
+    ${fi_lib_src}
+    ${ctoolbox_src}
+  )
 else(NOT WIN32)
   # on Windows only a static version of the library can be built.
   add_library(cxsc STATIC
@@ -266,7 +266,8 @@ endif(NOT WIN32)
 
 # set the SO version of the library file
 if(BUILD_SHARED)
-  set_target_properties(cxsc PROPERTIES
+  set_target_properties(cxscShared PROPERTIES
+    OUTPUT_NAME cxsc
     VERSION ${VER_MAJOR}.${VER_MINOR}.${VER_PATCH}
     SOVERSION ${VER_MAJOR}
   )
