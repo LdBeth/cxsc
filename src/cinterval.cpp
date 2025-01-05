@@ -33,17 +33,17 @@ namespace cxsc {
 
 #define CXSC_Zero 0.0
 
-cinterval::cinterval(const dotprecision &a) throw() : re(a),im(0) {}
-cinterval::cinterval(const idotprecision &a) throw() : re(a),im(0) {}
-cinterval::cinterval(const cdotprecision &a) throw() : re(Re(a)),im(Im(a)) {}
-cinterval::cinterval(const cidotprecision &a) throw() : 
+cinterval::cinterval(const dotprecision &a) noexcept : re(a),im(0) {}
+cinterval::cinterval(const idotprecision &a) noexcept : re(a),im(0) {}
+cinterval::cinterval(const cdotprecision &a) noexcept : re(Re(a)),im(Im(a)) {}
+cinterval::cinterval(const cidotprecision &a) noexcept : 
    re(rnd(InfRe(a),RND_DOWN),rnd(SupRe(a),RND_UP)),
    im(rnd(InfIm(a),RND_DOWN),rnd(SupIm(a),RND_UP))  
 {
 }
 
 
-cinterval mult_operator(const cinterval & a,const cinterval & b) throw()
+cinterval mult_operator(const cinterval & a,const cinterval & b) noexcept
 {
    cidotprecision akku;
    akku=0.0;
@@ -538,7 +538,7 @@ cinterval div_operator (const cinterval & a, const cinterval & b) noexcept(false
     else return cidiv(a,b);
 }
 
-interval abs(const cinterval &a) throw()
+interval abs(const cinterval &a) noexcept
 {
 //    idotakku[2]=0;
 //    accumulate(idotakku[2],a.re,a.re);
@@ -550,7 +550,7 @@ interval abs(const cinterval &a) throw()
 
 // ---- Ausgabefunkt. ---------------------------------------
 
-std::ostream & operator << (std::ostream &s, const cinterval& a) throw()
+std::ostream & operator << (std::ostream &s, const cinterval& a) noexcept
 {
    s << '('          
      << a.re << ','  
@@ -558,7 +558,7 @@ std::ostream & operator << (std::ostream &s, const cinterval& a) throw()
      << ')';
    return s;
 }
-std::string & operator << (std::string &s, const cinterval &a) throw()
+std::string & operator << (std::string &s, const cinterval &a) noexcept
 {
    s+='(';
    s << a.re;

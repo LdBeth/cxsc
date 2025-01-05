@@ -25,7 +25,6 @@
 #define CXSCCONF_H_INCLUDED
 
 #cmakedefine IBM_LINUX_C	@IBM_LINUX_C@
-#cmakedefine IBM_RS_6000_C	@IBM_RS_6000_C@
 #cmakedefine SUN4_GNU_C		@SUN4_GNU_C@
 #cmakedefine SUN4_FORTE		@SUN4_FORTE@
 #cmakedefine SUN_STUDIO_10	@SUN_STUDIO_10@

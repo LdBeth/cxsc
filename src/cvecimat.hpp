@@ -31,27 +31,27 @@ namespace cxsc {
 
 	void accumulate(cidotprecision &dp, const imatrix_subv & rv1, const cvector &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	noexcept(false);
 #else
-	throw();
+	noexcept;
 #endif
 	void accumulate(cidotprecision &dp, const cvector & rv1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	noexcept(false);
 #else
-	throw();
+	noexcept;
 #endif
 	void accumulate(cidotprecision &dp, const imatrix_subv & rv1, const cvector_slice &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	noexcept(false);
 #else
-	throw();
+	noexcept;
 #endif
 	void accumulate(cidotprecision &dp, const cvector_slice & rv1, const imatrix_subv &rv2)
 #if(CXSC_INDEX_CHECK)
-	throw(OP_WITH_WRONG_DIM);
+	noexcept(false);
 #else
-	throw();
+	noexcept;
 #endif
 
 } // namespace cxsc 
