@@ -40,9 +40,9 @@
 #define _CXSC_LX_COMPLEX_HPP_INCLUDED
 
 #include <iostream>
-#include <except.hpp>
-#include <l_cinterval.hpp>
-#include <l_complex.hpp>
+#include "except.hpp"
+#include "l_cinterval.hpp"
+#include "l_complex.hpp"
 #include "lx_interval.hpp"
 
 namespace cxsc {

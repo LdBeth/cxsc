@@ -26,9 +26,9 @@
 #ifndef _CXSC_LX_CIVECTOR_HPP_INCLUDED
 #define _CXSC_LX_CIVECTOR_HPP_INCLUDED 
 
-#include <xscclass.hpp>
-#include <real.hpp>
-#include <except.hpp>
+#include "xscclass.hpp"
+#include "real.hpp"
+#include "except.hpp"
 #include "lx_cinterval.hpp"
 
 #include <iostream>

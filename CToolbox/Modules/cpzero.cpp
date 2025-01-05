@@ -66,19 +66,19 @@ char* CPolyZeroErrMsg ( int Err )
 
     switch (Err) {
       case ZeroPoly:
-        sprintf(Hlp,"Zero polynomial occurred");                  break;
+        snprintf(Hlp,60,"Zero polynomial occurred");                  break;
       case ConstPoly:
-        sprintf(Hlp,"Constant polynomial != 0 occurred");         break;
+        snprintf(Hlp,60,"Constant polynomial != 0 occurred");         break;
       case InvFailed:
-        sprintf(Hlp,"Inversion of the Jacobian failed");          break;
+        snprintf(Hlp,60,"Inversion of the Jacobian failed");          break;
       case IncFailed:
-        sprintf(Hlp,"Inclusion failed");                          break;
+        snprintf(Hlp,60,"Inclusion failed");                          break;
       case VerFailed:
-        sprintf(Hlp,"Verified inversion of the Jacobian failed"); break;
+        snprintf(Hlp,60,"Verified inversion of the Jacobian failed"); break;
       default:
         strcpy(Hlp,"Code not defined");
     }
-    sprintf(Msg,"Error: %s!",Hlp);
+    snprintf(Msg,80,"Error: %s!",Hlp);
   }
   return(Msg);
 } // CPolyZeroErrMsg

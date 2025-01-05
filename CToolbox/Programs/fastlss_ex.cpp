@@ -33,7 +33,7 @@ using namespace std;
 
 int main ( )
 {
-  int  Err, n, type;
+  int  Err=0, n, type;
 
   cout << SetPrecision(23,15) << Scientific;   // Output format
 

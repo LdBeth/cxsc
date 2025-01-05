@@ -26,6 +26,8 @@
 #ifndef _CXSC_CIVECTOR_HPP_INCLUDED
 #define _CXSC_CIVECTOR_HPP_INCLUDED
 
+#include <iostream>
+
 #include "xscclass.hpp"
 #include "except.hpp"
 #include "cidot.hpp"
@@ -35,9 +37,6 @@
 #include "ivector.hpp"
 #include "cvector.hpp"
 #include "vector.hpp"
-
-
-#include <iostream>
 
 //#include "matrix.hpp" // hat hier eigentlich nichts zu suchen, sonst aber Internal Compiler Error #9
 

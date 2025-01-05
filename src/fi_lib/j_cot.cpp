@@ -56,7 +56,7 @@ namespace fi_lib{
           Inf(res)*=q_cotm;
         }
     }
-  else if (((Inf(x)<=0)&(Sup(x)>=0))||((Sup(x)<0)&(Sup(x)>-q_minr))
+  else if (((Inf(x)<=0)&&(Sup(x)>=0))||((Sup(x)<0)&&(Sup(x)>-q_minr))
                           ||((Inf(x)>0)&&(Inf(x)<q_minr)))
     res=q_abortr2(INV_ARG,&Inf(x),&Sup(x),13);  /* Singularitaet */
   else

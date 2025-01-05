@@ -115,22 +115,22 @@ namespace fi_lib{
               }
             else if (q1==0)
               {
-                if ((Inf(x)>0) & (Inf(x)<=q_sint[3]))
+                if ((Inf(x)>0)&&(Inf(x)<=q_sint[3]))
                   Inf(res)=q_pred(Inf(x));
                 else
                   Inf(res)=q_sin1(y1,k1)*q_sinm;
-                if ((Sup(x)>0) & (Sup(x)<=q_sint[3]))
+                if ((Sup(x)>0)&&(Sup(x)<=q_sint[3]))
                   Sup(res)=Sup(x);
                 else
                   Sup(res)=q_sin1(y2,k2)*q_sinp;                    
               }
             else   /* q1 == 3 */
               {
-                 if ((Inf(x)>=-q_sint[3]) & (Inf(x)<0))
+                 if ((Inf(x)>=-q_sint[3])&&(Inf(x)<0))
                    Inf(res)=Inf(x);
                  else
                    Inf(res)=q_sin1(y1,k1)*q_sinp;
-                 if ((Sup(x)>=-q_sint[3]) & (Sup(x)<0))
+                 if ((Sup(x)>=-q_sint[3])&&(Sup(x)<0))
                    Sup(res)=q_succ(Sup(x));
                  else
                    Sup(res)=q_sin1(y2,k2)*q_sinm;                   
@@ -142,7 +142,7 @@ namespace fi_lib{
              {
                if (q2==1)
                {
-                 if ((Inf(x)>0) & (Inf(x)<=q_sint[3]))
+                 if ((Inf(x)>0)&&(Inf(x)<=q_sint[3]))
                    Inf(res)=q_pred(Inf(x));
                  else
                    {
@@ -189,7 +189,7 @@ namespace fi_lib{
                if (q2==0)
                {
                  Inf(res)=-1.0;
-                 if ((Sup(x)>0) & (Sup(x)<=q_sint[3]))
+                 if ((Sup(x)>0)&&(Sup(x)<=q_sint[3]))
                    Sup(res)=Sup(x);
                  else
                    Sup(res)=q_sin1(y2,k2)*q_sinp;
@@ -202,7 +202,7 @@ namespace fi_lib{
                else  /* q2==3 */
                {
                  Inf(res)=-1.0;
-                 if ((Sup(x)>=-q_sint[3]) & (Sup(x)<0))
+                 if ((Sup(x)>=-q_sint[3])&&(Sup(x)<0))
                    Sup(res)=q_succ(Sup(x));
                  else
                    {
@@ -217,18 +217,18 @@ namespace fi_lib{
              {
                if (q2==0)
                {
-                 if ((Inf(x)>=-q_sint[3]) & (Inf(x)<0))
+                 if ((Inf(x)>=-q_sint[3])&&(Inf(x)<0))
                    Inf(res)=Inf(x);
                  else
                    Inf(res)=q_sin1(y1,k1)*q_sinp;
-                 if ((Sup(x)>0) & (Sup(x)<=q_sint[3]))
+                 if ((Sup(x)>0)&&(Sup(x)<=q_sint[3]))
                    Sup(res)=Sup(x);
                  else
                    Sup(res)=q_sin1(y2,k2)*q_sinp;
                }
                else if (q2==1)
                {
-                 if ((Inf(x)>=-q_sint[3]) & (Inf(x)<0))
+                 if ((Inf(x)>=-q_sint[3])&&(Inf(x)<0))
                    Inf(res)=Inf(x);
                  else
                    Inf(res)=q_sin1(y1,k1)*q_sinp;
