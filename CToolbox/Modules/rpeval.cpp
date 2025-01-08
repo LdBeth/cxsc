@@ -81,10 +81,10 @@ char* RPolyEvalErrMsg ( int Err )
     char Hlp[60];
 
     if (Err == ItFailed)
-      sprintf(Hlp,"Maximum number of iterations (=%d) exceeded",kmax);
+      snprintf(Hlp,60,"Maximum number of iterations (=%d) exceeded",kmax);
     else
       strcpy(Hlp,"Code not defined");
-    sprintf(Msg,"Error: %s!",Hlp);
+    snprintf(Msg,60,"Error: %s!",Hlp);
   }
   return(Msg);
 }

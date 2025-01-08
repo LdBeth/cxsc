@@ -130,11 +130,7 @@ b_geth((a_char *)&e_astk,(a_char *)e_astk,(a_char *)"e_actn");
                  {
                  fprintf(f_errr.fp,"%se_actn : No exception ",e_head);
                  fprintf(f_errr.fp,"handler found ");
-#if GNU_X86_64
                  fprintf(f_errr.fp,"for trap code %8.8x\n",code);
-#else
-                 fprintf(f_errr.fp,"for trap code %8.8lx\n",code);
-#endif
                  E_TPOPP("e_actn")
                  return;
                  }
@@ -146,11 +142,7 @@ b_geth((a_char *)&e_astk,(a_char *)e_astk,(a_char *)"e_actn");
                  {
                  fprintf(f_errr.fp,"%se_actn : Static exception ",e_head);
                  fprintf(f_errr.fp,"handler may not be ");
-#if GNU_X86_64
                  fprintf(f_errr.fp,"removed for trap code %8.8x\n",code);
-#else
-                 fprintf(f_errr.fp,"removed for trap code %8.8lx\n",code);
-#endif
                  E_TPOPP("e_actn")
                  return;
                  }
@@ -203,11 +195,7 @@ b_geth((a_char *)&pold->succ,(a_char *)pnew,(a_char *)"e_actn");
            else if (!(action & E_CHNG))
               {
               fprintf(f_errr.fp,"%se_actn : No exception handler ",e_head);
-#if GNU_X86_64
               fprintf(f_errr.fp,"found for trap code %8.8x\n",code);
-#else
-              fprintf(f_errr.fp,"found for trap code %8.8lx\n",code);
-#endif
               E_TPOPP("e_actn")
               return;
               }

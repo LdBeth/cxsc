@@ -121,11 +121,7 @@ e_list
                  {
                  fprintf(f_errr.fp,"%se_trap : No exception ",e_head);
                  fprintf(f_errr.fp,"handler defined ");
-#if GNU_X86_64
                  fprintf(f_errr.fp,"for trap code %8.8x\n",code);
-#else
-                 fprintf(f_errr.fp,"for trap code %8.8lx\n",code);
-#endif
                  }
 
               /* inactivate special exception handler           */
@@ -146,11 +142,7 @@ e_list
            e_back(f_errr.fp);
            fprintf(f_errr.fp,"%se_trap : No active exception ",e_head);
            fprintf(f_errr.fp,"handler found ");
-#if GNU_X86_64
            fprintf(f_errr.fp,"for error code %8.8x\n",code);
-#else
-           fprintf(f_errr.fp,"for error code %8.8lx\n",code);
-#endif
            }
 
         e_shut;
